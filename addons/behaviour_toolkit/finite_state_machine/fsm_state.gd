@@ -12,6 +12,7 @@ func _ready() -> void:
         if transition is FSMTransition:
             transitions.append(transition)
 
+
 ## Executes after the state is entered.
 func _on_enter() -> void:
     pass

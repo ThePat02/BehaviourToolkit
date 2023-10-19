@@ -9,6 +9,10 @@ extends BehaviourToolkit
 signal state_changed(state: FSMState)
 
 
+## Whether the FSM should start automatically.
+@export var autostart: bool = true
+## Whether the FSM is active or not.
+@export var active: bool = true
 ## The initial state of the FSM.
 @export var initial_state: FSMState
 
@@ -22,11 +26,20 @@ var current_events: Array[String]
 
 
 func _ready() -> void:
+	if autostart:
+		start()
+	else:
+		active = false
+
+
+func start() -> void:
 	# Get all the states
 	for state in get_children():
 		if state is FSMState:
 			states.append(state)
-	
+
+	active = true
+
 	# Set the initial state
 	active_state = initial_state
 	active_state._on_enter()
@@ -36,6 +49,9 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
+	if not active:
+		return
+
 	# Check if there are states
 	if states.size() == 0:
 		return

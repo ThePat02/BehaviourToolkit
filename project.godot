@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="BehaviourToolkit"
+run/main_scene="res://examples/example_fsm/example_fsm.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -1,0 +1,159 @@
+[gd_scene load_steps=17 format=3 uid="uid://co2bdwuve8k8f"]
+
+[ext_resource type="Texture2D" uid="uid://dwfwhfwfmvk38" path="res://examples/assets/tiny_knight.png" id="1_1pvs5"]
+[ext_resource type="Script" path="res://examples/example_fsm/tiny_knight/tiny_knight.gd" id="1_bv6f3"]
+[ext_resource type="Texture2D" uid="uid://co6i5qips2icn" path="res://examples/assets/coin.png" id="2_t5hni"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="3_w11i4"]
+[ext_resource type="Script" path="res://examples/example_fsm/tiny_knight/fsm/state_gathering.gd" id="4_6260y"]
+[ext_resource type="Script" path="res://examples/example_fsm/tiny_knight/fsm/trans_full_pockets.gd" id="5_82hbf"]
+[ext_resource type="Script" path="res://examples/example_fsm/tiny_knight/fsm/state_unloading.gd" id="6_6gb6b"]
+[ext_resource type="Script" path="res://examples/example_fsm/tiny_knight/fsm/trans_empty_pockets.gd" id="7_cidv7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tlmrh"]
+radius = 8.0
+
+[sub_resource type="Curve" id="Curve_vyllu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0961039, 1), 0.0, 0.0, 0, 0, Vector2(0.280519, 1), 0.0, 0.0, 0, 0, Vector2(0.392208, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_36b1v"]
+curve = SubResource("Curve_vyllu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rg2eo"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_36b1v")
+
+[sub_resource type="Animation" id="Animation_gcil4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_opdho"]
+resource_name = "collect"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.176), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xe6a0"]
+resource_name = "walking"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.174533, 0.174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ayw0"]
+_data = {
+"RESET": SubResource("Animation_gcil4"),
+"collect": SubResource("Animation_opdho"),
+"walking": SubResource("Animation_xe6a0")
+}
+
+[node name="TinyKnight" type="CharacterBody2D"]
+script = ExtResource("1_bv6f3")
+max_coins = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_tlmrh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+path_postprocessing = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 8)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_rg2eo")
+trail_lifetime = 0.1
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.482353)
+texture_filter = 3
+position = Vector2(-1.81899e-12, 10)
+rotation = 1.5708
+scale = Vector2(0.595, 1)
+texture = ExtResource("2_t5hni")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_1pvs5")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_w11i4")
+autostart = false
+initial_state = NodePath("Gathering")
+
+[node name="Gathering" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("4_6260y")
+actor = NodePath("../..")
+
+[node name="onPocketsFull" type="Node" parent="FiniteStateMachine/Gathering" node_paths=PackedStringArray("actor", "next_state")]
+script = ExtResource("5_82hbf")
+actor = NodePath("../../..")
+next_state = NodePath("../../Unloading")
+
+[node name="Unloading" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_6gb6b")
+actor = NodePath("../..")
+
+[node name="onPocketsEmpty" type="Node" parent="FiniteStateMachine/Unloading" node_paths=PackedStringArray("actor", "next_state")]
+script = ExtResource("7_cidv7")
+actor = NodePath("../../..")
+next_state = NodePath("../../Gathering")
+use_event = true
+event = "unloaded"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_default_blend_time = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_3ayw0")
+}
