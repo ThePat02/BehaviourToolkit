@@ -6,7 +6,6 @@ func _ready():
 
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(1, 1), .2)
-	print(scale)
 
 
 func _on_body_entered(body:Node2D):
