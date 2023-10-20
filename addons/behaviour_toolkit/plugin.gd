@@ -13,13 +13,15 @@ const fsm_transition = preload("res://addons/behaviour_toolkit/finite_state_mach
 
 # Icons
 const icon_placeholder = preload("res://addons/behaviour_toolkit/icons/placeholder.svg")
+const icon_gear = preload("res://addons/behaviour_toolkit/icons/Gear.svg")
+const icon_behaviour_toolkit = preload("res://addons/behaviour_toolkit/icons/MainIcon.svg")
 const icon_finite_state_machine = preload("res://addons/behaviour_toolkit/icons/FiniteStateMachine.svg")
 const icon_fsm_state = preload("res://addons/behaviour_toolkit/icons/FSMState.svg")
 const icon_fsm_transition = preload("res://addons/behaviour_toolkit/icons/FSMTransition.svg")
 
 
 func _enter_tree():
-	add_custom_type("BehaviourToolkit", "Node", behaviour_toolkit, icon_placeholder)
+	add_custom_type("BehaviourToolkit", "Node", behaviour_toolkit, icon_behaviour_toolkit)
 	add_custom_type("Blackboard", "Node", blackboard, icon_placeholder)
 
 	add_custom_type("FiniteStateMachine", "Node", finite_state_machine, icon_finite_state_machine)

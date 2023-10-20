@@ -15,6 +15,12 @@ func _ready():
 		spawn_coin()
 
 
+func _process(_delta):
+	if get_child_count() == 1:
+		for i in range(max_coins - 4):
+			spawn_coin()
+
+
 func spawn_coin():
 	var coin_instance = coin.instantiate()
 
