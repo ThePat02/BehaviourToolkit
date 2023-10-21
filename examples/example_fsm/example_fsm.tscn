@@ -1,10 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://dl8njbtqw218u"]
+[gd_scene load_steps=30 format=3 uid="uid://dl8njbtqw218u"]
 
 [ext_resource type="Texture2D" uid="uid://duvn8ey0oylmd" path="res://examples/assets/kenney_tinytown.png" id="1_3mh44"]
+[ext_resource type="Script" path="res://examples/example_fsm/example_fsm.gd" id="1_l7g7l"]
 [ext_resource type="PackedScene" uid="uid://dpxe2vbbwh5u4" path="res://examples/example_fsm/coin/coin_spawner.tscn" id="2_ako21"]
 [ext_resource type="PackedScene" uid="uid://co2bdwuve8k8f" path="res://examples/example_fsm/tiny_knight/tiny_knight.tscn" id="3_7hpyk"]
 [ext_resource type="Script" path="res://examples/example_fsm/LoadingZone.gd" id="4_48iiq"]
 [ext_resource type="Texture2D" uid="uid://co6i5qips2icn" path="res://examples/assets/coin.png" id="5_og7b7"]
+[ext_resource type="Texture2D" uid="uid://bbilmsl1ghy3k" path="res://icon.svg" id="6_klqc0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gmtds"]
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -635,6 +637,7 @@ angle_max = 90.0
 scale_curve = SubResource("CurveTexture_ymtag")
 
 [node name="ExampleFSM" type="Node2D"]
+script = ExtResource("1_l7g7l")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 3
@@ -697,6 +700,10 @@ explosiveness = 1.0
 [node name="Timer" type="Timer" parent="LoadingZone"]
 wait_time = 0.5
 one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(595, 277)
+texture = ExtResource("6_klqc0")
 
 [connection signal="body_entered" from="LoadingZone" to="LoadingZone" method="_on_body_entered"]
 [connection signal="timeout" from="LoadingZone/Timer" to="LoadingZone" method="_on_timer_timeout"]
