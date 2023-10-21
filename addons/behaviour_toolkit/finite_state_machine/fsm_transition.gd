@@ -1,5 +1,4 @@
-class_name FSMTransition
-extends BehaviourToolkit
+class_name FSMTransition extends BehaviourToolkit
 ## A transition between two [FSMState]s in a [FiniteStateMachine].
 
 

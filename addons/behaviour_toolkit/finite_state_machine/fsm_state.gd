@@ -1,5 +1,4 @@
-class_name FSMState
-extends BehaviourToolkit
+class_name FSMState extends BehaviourToolkit
 ## A state in a [FiniteStateMachine].
 
 

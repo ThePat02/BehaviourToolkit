@@ -1,2 +1,1 @@
-class_name BehaviourToolkit
-extends Node
+class_name BehaviourToolkit extends Node

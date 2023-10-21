@@ -1,5 +1,4 @@
-class_name FiniteStateMachine
-extends BehaviourToolkit
+class_name FiniteStateMachine extends BehaviourToolkit
 ## An implementation of a simple finite state machine.
 ##
 ## The Finite State Machine is composed [FSMState]s and [FSMTransition]s.

@@ -1,2 +1,1 @@
-class_name Blackboard
-extends BehaviourToolkit
+class_name Blackboard extends BehaviourToolkit
