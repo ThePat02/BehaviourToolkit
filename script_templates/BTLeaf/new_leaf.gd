@@ -1,5 +1,5 @@
 extends BTLeaf
 
 
-func tick(actor: Node, blackboard: Blackboard) -> Status:
+func tick(_actor: Node, _blackboard: Blackboard) -> Status:
     return Status.SUCCESS
