@@ -1,8 +1,8 @@
-class_name BTSequence extends BTComposite
-## A sequence node will return success if all of its children return success.
+class_name BTShuffledSequence extends BTComposite
 
 
 func tick(actor: Node, blackboard: Blackboard):
+    leaves.shuffle()
     for leaf in leaves:
         var response = leaf.tick(actor, blackboard)
 
