@@ -1,7 +1,8 @@
+@icon("res://addons/behaviour_toolkit/icons/FiniteStateMachine.svg")
 class_name FiniteStateMachine extends BehaviourToolkit
 ## An implementation of a simple finite state machine.
 ##
-## The Finite State Machine is composed [FSMState]s and [FSMTransition]s.
+## The Finite State Machine is composed of states and transitions.
 
 
 ## The signal emitted when the state changes.

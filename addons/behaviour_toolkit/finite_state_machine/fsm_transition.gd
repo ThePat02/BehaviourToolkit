@@ -1,3 +1,4 @@
+@icon("res://addons/behaviour_toolkit/icons/FSMTransition.svg")
 class_name FSMTransition extends BehaviourToolkit
 ## A transition between two [FSMState]s in a [FiniteStateMachine].
 

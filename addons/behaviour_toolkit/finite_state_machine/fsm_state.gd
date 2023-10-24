@@ -1,3 +1,4 @@
+@icon("res://addons/behaviour_toolkit/icons/FSMState.svg")
 class_name FSMState extends BehaviourToolkit
 ## A state in a [FiniteStateMachine].
 
