@@ -1,4 +1,14 @@
 # BehaviourToolkit
+
+<p align="center">
+    <img src="addons/behaviour_toolkit/icons/FiniteStateMachine.svg">
+    <img src="addons/behaviour_toolkit/icons/FSMState.svg">
+    <img src="addons/behaviour_toolkit/icons/FSMTransition.svg">
+    <img src="addons/behaviour_toolkit/icons/BTRoot.svg">
+    <img src="addons/behaviour_toolkit/icons/BTBehaviour.svg">
+    <img src="addons/behaviour_toolkit/icons/BTDecorator.svg">
+</p>
+
 This plugin provides a set of tools to create custom and complex behaviour in the Godot 4.x Game Engine.
 
 ### Features & Design Goals

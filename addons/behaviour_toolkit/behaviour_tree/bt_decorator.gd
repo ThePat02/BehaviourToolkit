@@ -1,3 +1,4 @@
+@icon("res://addons/behaviour_toolkit/icons/BTDecorator.svg")
 class_name BTDecorator extends BTBehaviour
 
 
