@@ -681,6 +681,13 @@ shape = SubResource("RectangleShape2D_galvv")
 position = Vector2(762, 448)
 
 [node name="TinyGhost" parent="." instance=ExtResource("5_07k3e")]
+position = Vector2(729, 276)
+
+[node name="TinyGhost2" parent="." instance=ExtResource("5_07k3e")]
+position = Vector2(251, 307)
+
+[node name="TinyGhost3" parent="." instance=ExtResource("5_07k3e")]
+position = Vector2(930, 481)
 
 [node name="LoadingZone" type="Area2D" parent="."]
 position = Vector2(696, 481)

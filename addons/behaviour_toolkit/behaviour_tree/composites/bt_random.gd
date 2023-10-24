@@ -6,6 +6,7 @@ class_name BTRandom extends BTComposite
 
 
 var rng = RandomNumberGenerator.new()
+var active_leave: BTBehaviour
 
 
 func _ready():
@@ -14,7 +15,13 @@ func _ready():
 
 
 func tick(actor: Node, blackboard: Blackboard):
-    var random_leaf = leaves[rng.randi() % leaves.size()]
-    var response = random_leaf.tick(actor, blackboard)
+    if active_leave == null:
+        active_leave = leaves[rng.randi() % leaves.size()]
+
+    var response = active_leave.tick(actor, blackboard)
     
+    if response == Status.RUNNING:
+        return response
+    
+    active_leave = null
     return response

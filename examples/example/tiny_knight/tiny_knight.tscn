@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://co2bdwuve8k8f"]
+[gd_scene load_steps=23 format=3 uid="uid://co2bdwuve8k8f"]
 
 [ext_resource type="Texture2D" uid="uid://dwfwhfwfmvk38" path="res://examples/assets/tiny_knight.png" id="1_1pvs5"]
 [ext_resource type="Script" path="res://examples/example/tiny_knight/tiny_knight.gd" id="1_bv6f3"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://examples/example/tiny_knight/fsm/trans_full_pockets.gd" id="5_82hbf"]
 [ext_resource type="Script" path="res://examples/example/tiny_knight/fsm/state_unloading.gd" id="6_6gb6b"]
 [ext_resource type="Script" path="res://examples/example/tiny_knight/fsm/trans_empty_pockets.gd" id="7_cidv7"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="7_ueok1"]
+[ext_resource type="Script" path="res://examples/example/tiny_knight/fsm/state_fleeing.gd" id="10_3ncn0"]
+[ext_resource type="Script" path="res://examples/example/tiny_knight/fsm/trans_has_escaped.gd" id="11_c2lk6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tlmrh"]
 radius = 8.0
@@ -27,6 +30,24 @@ orbit_velocity_max = 0.0
 scale_min = 2.0
 scale_max = 8.0
 scale_curve = SubResource("CurveTexture_36b1v")
+
+[sub_resource type="Curve" id="Curve_opddm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.240964, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3flnv"]
+curve = SubResource("Curve_opddm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lxkg5"]
+emission_shape = 3
+emission_box_extents = Vector3(4.86, 1.605, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_max = 100.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_3flnv")
 
 [sub_resource type="Animation" id="Animation_gcil4"]
 length = 0.001
@@ -127,6 +148,14 @@ texture = ExtResource("2_t5hni")
 texture_filter = 3
 texture = ExtResource("1_1pvs5")
 
+[node name="ParticlesSweat" type="GPUParticles2D" parent="."]
+position = Vector2(0, -5)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_lxkg5")
+lifetime = 0.5
+local_coords = true
+
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_w11i4")
 autostart = false
@@ -141,6 +170,12 @@ script = ExtResource("5_82hbf")
 actor = NodePath("../../..")
 next_state = NodePath("../../Unloading")
 
+[node name="isNearGhost" type="Node" parent="FiniteStateMachine/Gathering" node_paths=PackedStringArray("next_state")]
+script = ExtResource("7_ueok1")
+next_state = NodePath("../../Fleeing")
+use_event = true
+event = "is_hunted"
+
 [node name="Unloading" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_6gb6b")
 actor = NodePath("../..")
@@ -151,6 +186,15 @@ actor = NodePath("../../..")
 next_state = NodePath("../../Gathering")
 use_event = true
 event = "unloaded"
+
+[node name="Fleeing" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("10_3ncn0")
+actor = NodePath("../..")
+
+[node name="hasEscaped" type="Node" parent="FiniteStateMachine/Fleeing" node_paths=PackedStringArray("actor", "next_state")]
+script = ExtResource("11_c2lk6")
+actor = NodePath("../../..")
+next_state = NodePath("../../Gathering")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_default_blend_time = 0.1

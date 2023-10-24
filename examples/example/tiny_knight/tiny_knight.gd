@@ -14,6 +14,7 @@ var coins := 0
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var particles: GPUParticles2D = $GPUParticles2D
+@onready var sweating: GPUParticles2D = $ParticlesSweat
 
 
 func _ready():
