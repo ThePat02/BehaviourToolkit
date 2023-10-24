@@ -1,13 +1,13 @@
 [gd_scene load_steps=17 format=3 uid="uid://co2bdwuve8k8f"]
 
 [ext_resource type="Texture2D" uid="uid://dwfwhfwfmvk38" path="res://examples/assets/tiny_knight.png" id="1_1pvs5"]
-[ext_resource type="Script" path="res://examples/example_fsm/tiny_knight/tiny_knight.gd" id="1_bv6f3"]
+[ext_resource type="Script" path="res://examples/example/tiny_knight/tiny_knight.gd" id="1_bv6f3"]
 [ext_resource type="Texture2D" uid="uid://co6i5qips2icn" path="res://examples/assets/coin.png" id="2_t5hni"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="3_w11i4"]
-[ext_resource type="Script" path="res://examples/example_fsm/tiny_knight/fsm/state_gathering.gd" id="4_6260y"]
-[ext_resource type="Script" path="res://examples/example_fsm/tiny_knight/fsm/trans_full_pockets.gd" id="5_82hbf"]
-[ext_resource type="Script" path="res://examples/example_fsm/tiny_knight/fsm/state_unloading.gd" id="6_6gb6b"]
-[ext_resource type="Script" path="res://examples/example_fsm/tiny_knight/fsm/trans_empty_pockets.gd" id="7_cidv7"]
+[ext_resource type="Script" path="res://examples/example/tiny_knight/fsm/state_gathering.gd" id="4_6260y"]
+[ext_resource type="Script" path="res://examples/example/tiny_knight/fsm/trans_full_pockets.gd" id="5_82hbf"]
+[ext_resource type="Script" path="res://examples/example/tiny_knight/fsm/state_unloading.gd" id="6_6gb6b"]
+[ext_resource type="Script" path="res://examples/example/tiny_knight/fsm/trans_empty_pockets.gd" id="7_cidv7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tlmrh"]
 radius = 8.0

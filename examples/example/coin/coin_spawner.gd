@@ -1,7 +1,7 @@
 extends Area2D
 
 
-const coin = preload("res://examples/example_fsm/coin/coin.tscn")
+const coin = preload("res://examples/example/coin/coin.tscn")
 
 
 @export var max_coins := 10

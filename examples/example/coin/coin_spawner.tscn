@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dpxe2vbbwh5u4"]
 
-[ext_resource type="Script" path="res://examples/example_fsm/coin/coin_spawner.gd" id="1_jdq77"]
+[ext_resource type="Script" path="res://examples/example/coin/coin_spawner.gd" id="1_jdq77"]
 
 [node name="CoinSpawner" type="Area2D"]
 script = ExtResource("1_jdq77")

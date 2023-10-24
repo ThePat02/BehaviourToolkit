@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://clrxsbsw3e23y"]
+
+[ext_resource type="Texture2D" uid="uid://dd8t7dwcj5rwa" path="res://examples/assets/tiny_cyclops.png" id="1_4xack"]
+
+[node name="TinyGhost" type="Node2D"]
+modulate = Color(1, 1, 1, 0.717647)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_4xack")

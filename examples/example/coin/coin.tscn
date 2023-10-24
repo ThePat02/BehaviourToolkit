@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://2jmq3tsd5ant"]
 
-[ext_resource type="Script" path="res://examples/example_fsm/coin/coin.gd" id="1_6fy0k"]
+[ext_resource type="Script" path="res://examples/example/coin/coin.gd" id="1_6fy0k"]
 [ext_resource type="Texture2D" uid="uid://co6i5qips2icn" path="res://examples/assets/coin.png" id="1_st633"]
 
 [sub_resource type="Animation" id="Animation_smx31"]
