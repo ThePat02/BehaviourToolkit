@@ -2,6 +2,7 @@ class_name LimiterBT extends BTDecorator
 
 
 @export var limit: int = 1
+@export var on_limit: Status = Status.FAILURE
 
 
 @onready var cache_key = 'limiter_%s' % self.get_instance_id()
@@ -16,4 +17,4 @@ func tick(actor: Node, blackboard: Blackboard):
         blackboard.set_value(cache_key, current_count + 1)
         return leaf.tick(actor, blackboard)
     else:
-        return Status.FAILURE
+        return on_limit
