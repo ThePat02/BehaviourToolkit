@@ -1,4 +1,4 @@
-class_name LimiterDecorator extends BTDecorator
+class_name LimiterBT extends BTDecorator
 
 
 @export var limit: int = 1

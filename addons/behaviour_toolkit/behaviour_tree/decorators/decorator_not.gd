@@ -1,4 +1,4 @@
-class_name NotDecorator extends BTDecorator
+class_name NotBT extends BTDecorator
 
 
 func tick(actor: Node, blackboard: Blackboard):
