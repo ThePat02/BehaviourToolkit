@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbn8fnajl6h25"]
+
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="1_qbrii"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_selector.gd" id="2_n5rnq"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaf_print.gd" id="3_d1ww5"]
+
+[node name="ExampleBT" type="Node2D"]
+
+[node name="BTRoot" type="Node" parent="."]
+script = ExtResource("1_qbrii")
+
+[node name="BTSelector" type="Node" parent="BTRoot"]
+script = ExtResource("2_n5rnq")
+
+[node name="LeafPrint" type="Node" parent="BTRoot/BTSelector"]
+script = ExtResource("3_d1ww5")
+custom_text = "Test"
+success = false
+
+[node name="LeafPrint2" type="Node" parent="BTRoot/BTSelector"]
+script = ExtResource("3_d1ww5")
+custom_text = "Test2"
+success = false
+
+[node name="LeafPrint3" type="Node" parent="BTRoot/BTSelector"]
+script = ExtResource("3_d1ww5")
+custom_text = "Test23"
