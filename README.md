@@ -14,3 +14,9 @@ This plugin provides a set of tools to create custom and complex behaviour in th
 
 ## Using templates
 When cloning this repository/importing the plugin, make sure to not only add the `addons` directory to your project, but also the `script_templates` directory. This allows you to have preconfigured script templates when extending behaviour nodes, providing you with virtual methods and a logical naming scheme.
+
+
+## Resources and references
+- [Behavior Trees and how to implement them in Godot](https://thisisvini.com/behavior-trees) (Blog Entry)
+- [Game AI Pro](http://www.gameaipro.com/) (Website with many free articles on AI)
+- [Game AI Pro 360: Guide to Architecture](https://www.amazon.de/Game-AI-Pro-360-Architecture/dp/0367151049) (Book on Amazon)
