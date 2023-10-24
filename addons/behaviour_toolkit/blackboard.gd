@@ -7,10 +7,13 @@ var content: Dictionary
 
 
 ## Sets a value in the blackboard.
-func set(key: StringName, value: Variant):
-    content[key] = value
+func set_value(key: StringName, value: Variant):
+	content[key] = value
 
 
 ## Returns a value from the blackboard.
-func get(key: StringName) -> Variant:
-    return content[key]
+func get_value(key: StringName) -> Variant:
+	if content.has(key):
+		return content[key]
+	else:
+		return null

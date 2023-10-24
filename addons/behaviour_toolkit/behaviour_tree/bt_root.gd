@@ -9,5 +9,5 @@ class_name BTRoot extends BehaviourToolkit
 
 
 func _process(delta):
-	blackboard.set("delta", delta)
+	blackboard.set_value("delta", delta)
 	entry_point.tick(actor, blackboard)
