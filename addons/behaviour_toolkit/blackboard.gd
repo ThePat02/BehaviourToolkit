@@ -11,7 +11,7 @@ func set_value(key: StringName, value: Variant):
 	content[key] = value
 
 
-## Returns a value from the blackboard.
+## Returns a value from the blackboard. If the key doesn't exist, returns `null`.
 func get_value(key: StringName) -> Variant:
 	if content.has(key):
 		return content[key]
