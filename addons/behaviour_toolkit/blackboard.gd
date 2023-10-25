@@ -3,7 +3,7 @@ class_name Blackboard extends Resource
 
 
 ## The blackboard's content stored as a dictionary.
-var content: Dictionary
+@export var content: Dictionary
 
 
 ## Sets a value in the blackboard.

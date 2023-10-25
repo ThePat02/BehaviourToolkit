@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwfwhfwfmvk38"
-path="res://.godot/imported/tiny_knight.png-70a9b0088e709badf732078b6165f8fa.ctex"
+uid="uid://cqrhvvwg1e0ro"
+path="res://.godot/imported/tile_0112.png-19b4b0c5bc1500236edeaba1d5f03cfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://examples/assets/tiny_knight.png"
-dest_files=["res://.godot/imported/tiny_knight.png-70a9b0088e709badf732078b6165f8fa.ctex"]
+source_file="res://examples/assets/actors/tile_0112.png"
+dest_files=["res://.godot/imported/tile_0112.png-19b4b0c5bc1500236edeaba1d5f03cfc.ctex"]
 
 [params]
 

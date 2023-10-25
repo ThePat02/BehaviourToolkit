@@ -5,9 +5,9 @@ class_name BTRoot extends BehaviourToolkit
 @export var autostart: bool = true
 @export var active: bool = true
 @export var actor: Node
+@export var blackboard: Blackboard
 
 
-@onready var blackboard: Blackboard
 @onready var entry_point = get_child(0)
 
 
