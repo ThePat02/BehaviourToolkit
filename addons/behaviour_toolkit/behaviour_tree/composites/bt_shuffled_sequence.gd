@@ -9,4 +9,4 @@ func tick(actor: Node, blackboard: Blackboard):
         if response != Status.SUCCESS:
             return response
     
-    return Status.SUCCESS
+    return Status.SUCCESS # TODO: Test if this works with running states.
