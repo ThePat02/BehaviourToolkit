@@ -16,6 +16,9 @@ signal state_changed(state: FSMState)
 ## The initial state of the FSM.
 @export var initial_state: FSMState
 
+@export var actor: Node
+@export var blackboard: Blackboard
+
 
 ## The list of states in the FSM.
 var states: Array[FSMState]
