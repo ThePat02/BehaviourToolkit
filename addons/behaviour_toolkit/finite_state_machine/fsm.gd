@@ -48,7 +48,7 @@ func start() -> void:
 
 	# Set the initial state
 	active_state = initial_state
-	active_state._on_enter()
+	active_state._on_enter(actor, blackboard)
 
 	# Emit the state changed signal
 	emit_signal("state_changed", active_state)
@@ -74,9 +74,9 @@ func _process(_delta) -> void:
 
 	# Check if the current state is valid
 	for transition in active_state.transitions:
-		if transition.is_valid() or transition.is_valid_event(event):
+		if transition.is_valid(actor, blackboard) or transition.is_valid_event(event):
 			# Process the transition
-			transition._on_transition()
+			transition._on_transition(actor, blackboard)
 			
 			# Change the current state
 			change_state(transition.get_next_state())
@@ -84,19 +84,19 @@ func _process(_delta) -> void:
 			break
 	
 	# Process the current state
-	active_state._on_update()
+	active_state._on_update(actor, blackboard)
 
 
 ## Changes the current state and calls the appropriate methods like _on_exit and _on_enter.
 func change_state(state: FSMState) -> void:
 	# Exit the current state
-	active_state._on_exit()
+	active_state._on_exit(actor, blackboard)
 
 	# Change the current state
 	active_state = state
 
 	# Enter the new state
-	active_state._on_enter()
+	active_state._on_enter(actor, blackboard)
 
 	# Emit the state changed signal
 	emit_signal("state_changed", active_state)
