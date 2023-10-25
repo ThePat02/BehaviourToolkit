@@ -29,6 +29,9 @@ var current_events: Array[String]
 
 
 func _ready() -> void:
+	if blackboard == null:
+		blackboard = _create_local_blackboard()
+
 	if autostart:
 		start()
 	else:
@@ -102,3 +105,8 @@ func change_state(state: FSMState) -> void:
 ## Fires an event in the FSM.
 func fire_event(event: String) -> void:
 	current_events.append(event)
+
+
+func _create_local_blackboard() -> Blackboard:
+	var blackboard: Blackboard = Blackboard.new()
+	return blackboard
