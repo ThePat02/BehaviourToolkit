@@ -1,3 +1,4 @@
+# THIS DOESNT WORK RIGHT NOW!
 class_name BTSelector extends BTComposite
 ## Selects the first child that succeeds, or fails if none do.
 
