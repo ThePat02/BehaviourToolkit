@@ -1,13 +1,23 @@
-# THIS DOESNT WORK RIGHT NOW!
 class_name BTSelector extends BTComposite
 ## Selects the first child that succeeds, or fails if none do.
 
 
-func tick(actor: Node, blackboard: Blackboard):
-    for leaf in leaves:
-        var response = leaf.tick(actor, blackboard)
+var current_leaf: int = 0
 
-        if response != Status.FAILURE:
-            return response
-    
-    return Status.FAILURE
+
+func tick(actor: Node, blackboard: Blackboard):
+	if current_leaf > leaves.size() -1:
+		current_leaf = 0
+		return Status.FAILURE
+	
+	var response = leaves[current_leaf].tick(actor, blackboard)
+
+	if response == Status.SUCCESS:
+		current_leaf = 0
+		return response
+	
+	if response == Status.RUNNING:
+		return response
+	
+	current_leaf += 1
+	return Status.RUNNING
