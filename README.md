@@ -7,8 +7,18 @@
     <img src="addons/behaviour_toolkit/icons/BTRoot.svg">
     <img src="addons/behaviour_toolkit/icons/BTBehaviour.svg">
     <img src="addons/behaviour_toolkit/icons/BTComposite.svg">
+    <img src="addons/behaviour_toolkit/icons/BTCompositeSequence.svg">
+    <img src="addons/behaviour_toolkit/icons/BTCompositeSelector.svg">
+    <img src="addons/behaviour_toolkit/icons/BTCompositeRandom.svg">
+    <img src="addons/behaviour_toolkit/icons/BTCompositeRandomSequence.svg">
+    <img src="addons/behaviour_toolkit/icons/BTCompositeRandomSelector.svg">
     <img src="addons/behaviour_toolkit/icons/BTLeaf.svg">
     <img src="addons/behaviour_toolkit/icons/BTDecorator.svg">
+    <img src="addons/behaviour_toolkit/icons/BTDecoratorSucceed.svg">
+    <img src="addons/behaviour_toolkit/icons/BTDecoratorFail.svg">
+    <img src="addons/behaviour_toolkit/icons/BTDecoratorLimiter.svg">
+    <img src="addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg">
+
 </p>
 
 This plugin provides a set of tools to create custom and complex behaviour in the Godot 4.x Game Engine.
