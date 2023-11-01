@@ -544,11 +544,6 @@ texture_filter = 3
 script = ExtResource("1_xnxut")
 global_blackboard = ExtResource("2_lmhgv")
 
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(582, 330)
-editor_draw_limits = true
-script = ExtResource("1_ukdj2")
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_f4c1l")
 format = 2
@@ -561,6 +556,12 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(439, 309)
+zoom = Vector2(1.1, 1.1)
+editor_draw_limits = true
+script = ExtResource("1_ukdj2")
 
 [node name="Actors" type="Node2D" parent="."]
 y_sort_enabled = true
