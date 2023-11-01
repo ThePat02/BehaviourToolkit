@@ -112,3 +112,102 @@ class TestBTSelector:
 		assert_eq(selector.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
 		assert_eq(selector.tick(actor, blackboard), BTBehaviour.Status.FAILURE)
 	
+
+class TestDecorators:
+	extends GutTest
+
+	var sequence: BTSequence
+	var actor: Node
+	var blackboard: Blackboard
+
+
+	func before_each():
+		sequence = BTSequence.new()
+		actor = Node.new()
+		blackboard = Blackboard.new()
+	
+
+	func after_each():
+		if sequence.leaves != null:
+			for leaf in sequence.leaves:
+				leaf.free()
+
+		sequence.free()
+		actor.free()
+		blackboard.unreference()
+	
+
+	func test_alwaysfail():
+		var decorator = AlwaysFailBT.new()
+		var leaf = TestLeaf.new()
+		leaf.return_value = BTBehaviour.Status.SUCCESS
+		decorator.leaf = leaf
+
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.FAILURE)
+
+		leaf.return_value = BTBehaviour.Status.FAILURE
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.FAILURE)
+
+		leaf.return_value = BTBehaviour.Status.RUNNING
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
+		
+		decorator.free()
+		leaf.free()
+
+
+	func test_alwayssucceed():
+		var decorator = AlwaysSucceedBT.new()
+		var leaf = TestLeaf.new()
+		leaf.return_value = BTBehaviour.Status.SUCCESS
+		decorator.leaf = leaf
+
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.SUCCESS)
+
+		leaf.return_value = BTBehaviour.Status.FAILURE
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.SUCCESS)
+
+		leaf.return_value = BTBehaviour.Status.RUNNING
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
+
+		decorator.free()
+		leaf.free()
+
+
+	func test_not():
+		var decorator = NotBT.new()
+		var leaf = TestLeaf.new()
+		leaf.return_value = BTBehaviour.Status.SUCCESS
+		decorator.leaf = leaf
+
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.FAILURE)
+
+		leaf.return_value = BTBehaviour.Status.FAILURE
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.SUCCESS)
+
+		leaf.return_value = BTBehaviour.Status.RUNNING
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
+
+		decorator.free()
+		leaf.free()
+
+
+	func test_limiter():
+		var decorator = LimiterBT.new()
+		decorator.cache_key = 'limiter_%s' % self.get_instance_id()
+		decorator.limit = 3
+		var leaf = TestLeaf.new()
+		leaf.return_value = BTBehaviour.Status.RUNNING
+		decorator.leaf = leaf
+
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
+		leaf.return_value = BTBehaviour.Status.SUCCESS
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.SUCCESS)
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.SUCCESS)
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.SUCCESS)
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.FAILURE)
+		assert_eq(decorator.tick(actor, blackboard), BTBehaviour.Status.FAILURE)
+
+		decorator.free()
+		leaf.free()

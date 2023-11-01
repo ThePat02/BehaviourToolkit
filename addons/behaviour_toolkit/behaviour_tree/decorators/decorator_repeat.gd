@@ -1,4 +1,5 @@
-class_name ReapeatBT extends BTDecorator
+@icon("res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg")
+class_name RepeatBT extends BTDecorator
 
 
 @export var repetition: int = 1
@@ -14,13 +15,17 @@ func tick(actor: Node, blackboard: Blackboard):
 		current_count = 0
 	
 	if current_count <= repetition:
-		var status = leaf.tick(actor, blackboard)
-		if status == Status.SUCCESS:
+		var response = leaf.tick(actor, blackboard)
+
+		if response == Status.RUNNING:
+			return response
+
+		if response == Status.SUCCESS:
 			current_count += 1
 			blackboard.set_value(cache_key, current_count)
 			return Status.RUNNING
 		else:
-			return status
+			return response
 	else:
 		blackboard.set_value(cache_key, 0)
 		return on_limit

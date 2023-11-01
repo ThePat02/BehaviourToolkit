@@ -1,11 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=14 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
 [ext_resource type="Texture2D" uid="uid://guy2wtwpcskx" path="res://addons/behaviour_toolkit/icons/FSMTransition.svg" id="2_24di4"]
 [ext_resource type="Texture2D" uid="uid://b3u8ojxnwvwap" path="res://addons/behaviour_toolkit/icons/BTComposite.svg" id="4_ruq84"]
 [ext_resource type="Texture2D" uid="uid://dws1e5qbg3y2h" path="res://addons/behaviour_toolkit/icons/BTLeaf.svg" id="5_3hqj7"]
+[ext_resource type="Texture2D" uid="uid://bq7k30hpimryq" path="res://addons/behaviour_toolkit/icons/BTCompositeSequence.svg" id="5_turo1"]
+[ext_resource type="Texture2D" uid="uid://dbvuyvumeayw7" path="res://addons/behaviour_toolkit/icons/BTCompositeSelector.svg" id="6_mdg6v"]
 [ext_resource type="Texture2D" uid="uid://cik3abcqm7kr1" path="res://addons/behaviour_toolkit/icons/BTDecorator.svg" id="6_pyx3s"]
+[ext_resource type="Texture2D" uid="uid://y6kqrnrojvj2" path="res://addons/behaviour_toolkit/icons/BTDecoratorFail.svg" id="7_1hgfw"]
+[ext_resource type="Texture2D" uid="uid://dkt0bqwfmkmpq" path="res://addons/behaviour_toolkit/icons/BTDecoratorSucceed.svg" id="8_augsf"]
+[ext_resource type="Texture2D" uid="uid://bmo340f2o6tai" path="res://addons/behaviour_toolkit/icons/BTDecoratorNot.svg" id="9_0k0nv"]
+[ext_resource type="Texture2D" uid="uid://cko2btxegkbtb" path="res://addons/behaviour_toolkit/icons/BTDecoratorLimiter.svg" id="10_ehr66"]
+[ext_resource type="Texture2D" uid="uid://hn65lqk8tero" path="res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg" id="10_nvbp1"]
 
 [node name="ToolkitUi" type="Control"]
 custom_minimum_size = Vector2(280, 0)
@@ -16,26 +23,32 @@ grow_vertical = 2
 script = ExtResource("1_51rvx")
 metadata/_edit_vertical_guides_ = []
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,77 +56,120 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer"]
+[node name="FiniteStateMachine" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/VBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/FiniteStateMachine"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center][img]res://addons/behaviour_toolkit/icons/FiniteStateMachine.svg[/img] FiniteStateMachine[/center]"
 
-[node name="ButtonState" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/VBoxContainer"]
+[node name="ButtonState" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/FiniteStateMachine"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New State"
 icon = ExtResource("1_hqqj5")
 
-[node name="ButtonTransition" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/VBoxContainer"]
+[node name="ButtonTransition" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/FiniteStateMachine"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Transition"
 icon = ExtResource("2_24di4")
 
-[node name="BehaviourTree" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer"]
+[node name="BehaviourTree" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center][img]res://addons/behaviour_toolkit/icons/BTRoot.svg[/img] Behaviour Tree[/center]"
 
-[node name="ButtonComposite" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
-layout_mode = 2
-text = "New Composite"
-icon = ExtResource("4_ruq84")
-
-[node name="Composites" type="HFlowContainer" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
-layout_mode = 2
-
-[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Composites"]
-layout_mode = 2
-text = "Sequence"
-
-[node name="Button5" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Composites"]
-layout_mode = 2
-text = "Selector"
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
-layout_mode = 2
-
-[node name="ButtonLeaf" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
+[node name="ButtonLeaf" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 text = "New Leaf"
 icon = ExtResource("5_3hqj7")
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
+[node name="Leaves" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 
-[node name="ButtonDecorator" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
+[node name="Button4" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Leaves"]
+layout_mode = 2
+text = "Print"
+
+[node name="Button5" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Leaves"]
+layout_mode = 2
+text = "Wait"
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
+layout_mode = 2
+
+[node name="ButtonComposite" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
+layout_mode = 2
+text = "New Composite"
+icon = ExtResource("4_ruq84")
+
+[node name="Composites" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
+layout_mode = 2
+
+[node name="ButtonSequence" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Composites"]
+layout_mode = 2
+text = "Sequence"
+icon = ExtResource("5_turo1")
+
+[node name="ButtonSelector" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Composites"]
+layout_mode = 2
+text = "Selector"
+icon = ExtResource("6_mdg6v")
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
+layout_mode = 2
+
+[node name="ButtonDecorator" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 text = "New Decorator"
 icon = ExtResource("6_pyx3s")
 
-[node name="Footer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Decorators" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 
-[node name="Version" type="Label" parent="MarginContainer/VBoxContainer/Footer"]
+[node name="ButtonAlwaysFail" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Decorators"]
+layout_mode = 2
+text = "AlwaysFail"
+icon = ExtResource("7_1hgfw")
+
+[node name="ButtonAlwaysSucceed" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Decorators"]
+layout_mode = 2
+text = "AlwaysSucceed"
+icon = ExtResource("8_augsf")
+
+[node name="ButtonNot" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Decorators"]
+layout_mode = 2
+text = "NOT
+"
+icon = ExtResource("9_0k0nv")
+
+[node name="ButtonLimiter" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Decorators"]
+layout_mode = 2
+text = "Limiter
+"
+icon = ExtResource("10_ehr66")
+
+[node name="ButtonRepeat" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Decorators"]
+layout_mode = 2
+text = "Repeat"
+icon = ExtResource("10_nvbp1")
+
+[node name="Footer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Version" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "BehaviourToolkit v0.9.0"
 
-[node name="ButtonUpdate" type="Button" parent="MarginContainer/VBoxContainer/Footer"]
+[node name="ButtonUpdate" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 10

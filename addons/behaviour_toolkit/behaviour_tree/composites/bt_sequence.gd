@@ -1,3 +1,4 @@
+@icon("res://addons/behaviour_toolkit/icons/BTCompositeSequence.svg")
 class_name BTSequence extends BTComposite
 ## A sequence node will return success if all of its children return success.
 
