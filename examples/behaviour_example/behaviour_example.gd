@@ -5,4 +5,5 @@ extends Node2D
 
 
 func _ready():
+	# Fill the global blackboard with the locations
 	global_blackboard.set_value("locations", $Locations.get_children())
