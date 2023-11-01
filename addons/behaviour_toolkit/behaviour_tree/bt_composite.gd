@@ -1,4 +1,4 @@
-@icon("res://addons/behaviour_toolkit/icons/FSMState.svg") # TODO: Replace with composite icon.
+@icon("res://addons/behaviour_toolkit/icons/BTComposite.svg")
 class_name BTComposite extends BTBehaviour
 
 
