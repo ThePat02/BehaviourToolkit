@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=7 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -6,14 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b3u8ojxnwvwap" path="res://addons/behaviour_toolkit/icons/BTComposite.svg" id="4_ruq84"]
 [ext_resource type="Texture2D" uid="uid://dws1e5qbg3y2h" path="res://addons/behaviour_toolkit/icons/BTLeaf.svg" id="5_3hqj7"]
 [ext_resource type="Texture2D" uid="uid://cik3abcqm7kr1" path="res://addons/behaviour_toolkit/icons/BTDecorator.svg" id="6_pyx3s"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_61jpk"]
-content_margin_left = 5.0
-content_margin_right = 5.0
-color = Color(1, 0.537255, 0, 1)
-thickness = 2
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb8gv"]
 
 [node name="ToolkitUi" type="Control"]
 custom_minimum_size = Vector2(280, 0)
@@ -39,17 +31,11 @@ theme_override_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/tab_selected = SubResource("StyleBoxLine_61jpk")
-theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_fb8gv")
 
-[node name="FiniteStateMachine" type="Panel" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/FiniteStateMachine"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,63 +43,64 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonState" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/FiniteStateMachine/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][img]res://addons/behaviour_toolkit/icons/FiniteStateMachine.svg[/img] FiniteStateMachine[/center]"
+
+[node name="ButtonState" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New State"
 icon = ExtResource("1_hqqj5")
 
-[node name="ButtonTransition" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/FiniteStateMachine/VBoxContainer"]
+[node name="ButtonTransition" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Transition"
 icon = ExtResource("2_24di4")
 
-[node name="BehaviourTree" type="Panel" parent="MarginContainer/VBoxContainer/TabContainer"]
+[node name="BehaviourTree" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="BehaviourTree" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "DOESNT WORK YET"
-horizontal_alignment = 1
+bbcode_enabled = true
+text = "[center][img]res://addons/behaviour_toolkit/icons/BTRoot.svg[/img] Behaviour Tree[/center]"
 
-[node name="ButtonComposite" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+[node name="ButtonComposite" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 text = "New Composite"
 icon = ExtResource("4_ruq84")
 
-[node name="Composites" type="HFlowContainer" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+[node name="Composites" type="HFlowContainer" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree/Composites"]
+[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Composites"]
 layout_mode = 2
 text = "Sequence"
 
-[node name="Button5" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree/Composites"]
+[node name="Button5" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Composites"]
 layout_mode = 2
 text = "Selector"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 
-[node name="ButtonLeaf" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+[node name="ButtonLeaf" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 text = "New Leaf"
 icon = ExtResource("5_3hqj7")
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 
-[node name="ButtonDecorator" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+[node name="ButtonDecorator" type="Button" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 text = "New Decorator"
 icon = ExtResource("6_pyx3s")
@@ -124,7 +111,7 @@ layout_mode = 2
 [node name="Version" type="Label" parent="MarginContainer/VBoxContainer/Footer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Addon not found"
+text = "BehaviourToolkit v0.9.0"
 
 [node name="ButtonUpdate" type="Button" parent="MarginContainer/VBoxContainer/Footer"]
 visible = false
