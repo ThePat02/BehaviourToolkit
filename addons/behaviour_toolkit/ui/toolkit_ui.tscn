@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=17 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://cik3abcqm7kr1" path="res://addons/behaviour_toolkit/icons/BTDecorator.svg" id="6_pyx3s"]
 [ext_resource type="Texture2D" uid="uid://y6kqrnrojvj2" path="res://addons/behaviour_toolkit/icons/BTDecoratorFail.svg" id="7_1hgfw"]
 [ext_resource type="Texture2D" uid="uid://dkt0bqwfmkmpq" path="res://addons/behaviour_toolkit/icons/BTDecoratorSucceed.svg" id="8_augsf"]
+[ext_resource type="Texture2D" uid="uid://bevi04faxe066" path="res://addons/behaviour_toolkit/icons/BTCompositeRandom.svg" id="8_lf7t0"]
 [ext_resource type="Texture2D" uid="uid://bmo340f2o6tai" path="res://addons/behaviour_toolkit/icons/BTDecoratorNot.svg" id="9_0k0nv"]
+[ext_resource type="Texture2D" uid="uid://bwsntsm8f3msh" path="res://addons/behaviour_toolkit/icons/BTCompositeRandomSequence.svg" id="9_ny08s"]
+[ext_resource type="Texture2D" uid="uid://bmc67ds148hrp" path="res://addons/behaviour_toolkit/icons/BTCompositeRandomSelector.svg" id="10_5qnkh"]
 [ext_resource type="Texture2D" uid="uid://cko2btxegkbtb" path="res://addons/behaviour_toolkit/icons/BTDecoratorLimiter.svg" id="10_ehr66"]
 [ext_resource type="Texture2D" uid="uid://hn65lqk8tero" path="res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg" id="10_nvbp1"]
 
@@ -124,6 +127,21 @@ icon = ExtResource("5_turo1")
 layout_mode = 2
 text = "Selector"
 icon = ExtResource("6_mdg6v")
+
+[node name="ButtonRandom" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Composites"]
+layout_mode = 2
+text = "Random"
+icon = ExtResource("8_lf7t0")
+
+[node name="ButtonRandomSequence" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Composites"]
+layout_mode = 2
+text = "RandomSequence"
+icon = ExtResource("9_ny08s")
+
+[node name="ButtonRandomSelector" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Composites"]
+layout_mode = 2
+text = "RandomSelector"
+icon = ExtResource("10_5qnkh")
 
 [node name="HSeparator2" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2

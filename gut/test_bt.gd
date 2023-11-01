@@ -61,6 +61,9 @@ class TestBTSequence:
 		assert_eq(sequence.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
 		assert_eq(sequence.tick(actor, blackboard), BTBehaviour.Status.FAILURE)
 
+		assert_eq(sequence.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
+		assert_eq(sequence.tick(actor, blackboard), BTBehaviour.Status.FAILURE)
+
 
 class TestBTSelector:
 	extends GutTest
@@ -111,7 +114,7 @@ class TestBTSelector:
 		assert_eq(selector.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
 		assert_eq(selector.tick(actor, blackboard), BTBehaviour.Status.RUNNING)
 		assert_eq(selector.tick(actor, blackboard), BTBehaviour.Status.FAILURE)
-	
+
 
 class TestDecorators:
 	extends GutTest
