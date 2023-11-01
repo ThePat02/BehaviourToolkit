@@ -6,6 +6,8 @@
     <img src="addons/behaviour_toolkit/icons/FSMTransition.svg">
     <img src="addons/behaviour_toolkit/icons/BTRoot.svg">
     <img src="addons/behaviour_toolkit/icons/BTBehaviour.svg">
+    <img src="addons/behaviour_toolkit/icons/BTComposite.svg">
+    <img src="addons/behaviour_toolkit/icons/BTLeaf.svg">
     <img src="addons/behaviour_toolkit/icons/BTDecorator.svg">
 </p>
 
