@@ -1,5 +1,6 @@
 @icon("res://addons/behaviour_toolkit/icons/BTDecoratorFail.svg")
 class_name AlwaysFailBT extends BTDecorator
+## The leaf will always fail after running.
 
 
 func tick(actor: Node, blackboard: Blackboard):

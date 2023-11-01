@@ -94,13 +94,15 @@ icon = ExtResource("5_3hqj7")
 [node name="Leaves" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Leaves"]
+[node name="ButtonPrint" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Leaves"]
 layout_mode = 2
 text = "Print"
+icon = ExtResource("5_3hqj7")
 
-[node name="Button5" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Leaves"]
+[node name="ButtonWait" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree/Leaves"]
 layout_mode = 2
 text = "Wait"
+icon = ExtResource("5_3hqj7")
 
 [node name="HSeparator" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/VBoxContainer/BehaviourTree"]
 layout_mode = 2

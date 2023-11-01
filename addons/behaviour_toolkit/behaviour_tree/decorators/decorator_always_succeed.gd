@@ -1,5 +1,6 @@
 @icon("res://addons/behaviour_toolkit/icons/BTDecoratorSucceed.svg")
 class_name AlwaysSucceedBT extends BTDecorator
+## The leaf will always succeed after running.
 
 
 func tick(actor: Node, blackboard: Blackboard):

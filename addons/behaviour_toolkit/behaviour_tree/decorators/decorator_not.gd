@@ -1,5 +1,6 @@
 @icon("res://addons/behaviour_toolkit/icons/BTDecoratorNot.svg")
 class_name NotBT extends BTDecorator
+## The result of the leaf is inverted.
 
 
 func tick(actor: Node, blackboard: Blackboard):
