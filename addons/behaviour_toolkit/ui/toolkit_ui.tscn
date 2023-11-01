@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://o16emp4t4wb1"]
+
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
+[ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
+[ext_resource type="Texture2D" uid="uid://guy2wtwpcskx" path="res://addons/behaviour_toolkit/icons/FSMTransition.svg" id="2_24di4"]
+[ext_resource type="Texture2D" uid="uid://xv12cpsjwtl8" path="res://addons/behaviour_toolkit/icons/BTRoot.svg" id="4_l2oe4"]
+[ext_resource type="Texture2D" uid="uid://dpfva3ksgkvkx" path="res://addons/behaviour_toolkit/icons/placeholder.svg" id="5_uqx6y"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_61jpk"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+color = Color(1, 0.537255, 0, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb8gv"]
+
+[node name="ToolkitUi" type="Control"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+script = ExtResource("1_51rvx")
+metadata/_edit_vertical_guides_ = []
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/tab_selected = SubResource("StyleBoxLine_61jpk")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_fb8gv")
+
+[node name="FiniteStateMachine" type="Panel" parent="MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/FiniteStateMachine"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonState" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/FiniteStateMachine/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New State"
+icon = ExtResource("1_hqqj5")
+
+[node name="ButtonTransition" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/FiniteStateMachine/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Transition"
+icon = ExtResource("2_24di4")
+
+[node name="BehaviourTree" type="Panel" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="BehaviourTree" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "DOESNT WORK YET"
+horizontal_alignment = 1
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+layout_mode = 2
+text = "BTRoot"
+icon = ExtResource("4_l2oe4")
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+layout_mode = 2
+text = "BTComposite"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/BehaviourTree/BehaviourTree"]
+layout_mode = 2
+text = "BTLeaf"
+icon = ExtResource("5_uqx6y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Version 1.1.1.1.1"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Update"
+flat = true
