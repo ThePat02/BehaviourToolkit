@@ -17,7 +17,7 @@ config/icon="res://addons/behaviour_toolkit/icons/MainIcon.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/behaviour_toolkit/plugin.cfg")
+enabled=PackedStringArray("res://addons/behaviour_toolkit/plugin.cfg", "res://addons/gut/plugin.cfg")
 
 [input]
 
