@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4ids33ikpkp"]
+[gd_scene load_steps=8 format=3 uid="uid://d4ids33ikpkp"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="1_dahcy"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state.gd" id="2_so4ox"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="3_l1qrn"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="4_esmtb"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_composite.gd" id="5_oi0ov"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_leaf.gd" id="6_hk2dj"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_decorator.gd" id="7_evho1"]
 
 [node name="Testing" type="Node2D"]
 
@@ -13,3 +18,30 @@ initial_state = NodePath("FSMState")
 
 [node name="FSMState" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("2_so4ox")
+
+[node name="FSMTransition" type="Node" parent="FiniteStateMachine/FSMState"]
+script = ExtResource("3_l1qrn")
+
+[node name="FSMState2" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_so4ox")
+
+[node name="FSMTransition2" type="Node" parent="FiniteStateMachine/FSMState2"]
+script = ExtResource("3_l1qrn")
+
+[node name="BTRoot" type="Node" parent="."]
+script = ExtResource("4_esmtb")
+
+[node name="BTComposite" type="Node" parent="BTRoot"]
+script = ExtResource("5_oi0ov")
+
+[node name="BTLeaf" type="Node" parent="BTRoot/BTComposite"]
+script = ExtResource("6_hk2dj")
+
+[node name="BTDecorator" type="Node" parent="BTRoot/BTComposite"]
+script = ExtResource("7_evho1")
+
+[node name="BTLeaf2" type="Node" parent="BTRoot/BTComposite/BTDecorator"]
+script = ExtResource("6_hk2dj")
+
+[node name="BTLeaf3" type="Node" parent="BTRoot/BTComposite"]
+script = ExtResource("6_hk2dj")
