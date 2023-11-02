@@ -17,7 +17,7 @@ config/icon="res://addons/behaviour_toolkit/icons/Gear.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/behaviour_toolkit/plugin.cfg", "res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/behaviour_toolkit/plugin.cfg")
 
 [input]
 
