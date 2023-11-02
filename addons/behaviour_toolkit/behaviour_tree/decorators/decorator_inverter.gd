@@ -1,5 +1,5 @@
 @icon("res://addons/behaviour_toolkit/icons/BTDecoratorNot.svg")
-class_name NotBT extends BTDecorator
+class_name BTInverter extends BTDecorator
 ## The result of the leaf is inverted.
 
 
