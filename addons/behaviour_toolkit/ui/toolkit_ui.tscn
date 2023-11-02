@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=18 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
 [ext_resource type="Texture2D" uid="uid://guy2wtwpcskx" path="res://addons/behaviour_toolkit/icons/FSMTransition.svg" id="2_24di4"]
+[ext_resource type="Texture2D" uid="uid://5e6onda232gn" path="res://addons/behaviour_toolkit/icons/Blackboard.svg" id="2_u7fep"]
 [ext_resource type="Texture2D" uid="uid://b3u8ojxnwvwap" path="res://addons/behaviour_toolkit/icons/BTComposite.svg" id="4_ruq84"]
 [ext_resource type="Texture2D" uid="uid://dws1e5qbg3y2h" path="res://addons/behaviour_toolkit/icons/BTLeaf.svg" id="5_3hqj7"]
 [ext_resource type="Texture2D" uid="uid://bq7k30hpimryq" path="res://addons/behaviour_toolkit/icons/BTCompositeSequence.svg" id="5_turo1"]
@@ -25,6 +26,12 @@ anchor_bottom = 1.0
 grow_vertical = 2
 script = ExtResource("1_51rvx")
 metadata/_edit_vertical_guides_ = []
+
+[node name="FileDialogNewBlackboard" type="FileDialog" parent="."]
+title = "Create a new Blackboard"
+size = Vector2i(800, 500)
+ok_button_text = "Create Blackboard"
+filters = PackedStringArray("*.tres ; Resources")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -49,6 +56,7 @@ layout_mode = 2
 [node name="Panel" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 clip_contents = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Toolbox" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel"]
@@ -58,6 +66,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Misc" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox"]
+layout_mode = 2
+
+[node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox/Misc"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][img]res://addons/behaviour_toolkit/icons/Gear.svg[/img] BehaviourToolkit[/center]"
+
+[node name="ButtonBlackboard" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox/Misc"]
+layout_mode = 2
+text = "New Blackboard"
+icon = ExtResource("2_u7fep")
 
 [node name="FiniteStateMachine" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox"]
 layout_mode = 2
@@ -202,3 +224,6 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "BehaviourToolkit v0.9.0"
+
+[connection signal="file_selected" from="FileDialogNewBlackboard" to="." method="_on_file_dialog_new_blackboard_file_selected"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox/Misc/ButtonBlackboard" to="." method="_on_button_blackboard_pressed"]

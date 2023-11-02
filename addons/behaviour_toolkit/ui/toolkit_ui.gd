@@ -5,6 +5,9 @@ extends Control
 var current_selection: Node
 
 
+@onready var dialog_blackboard: FileDialog = $FileDialogNewBlackboard
+
+
 func _ready():
 	# Get current version of the plugin
 	var config = ConfigFile.new()
@@ -65,3 +68,12 @@ func _on_button_pressed(type, name: String):
 
 	current_selection.add_child(new_node)
 	new_node.set_owner(current_selection.get_tree().edited_scene_root)
+
+
+func _on_button_blackboard_pressed():
+	dialog_blackboard.popup_centered()
+
+
+func _on_file_dialog_new_blackboard_file_selected(path:String):
+	var new_blackboard := Blackboard.new()
+	ResourceSaver.save(new_blackboard, path)
