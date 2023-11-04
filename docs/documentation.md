@@ -5,7 +5,7 @@ This documenation will give you an overview of the most important properties & m
 
 **Table of Contents**
 - [Documentation](#documentation)
-- [ Finite State Machine](#-finite-state-machine)
+- [Finite State Machine](#finite-state-machine)
   - [Usage](#usage)
   - [Nodes](#nodes)
     - [ FiniteStateMachine](#-finitestatemachine)
@@ -36,7 +36,7 @@ This documenation will give you an overview of the most important properties & m
 
 
 
-# ![FiniteStateMachine Icon](../addons/behaviour_toolkit/icons/FiniteStateMachine.svg) Finite State Machine
+# Finite State Machine
  A finite-state machine (FSM) [...] is an abstract machine that can be in exactly one of a finite number of states at any given time. The FSM can change from one state to another in response to some inputs; the change from one state to another is called a transition. ([Wikipedia](https://en.wikipedia.org/wiki/Finite-state_machine))
 
 
@@ -221,6 +221,6 @@ You can find all templates inside the `script_templates` directory, so make sure
 
 
 # Examples
-> 🚧 Work in progress
+> 🚧 Work in progress 🚧
 
-Examples are located in the `examples` directory.
+Examples are located in the `examples` directory. (What a surprise!)
