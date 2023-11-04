@@ -5,6 +5,9 @@ class_name FiniteStateMachine extends BehaviourToolkit
 ## The Finite State Machine is composed of states and transitions.
 
 
+const ERROR_INITIAL_STATE_NULL: String = "The initial cannot be null when starting the State Machine."
+
+
 ## The signal emitted when the state changes.
 signal state_changed(state: FSMState)
 
@@ -16,7 +19,9 @@ signal state_changed(state: FSMState)
 ## The initial state of the FSM.
 @export var initial_state: FSMState
 
+## The actor of the FSM.
 @export var actor: Node
+## The blackboard of the FSM.
 @export var blackboard: Blackboard
 
 
@@ -39,6 +44,9 @@ func _ready() -> void:
 
 
 func start() -> void:
+	# Check if the initial state is valid
+	assert(initial_state != null, ERROR_INITIAL_STATE_NULL)
+
 	# Get all the states
 	for state in get_children():
 		if state is FSMState:
