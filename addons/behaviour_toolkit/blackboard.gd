@@ -8,7 +8,7 @@ class_name Blackboard extends Resource
 
 
 ## Sets a value in the blackboard.
-func set_value(key: StringName, value: Variant):
+func set_value(key: StringName, value: Variant) -> void:
 	content[key] = value
 
 
