@@ -51,6 +51,6 @@ Now you can implement your own behaviour logic using the virtual methods provide
 - [Documentation](docs/documentation.md)
   -   [Finite State Machine](docs/documentation.md#finite-state-machine)
   -   [Behaviour Tree](docs/documentation.md#behaviour-tree)
-  -   [Blackboard](docs/documentation.md#blackboard)
+  -   [Blackboard](docs/documentation.md#-blackboard)
   
 ![Screenshot](docs/screenshot-ui.PNG)
