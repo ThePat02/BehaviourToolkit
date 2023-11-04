@@ -35,6 +35,18 @@ This plugin provides a set of tools to create custom and complex behaviour in th
 
 
 
+## Usage
+Make sure the clones the `addons` and `script_templates` directories into your project.
+
+1. Add a `FiniteStateMachine` or `BTRoot` node to your scene.
+2. A toolbox will appear in the editor, allowing you to add behaviour nodes to the scene.
+3. Setup and configure your behaviour nodes in the inspector.
+4. Right-click your `FSMState`/`FSMTransition`/`BTLeaf` and extend the script.
+
+Now you can implement your own behaviour logic using the virtual methods provided by the script templates.
+
+
+
 ## Documentation
 - ![FMS ICON](addons/behaviour_toolkit/icons/FiniteStateMachine.svg) [Finite State Machine](docs/docs_finite_state_machine.md)
 - ![BT ICON](addons/behaviour_toolkit/icons/BTRoot.svg) [Behaviour Tree](docs/behaviour_tree.md)
