@@ -53,4 +53,4 @@ Now you can implement your own behaviour logic using the virtual methods provide
   -   [Behaviour Tree](docs/documentation.md#behaviour-tree)
   -   [Blackboard](docs/documentation.md#blackboard)
   
-![Screenshot](docs/screenshot-ui.png)
+![Screenshot](docs/screenshot-ui.PNG)
