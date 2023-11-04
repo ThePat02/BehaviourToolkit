@@ -67,7 +67,25 @@ This is the base class for all transitions. To implement your logic you can over
 ## Behaviour Tree
 
 
-## Blackboard
+## ![BLACKBOARD ICON](../addons/behaviour_toolkit/icons/Blackboard.svg) Blackboard
+A blackboard is a simple key-value store that can be used to share data between different nodes. It is used by the `BehaviourTree` and `FiniteStateMachine` nodes to store and retrieve data.
+
+### Creating a new Blackboard
+To create a new `Blackboard` you can instantiate it like any other `Resource` in code with `Blackboard.new()`, right-click in the FileSystem dock and select `New -> Resource` or by clicking the `Blackboard` icon in the toolbox.
+
+### When to use a Blackboard
+You want to use a `Blackboard` to share data between different Behaviour Nodes. For example, you can use it to store the target position of an enemy that is shared between different states in a `FiniteStateMachine` or `BehaviourTree`. Whenever you don't define a `Blackboard` a new local one will be created for you, that can only be accessed by its own `BehaviourTree` or `FiniteStateMachine`.
+
+### Adding and retrieving data
+The `Blackboard` stores its data inside a `Dictionary`. You can add and retrieve data by using the following methods:
+
+- void `set_value(key: StringName, value: Variant)`
+    - Sets the value of the given key.
+- Variant `get_value(key: StringName)`
+    - Returns the value of the given key. If the key does not exist, `null` will be returned.
+
+Additionally can also directly access the dictionary through the `content` property.
+
 
 
 ## Examples
