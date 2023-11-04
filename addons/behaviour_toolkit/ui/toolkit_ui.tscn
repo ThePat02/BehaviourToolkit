@@ -74,7 +74,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center][img]res://addons/behaviour_toolkit/icons/Gear.svg[/img] BehaviourToolkit[/center]"
+text = "[center][img]res://addons/behaviour_toolkit/icons/Gear.svg[/img] Toolbox[/center]"
 
 [node name="ButtonBlackboard" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox/Misc"]
 layout_mode = 2
@@ -223,7 +223,7 @@ layout_mode = 2
 [node name="Version" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "BehaviourToolkit v0.9.0"
+text = "BehaviourToolkit v0.9.4"
 
 [connection signal="file_selected" from="FileDialogNewBlackboard" to="." method="_on_file_dialog_new_blackboard_file_selected"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox/Misc/ButtonBlackboard" to="." method="_on_button_blackboard_pressed"]
