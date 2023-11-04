@@ -31,7 +31,7 @@ This plugin provides a set of tools to create custom and complex behaviour in th
     - ![BT ICON](addons/behaviour_toolkit/icons/BTRoot.svg) Behaviour Tree
 - ![BLACKBOARD ICON](addons/behaviour_toolkit/icons/Blackboard.svg) Blackboard Resource
 - Editor Interface
-- [Templates](#using-templates) for easy extension and integration.
+- [Templates](docs/documentation.md#using-script-templates) for easy extension and integration.
 
 
 
@@ -48,16 +48,9 @@ Now you can implement your own behaviour logic using the virtual methods provide
 
 
 ## Documentation
-- ![FMS ICON](addons/behaviour_toolkit/icons/FiniteStateMachine.svg) [Finite State Machine](docs/docs_finite_state_machine.md)
-- ![BT ICON](addons/behaviour_toolkit/icons/BTRoot.svg) [Behaviour Tree](docs/behaviour_tree.md)
-
-> **Note:** Use the in-engine documentation [F1] for more information on the individual nodes and their properties.
-
-
-
-## Using templates 
-When cloning this repository/importing the plugin, make sure to not only add the `addons` directory to your project, but also the `script_templates` directory. This allows you to have preconfigured script templates when extending behaviour nodes, providing you with virtual methods and a logical naming scheme.
-
-
-
-## Examples
+- [Documentation](docs/documentation.md)
+  -   [Finite State Machine](docs/documentation.md#finite-state-machine)
+  -   [Behaviour Tree](docs/documentation.md#behaviour-tree)
+  -   [Blackboard](docs/documentation.md#blackboard)
+  
+![Screenshot](docs/screenshot-ui.png)
