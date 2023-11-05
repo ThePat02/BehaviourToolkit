@@ -2,6 +2,7 @@ class_name Actor extends CharacterBody2D
 
 
 @export var movement_speed: float = 200
+@export_range(0, 100) var thirst: int = 100
 
 @export_category("Utility")
 @export var navigation_agent: NavigationAgent2D
@@ -35,3 +36,8 @@ func _physics_process(_delta):
 func _on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity
 	move_and_slide()
+
+
+func _on_player_tick_timeout():
+	if thirst > 0:
+		thirst -= 1

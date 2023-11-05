@@ -1,18 +1,26 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctbwpw7df4hay"]
+[gd_scene load_steps=28 format=3 uid="uid://ctbwpw7df4hay"]
 
 [ext_resource type="Script" path="res://examples/behaviour_example/actor/actor.gd" id="1_a3qvv"]
 [ext_resource type="Texture2D" uid="uid://bsjt61unufjgi" path="res://examples/assets/actors/tiny_village.png" id="2_p6pfm"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="3_5mjdm"]
 [ext_resource type="Resource" uid="uid://c60ird40hkxeb" path="res://examples/behaviour_example/global_blackboard.tres" id="4_opmou"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_selector.gd" id="5_1bdaa"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_sequence.gd" id="5_ndext"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/RandomPOI.gd" id="6_4e5n0"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_random.gd" id="7_75fan"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_wait.gd" id="7_ff4kr"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_inverter.gd" id="7_n0kki"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="8_5ft4q"]
+[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/IsHydrated.gd" id="8_bgd18"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_idle.gd" id="9_73yag"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_limiter.gd" id="9_ac00x"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/trans_on_start_walking.gd" id="10_amkvh"]
+[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/UseBottle.gd" id="10_k40jm"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_walking.gd" id="11_rb27u"]
+[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/WalkToWell.gd" id="12_2x00h"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/trans_on_stop_walking.gd" id="12_a13jv"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="17_nswga"]
+[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_refreshing.gd" id="20_bve44"]
 
 [sub_resource type="Animation" id="Animation_ndcbh"]
 length = 0.001
@@ -39,6 +47,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_q2p0v"]
@@ -75,10 +95,39 @@ tracks/0/keys = {
 "values": [-0.174533, 0.174533]
 }
 
+[sub_resource type="Animation" id="Animation_s3agd"]
+resource_name = "refreshing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.286275, 0.501961, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.17, 1), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bvcex"]
 _data = {
 "RESET": SubResource("Animation_ndcbh"),
 "idle": SubResource("Animation_q2p0v"),
+"refreshing": SubResource("Animation_s3agd"),
 "walking": SubResource("Animation_bnukq")
 }
 
@@ -89,10 +138,14 @@ radius = 3.0
 texture_filter = 3
 input_pickable = true
 script = ExtResource("1_a3qvv")
+thirst = 3
 navigation_agent = NodePath("NavigationAgent2D")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("AnimationStateMachine")
 behaviour_tree = NodePath("Behaviour")
+
+[node name="PlayerTick" type="Timer" parent="."]
+autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_default_blend_time = 0.15
@@ -101,6 +154,8 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.822853, 0.876386, 1, 1)
+scale = Vector2(1.11748, 1)
 texture = ExtResource("2_p6pfm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -117,27 +172,65 @@ script = ExtResource("3_5mjdm")
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
 
-[node name="BTSequence" type="Node" parent="Behaviour"]
+[node name="Select" type="Node" parent="Behaviour"]
+script = ExtResource("5_1bdaa")
+
+[node name="Hydrate" type="Node" parent="Behaviour/Select"]
 script = ExtResource("5_ndext")
 
-[node name="VisitRandomPOI" type="Node" parent="Behaviour/BTSequence"]
+[node name="IsNotHydrated" type="Node" parent="Behaviour/Select/Hydrate"]
+script = ExtResource("7_n0kki")
+
+[node name="IsHydrated" type="Node" parent="Behaviour/Select/Hydrate/IsNotHydrated"]
+script = ExtResource("8_bgd18")
+
+[node name="ChooseRefreshment" type="Node" parent="Behaviour/Select/Hydrate"]
+script = ExtResource("5_1bdaa")
+
+[node name="DrinkFromBottle" type="Node" parent="Behaviour/Select/Hydrate/ChooseRefreshment"]
+script = ExtResource("5_ndext")
+
+[node name="OneTimeBottle" type="Node" parent="Behaviour/Select/Hydrate/ChooseRefreshment/DrinkFromBottle"]
+script = ExtResource("9_ac00x")
+
+[node name="UseBottle" type="Node" parent="Behaviour/Select/Hydrate/ChooseRefreshment/DrinkFromBottle/OneTimeBottle"]
+script = ExtResource("10_k40jm")
+
+[node name="WaitALittleBit" type="Node" parent="Behaviour/Select/Hydrate/ChooseRefreshment/DrinkFromBottle"]
+script = ExtResource("7_ff4kr")
+wait_for_ticks = 30
+
+[node name="WalkToWellAndDrink" type="Node" parent="Behaviour/Select/Hydrate/ChooseRefreshment"]
+script = ExtResource("5_ndext")
+
+[node name="WalkToWellUntilRefreshed" type="Node" parent="Behaviour/Select/Hydrate/ChooseRefreshment/WalkToWellAndDrink"]
+script = ExtResource("12_2x00h")
+
+[node name="WaitABitLonger" type="Node" parent="Behaviour/Select/Hydrate/ChooseRefreshment/WalkToWellAndDrink"]
+script = ExtResource("7_ff4kr")
+wait_for_ticks = 200
+
+[node name="WanderAround" type="Node" parent="Behaviour/Select"]
+script = ExtResource("5_ndext")
+
+[node name="VisitRandomPOI" type="Node" parent="Behaviour/Select/WanderAround"]
 script = ExtResource("6_4e5n0")
 
-[node name="WaitForARandomAmountOfTicks" type="Node" parent="Behaviour/BTSequence"]
+[node name="WaitForARandomAmountOfTicks" type="Node" parent="Behaviour/Select/WanderAround"]
 script = ExtResource("7_75fan")
 
-[node name="WaitFor0Ticks" type="Node" parent="Behaviour/BTSequence/WaitForARandomAmountOfTicks"]
+[node name="WaitFor0Ticks" type="Node" parent="Behaviour/Select/WanderAround/WaitForARandomAmountOfTicks"]
 script = ExtResource("7_ff4kr")
 wait_for_ticks = 0
 
-[node name="WaitFor50Ticks" type="Node" parent="Behaviour/BTSequence/WaitForARandomAmountOfTicks"]
+[node name="WaitFor50Ticks" type="Node" parent="Behaviour/Select/WanderAround/WaitForARandomAmountOfTicks"]
 script = ExtResource("7_ff4kr")
 wait_for_ticks = 50
 
-[node name="WaitFor100Ticks" type="Node" parent="Behaviour/BTSequence/WaitForARandomAmountOfTicks"]
+[node name="WaitFor100Ticks" type="Node" parent="Behaviour/Select/WanderAround/WaitForARandomAmountOfTicks"]
 script = ExtResource("7_ff4kr")
 
-[node name="WaitFor150Ticks" type="Node" parent="Behaviour/BTSequence/WaitForARandomAmountOfTicks"]
+[node name="WaitFor150Ticks" type="Node" parent="Behaviour/Select/WanderAround/WaitForARandomAmountOfTicks"]
 script = ExtResource("7_ff4kr")
 wait_for_ticks = 150
 
@@ -156,6 +249,12 @@ next_state = NodePath("../../Walking")
 use_event = true
 event = "start_walking"
 
+[node name="onStartRefreshing" type="Node" parent="AnimationStateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("17_nswga")
+next_state = NodePath("../../Refreshing")
+use_event = true
+event = "start_refreshing"
+
 [node name="Walking" type="Node" parent="AnimationStateMachine"]
 script = ExtResource("11_rb27u")
 
@@ -163,3 +262,26 @@ script = ExtResource("11_rb27u")
 script = ExtResource("12_a13jv")
 next_state = NodePath("../../Idle")
 event = "stop_walking"
+
+[node name="onStartRefreshing" type="Node" parent="AnimationStateMachine/Walking" node_paths=PackedStringArray("next_state")]
+script = ExtResource("17_nswga")
+next_state = NodePath("../../Refreshing")
+use_event = true
+event = "start_refreshing"
+
+[node name="Refreshing" type="Node" parent="AnimationStateMachine"]
+script = ExtResource("20_bve44")
+
+[node name="onStartWalking" type="Node" parent="AnimationStateMachine/Refreshing" node_paths=PackedStringArray("next_state")]
+script = ExtResource("10_amkvh")
+next_state = NodePath("../../Walking")
+use_event = true
+event = "start_walking"
+
+[node name="onStartIdle" type="Node" parent="AnimationStateMachine/Refreshing" node_paths=PackedStringArray("next_state")]
+script = ExtResource("10_amkvh")
+next_state = NodePath("../../Idle")
+use_event = true
+event = "start_idle"
+
+[connection signal="timeout" from="PlayerTick" to="." method="_on_player_tick_timeout"]
