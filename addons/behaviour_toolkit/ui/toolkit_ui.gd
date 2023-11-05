@@ -25,10 +25,12 @@ func _ready():
 	# Connect buttons
 	%ButtonState.connect("pressed", _on_button_pressed.bind(FSMState, "FSMState"))
 	%ButtonTransition.connect("pressed", _on_button_pressed.bind(FSMTransition, "FSMTransition"))
+	%ButtonStateIntegrationReturn.connect("pressed", _on_button_pressed.bind(FSMStateIntegrationReturn, "FSMStateIntegrationReturn"))
 
 	%ButtonLeaf.connect("pressed", _on_button_pressed.bind(BTLeaf, "BTLeaf"))
 	%ButtonPrint.connect("pressed", _on_button_pressed.bind(LeafPrint, "LeafPrint"))
 	%ButtonWait.connect("pressed", _on_button_pressed.bind(LeafWait, "LeafWait"))
+	%ButtonFSMEvent.connect("pressed", _on_button_pressed.bind(LeafFSMEvent, "LeafFSMEvent"))
 
 	%ButtonComposite.connect("pressed", _on_button_pressed.bind(BTComposite, "BTComposite"))
 	%ButtonSequence.connect("pressed", _on_button_pressed.bind(BTSequence, "BTSequence"))
@@ -36,6 +38,7 @@ func _ready():
 	%ButtonRandom.connect("pressed", _on_button_pressed.bind(BTRandom, "BTRandom"))
 	%ButtonRandomSequence.connect("pressed", _on_button_pressed.bind(BTRandomSequence, "BTRandomSequence"))
 	%ButtonRandomSelector.connect("pressed", _on_button_pressed.bind(BTRandomSelector, "BTRandomSelector"))
+	%ButtonIntegratedFSM.connect("pressed", _on_button_pressed.bind(BTIntegratedFSM, "BTIntegratedFSM"))
 
 	%ButtonDecorator.connect("pressed", _on_button_pressed.bind(BTDecorator, "BTDecorator"))
 	%ButtonAlwaysFail.connect("pressed", _on_button_pressed.bind(BTAlwaysFail, "BTAlwaysFail"))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=21 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://5e6onda232gn" path="res://addons/behaviour_toolkit/icons/Blackboard.svg" id="2_u7fep"]
 [ext_resource type="Texture2D" uid="uid://b3u8ojxnwvwap" path="res://addons/behaviour_toolkit/icons/BTComposite.svg" id="4_ruq84"]
 [ext_resource type="Texture2D" uid="uid://dws1e5qbg3y2h" path="res://addons/behaviour_toolkit/icons/BTLeaf.svg" id="5_3hqj7"]
+[ext_resource type="Texture2D" uid="uid://gnyb25o014vd" path="res://addons/behaviour_toolkit/icons/FSMStateIntegration.svg" id="5_e6hj7"]
 [ext_resource type="Texture2D" uid="uid://bq7k30hpimryq" path="res://addons/behaviour_toolkit/icons/BTCompositeSequence.svg" id="5_turo1"]
+[ext_resource type="Texture2D" uid="uid://iduodgdwxa2w" path="res://addons/behaviour_toolkit/icons/BTLeafIntegration.svg" id="6_manrl"]
 [ext_resource type="Texture2D" uid="uid://dbvuyvumeayw7" path="res://addons/behaviour_toolkit/icons/BTCompositeSelector.svg" id="6_mdg6v"]
 [ext_resource type="Texture2D" uid="uid://cik3abcqm7kr1" path="res://addons/behaviour_toolkit/icons/BTDecorator.svg" id="6_pyx3s"]
 [ext_resource type="Texture2D" uid="uid://y6kqrnrojvj2" path="res://addons/behaviour_toolkit/icons/BTDecoratorFail.svg" id="7_1hgfw"]
@@ -17,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bmc67ds148hrp" path="res://addons/behaviour_toolkit/icons/BTCompositeRandomSelector.svg" id="10_5qnkh"]
 [ext_resource type="Texture2D" uid="uid://cko2btxegkbtb" path="res://addons/behaviour_toolkit/icons/BTDecoratorLimiter.svg" id="10_ehr66"]
 [ext_resource type="Texture2D" uid="uid://hn65lqk8tero" path="res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg" id="10_nvbp1"]
+[ext_resource type="Texture2D" uid="uid://ddx7a726xhria" path="res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg" id="13_gmc6x"]
 
 [node name="ToolkitUi" type="Control"]
 custom_minimum_size = Vector2(280, 0)
@@ -102,6 +105,12 @@ layout_mode = 2
 text = "New Transition"
 icon = ExtResource("2_24di4")
 
+[node name="ButtonStateIntegrationReturn" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox/FiniteStateMachine"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Integration Return"
+icon = ExtResource("5_e6hj7")
+
 [node name="BehaviourTree" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox"]
 layout_mode = 2
 
@@ -131,6 +140,13 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Wait"
 icon = ExtResource("5_3hqj7")
+
+[node name="ButtonFSMEvent" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox/BehaviourTree/Leaves"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "FSMEvent
+"
+icon = ExtResource("6_manrl")
 
 [node name="HSeparator" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox/BehaviourTree"]
 layout_mode = 2
@@ -173,6 +189,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "RandomSelector"
 icon = ExtResource("10_5qnkh")
+
+[node name="ButtonIntegratedFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox/BehaviourTree/Composites"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "IntegratedFSM"
+icon = ExtResource("13_gmc6x")
 
 [node name="HSeparator2" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/Toolbox/BehaviourTree"]
 layout_mode = 2

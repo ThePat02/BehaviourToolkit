@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="16"
+   viewBox="0 0 16 16"
+   width="16"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="BTLeafIntegration.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="36.283417"
+     inkscape:cx="10.211276"
+     inkscape:cy="9.852986"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g2" />
+  <circle
+     cx="8"
+     cy="8"
+     r="5"
+     fill="none"
+     stroke-width="2"
+     stroke="#8da5f3"
+     id="circle1"
+     style="display:none;stroke:#ea9a3b;stroke-opacity:1" />
+  <g
+     style="fill:#ea9a3b;fill-opacity:1"
+     id="g2"
+     transform="matrix(0.88352801,0,0,0.88352801,-2.6023361,-2.5813037)">
+    <path
+       d="m 11.743726,8.0790005 c 0.161734,-0.0807 0.351992,-0.0807 0.513726,0 l 7.280663,3.6403305 c 0.210611,0.106926 0.210611,0.407762 0,0.514688 l -7.280663,3.63937 c -0.161734,0.0807 -0.351992,0.0807 -0.513726,0 l -7.2806635,-3.63937 c -0.2121805,-0.105959 -0.2121805,-0.408729 0,-0.514688 z"
+       style="fill:#3ba5ea;fill-opacity:1;stroke-width:1.04348"
+       id="path1-6" />
+  </g>
+</svg>

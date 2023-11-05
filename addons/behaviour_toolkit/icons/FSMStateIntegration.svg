@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="16"
+   viewBox="0 0 16 16"
+   width="16"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="FSMStateIntegration.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="51.3125"
+     inkscape:cx="7.6102314"
+     inkscape:cy="8.2533496"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <circle
+     cx="8"
+     cy="8"
+     r="5"
+     fill="none"
+     stroke-width="2"
+     stroke="#8da5f3"
+     id="circle1"
+     style="stroke:#3ba5ea;stroke-opacity:1" />
+  <circle
+     cx="8"
+     cy="8"
+     r="1.5408041"
+     fill="none"
+     stroke-width="0.616323"
+     stroke="#8da5f3"
+     id="circle2"
+     style="stroke:#3ba5ea;stroke-opacity:1;fill:#3ba5ea;fill-opacity:1;stroke-width:0.616;stroke-dasharray:none" />
+</svg>

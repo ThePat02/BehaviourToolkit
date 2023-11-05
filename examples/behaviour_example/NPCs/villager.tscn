@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ctbwpw7df4hay"]
+[gd_scene load_steps=33 format=3 uid="uid://ctbwpw7df4hay"]
 
 [ext_resource type="Script" path="res://examples/behaviour_example/actor/actor.gd" id="1_a3qvv"]
 [ext_resource type="Texture2D" uid="uid://bsjt61unufjgi" path="res://examples/assets/actors/tiny_village.png" id="2_p6pfm"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_sequence.gd" id="5_ndext"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/RandomPOI.gd" id="6_4e5n0"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_random.gd" id="7_75fan"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_integrated_fsm.gd" id="7_eoyf0"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_wait.gd" id="7_ff4kr"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_inverter.gd" id="7_n0kki"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="8_5ft4q"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/IsHydrated.gd" id="8_bgd18"]
+[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/IsAlive.gd" id="8_rjqba"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_idle.gd" id="9_73yag"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_limiter.gd" id="9_ac00x"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/trans_on_start_walking.gd" id="10_amkvh"]
@@ -19,6 +21,9 @@
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_walking.gd" id="11_rb27u"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/WalkToWell.gd" id="12_2x00h"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/trans_on_stop_walking.gd" id="12_a13jv"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state_integration_return.gd" id="13_bsy2u"]
+[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_transformt.gd" id="13_har5q"]
+[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_ghost.gd" id="14_k3bdi"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="17_nswga"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_refreshing.gd" id="20_bve44"]
 
@@ -78,23 +83,6 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(1.1, 1.163)]
 }
 
-[sub_resource type="Animation" id="Animation_bnukq"]
-resource_name = "walking"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.174533, 0.174533]
-}
-
 [sub_resource type="Animation" id="Animation_s3agd"]
 resource_name = "refreshing"
 loop_mode = 1
@@ -123,6 +111,23 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1.17, 1), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_bnukq"]
+resource_name = "walking"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.174533, 0.174533]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bvcex"]
 _data = {
 "RESET": SubResource("Animation_ndcbh"),
@@ -134,7 +139,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3jlb"]
 radius = 3.0
 
-[node name="Villager" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "state_machine", "behaviour_tree")]
+[node name="Villager" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "state_machine", "behaviour_tree", "ghost_state_machine")]
 texture_filter = 3
 input_pickable = true
 script = ExtResource("1_a3qvv")
@@ -143,6 +148,7 @@ navigation_agent = NodePath("NavigationAgent2D")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("AnimationStateMachine")
 behaviour_tree = NodePath("Behaviour")
+ghost_state_machine = NodePath("Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine")
 
 [node name="PlayerTick" type="Timer" parent="."]
 autostart = true
@@ -154,8 +160,6 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.822853, 0.876386, 1, 1)
-scale = Vector2(1.11748, 1)
 texture = ExtResource("2_p6pfm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -174,6 +178,46 @@ blackboard = ExtResource("4_opmou")
 
 [node name="Select" type="Node" parent="Behaviour"]
 script = ExtResource("5_1bdaa")
+
+[node name="BeAGhost" type="Node" parent="Behaviour/Select"]
+script = ExtResource("5_ndext")
+
+[node name="IsNotAlive" type="Node" parent="Behaviour/Select/BeAGhost"]
+script = ExtResource("7_n0kki")
+
+[node name="IsAlive" type="Node" parent="Behaviour/Select/BeAGhost/IsNotAlive"]
+script = ExtResource("8_rjqba")
+
+[node name="BehaveLikeAGhost" type="Node" parent="Behaviour/Select/BeAGhost"]
+script = ExtResource("7_eoyf0")
+
+[node name="FiniteStateMachine" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost" node_paths=PackedStringArray("initial_state", "actor")]
+script = ExtResource("8_5ft4q")
+initial_state = NodePath("TransformIntoGhost")
+actor = NodePath("../../../../..")
+blackboard = ExtResource("4_opmou")
+
+[node name="TransformIntoGhost" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
+script = ExtResource("13_har5q")
+
+[node name="onFinishedTransformation" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TransformIntoGhost" node_paths=PackedStringArray("next_state")]
+script = ExtResource("17_nswga")
+next_state = NodePath("../../DoGhostThings")
+use_event = true
+event = "fully_transformed"
+
+[node name="DoGhostThings" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
+script = ExtResource("14_k3bdi")
+
+[node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/DoGhostThings" node_paths=PackedStringArray("next_state")]
+script = ExtResource("17_nswga")
+next_state = NodePath("../../Revive")
+use_event = true
+event = "revive"
+
+[node name="Revive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
+script = ExtResource("13_bsy2u")
+return_value = 1
 
 [node name="Hydrate" type="Node" parent="Behaviour/Select"]
 script = ExtResource("5_ndext")
@@ -219,14 +263,6 @@ script = ExtResource("6_4e5n0")
 [node name="WaitForARandomAmountOfTicks" type="Node" parent="Behaviour/Select/WanderAround"]
 script = ExtResource("7_75fan")
 
-[node name="WaitFor0Ticks" type="Node" parent="Behaviour/Select/WanderAround/WaitForARandomAmountOfTicks"]
-script = ExtResource("7_ff4kr")
-wait_for_ticks = 0
-
-[node name="WaitFor50Ticks" type="Node" parent="Behaviour/Select/WanderAround/WaitForARandomAmountOfTicks"]
-script = ExtResource("7_ff4kr")
-wait_for_ticks = 50
-
 [node name="WaitFor100Ticks" type="Node" parent="Behaviour/Select/WanderAround/WaitForARandomAmountOfTicks"]
 script = ExtResource("7_ff4kr")
 
@@ -236,6 +272,7 @@ wait_for_ticks = 150
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 script = ExtResource("8_5ft4q")
+autostart = true
 initial_state = NodePath("Idle")
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
@@ -284,4 +321,5 @@ next_state = NodePath("../../Idle")
 use_event = true
 event = "start_idle"
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="PlayerTick" to="." method="_on_player_tick_timeout"]

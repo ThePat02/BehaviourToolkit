@@ -13,7 +13,7 @@ signal state_changed(state: FSMState)
 
 
 ## Whether the FSM should start automatically.
-@export var autostart: bool = true
+@export var autostart: bool = false
 ## Whether the FSM is active or not.
 @export var active: bool = true
 ## The initial state of the FSM.
@@ -31,9 +31,13 @@ var states: Array[FSMState]
 var active_state: FSMState
 ## The list of current events.
 var current_events: Array[String]
+## Current BT Status
+var current_bt_status: BTLeaf.Status
 
 
 func _ready() -> void:
+	connect("state_changed", _on_state_changed)
+
 	if blackboard == null:
 		blackboard = _create_local_blackboard()
 
@@ -44,6 +48,8 @@ func _ready() -> void:
 
 
 func start() -> void:
+	current_bt_status = BTLeaf.Status.RUNNING
+	
 	# Check if the initial state is valid
 	assert(initial_state != null, ERROR_INITIAL_STATE_NULL)
 
@@ -118,3 +124,7 @@ func fire_event(event: String) -> void:
 func _create_local_blackboard() -> Blackboard:
 	var blackboard: Blackboard = Blackboard.new()
 	return blackboard
+
+
+func _on_state_changed(state: FSMState) -> void:
+	pass

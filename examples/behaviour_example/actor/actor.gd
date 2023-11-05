@@ -1,8 +1,11 @@
 class_name Actor extends CharacterBody2D
 
 
+@export var age: int = 1
+@export var death_age: int = 100
 @export var movement_speed: float = 200
 @export_range(0, 100) var thirst: int = 100
+@export var alive: bool = true
 
 @export_category("Utility")
 @export var navigation_agent: NavigationAgent2D
@@ -10,6 +13,7 @@ class_name Actor extends CharacterBody2D
 @export_category("BehaviourToolkit")
 @export var state_machine: FiniteStateMachine
 @export var behaviour_tree: BTRoot
+@export var ghost_state_machine: FiniteStateMachine
 
 
 func _ready():
@@ -41,3 +45,12 @@ func _on_velocity_computed(safe_velocity: Vector2):
 func _on_player_tick_timeout():
 	if thirst > 0:
 		thirst -= 1
+	
+	age += 1
+
+	if age >= death_age:
+		alive = false
+
+
+func _on_input_event(_viewport:Node, _event:InputEvent, _shape_idx:int):
+	ghost_state_machine.fire_event("revive")
