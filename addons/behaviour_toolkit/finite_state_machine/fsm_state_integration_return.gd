@@ -10,10 +10,8 @@ enum Status {
 
 
 ## Executes after the state is entered.
-func _on_enter(actor: Node, _blackboard: Blackboard) -> void:
+func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
     get_parent().current_bt_status = return_value
-    actor.alive = true
-    actor.age = 1
 
 
 ## Executes every _process call, if the state is active.
