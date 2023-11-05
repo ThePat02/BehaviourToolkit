@@ -31,6 +31,9 @@ This documenation will give you an overview of the most important properties & m
   - [Creating a new Blackboard](#creating-a-new-blackboard)
   - [When to use a Blackboard](#when-to-use-a-blackboard)
     - [Adding and retrieving data](#adding-and-retrieving-data)
+- [Nesting Behaviours inside Behaviours](#nesting-behaviours-inside-behaviours)
+  - [State Machine nested in Behaviour Tree](#state-machine-nested-in-behaviour-tree)
+  - [Behaviour Tree nested in State Machine](#behaviour-tree-nested-in-state-machine)
 - [Using Script Templates](#using-script-templates)
 - [Examples](#examples)
 
@@ -207,6 +210,17 @@ The `Blackboard` stores its data inside a `Dictionary`. You can add and retrieve
     - Returns the value of the given key. If the key does not exist, `null` will be returned.
 
 Additionally can also directly access the dictionary through the `content` property.
+
+
+
+# Nesting Behaviours inside Behaviours
+You can nest `BTRoot` nodes inside `FinitStateMachine` nodes and vice versa! Think of the respective node as another State/Leaf and you can use all the same logic to control the behaviour. This allows you to create very complex behaviours by combining different architectures.
+
+## State Machine nested in Behaviour Tree
+To nest a State Machine you need to use ![IntegradeFSM Icon](../addons/behaviour_toolkit/icons/BTCompositeIntegration.svg) `IntegratedFSM` composite node and add a `FiniteStateMachine` as a child. The `IntegratedFSM` node will then act as a leaf and execute the State Machine. If you want to exit the State Machine, you let it navigate to a ![Icon Return](../addons/behaviour_toolkit/icons/FSMStateIntegrationReturn.svg) `IntegratioReturn` state and the `IntegratedFSM` will return `SUCCESS` or `FAILURE` depending on the state's `return_status` property.
+
+## Behaviour Tree nested in State Machine
+To nest a Behaviour Tree you need to use ![IntegradeBT Icon](../addons/behaviour_toolkit/icons/FSMStateIntegration.svg) `IntegrationBT` state and add a `BTRoot` as a child. When this state is entered, the Behaviour Tree is set to active. You can use the `fire_event_on_status` property to fire an event when the Behaviour Tree returns a specific status. This allows you to trigger transitions based on the status of the Behaviour Tree. You can also use the `FSMEvent` leaf to trigger custom events inside the nested State Machine.
 
 
 
