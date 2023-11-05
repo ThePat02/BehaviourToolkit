@@ -1,4 +1,4 @@
-@icon("res://addons/behaviour_toolkit/icons/FSMStateIntegration.svg")
+@icon("res://addons/behaviour_toolkit/icons/FSMStateIntegrationReturn.svg")
 class_name FSMStateIntegrationReturn extends FSMState
 
 enum Status {

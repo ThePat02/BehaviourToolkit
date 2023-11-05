@@ -4,6 +4,7 @@ extends FSMTransition
 func _on_transition(actor: Node, _blackboard: Blackboard):
 	actor.alive = true
 	actor.age = 1
+	actor.set_modulate(Color(1, 1, 1, 1))
 
 
 ## Evaluates true, if the transition conditions are met.

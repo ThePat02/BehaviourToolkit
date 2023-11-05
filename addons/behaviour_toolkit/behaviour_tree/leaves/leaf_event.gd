@@ -3,8 +3,9 @@ class_name LeafFSMEvent extends BTLeafIntegration
 
 
 @export var event: String
+@export var return_status: Status = Status.SUCCESS
 
 
 func tick(_actor: Node, _blackboard: Blackboard) -> Status:
     state_machine.fire_event(event)
-    return Status.SUCCESS
+    return return_status

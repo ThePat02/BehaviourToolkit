@@ -2,8 +2,8 @@
 class_name BTRoot extends BehaviourToolkit
 
 
-@export var autostart: bool = true
-@export var active: bool = true
+@export var autostart: bool = false
+@export var active: bool = false
 @export var actor: Node
 @export var blackboard: Blackboard
 
@@ -11,12 +11,15 @@ class_name BTRoot extends BehaviourToolkit
 @onready var entry_point = get_child(0)
 
 
+var current_status: BTBehaviour.Status
+
+
 func _ready():
 	if blackboard == null:
 		blackboard = _create_local_blackboard()
 
-	if not autostart:
-		active = false
+	if autostart:
+		active = true
 
 
 func _process(delta):
@@ -24,7 +27,7 @@ func _process(delta):
 		return
 	
 	blackboard.set_value("delta", delta)
-	entry_point.tick(actor, blackboard)
+	current_status = entry_point.tick(actor, blackboard)
 
 
 func _create_local_blackboard() -> Blackboard:

@@ -12,5 +12,5 @@ func _on_update(_actor: Node, _blackboard: Blackboard):
 
 
 ## Executes before the state is exited.
-func _on_exit(actor: Node, _blackboard: Blackboard):
-	actor.set_modulate(Color(1, 1, 1, 1))
+func _on_exit(_actor: Node, _blackboard: Blackboard):
+	pass

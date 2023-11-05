@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ctbwpw7df4hay"]
+[gd_scene load_steps=38 format=3 uid="uid://ctbwpw7df4hay"]
 
 [ext_resource type="Script" path="res://examples/behaviour_example/actor/actor.gd" id="1_a3qvv"]
 [ext_resource type="Texture2D" uid="uid://bsjt61unufjgi" path="res://examples/assets/actors/tiny_village.png" id="2_p6pfm"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/IsAlive.gd" id="8_rjqba"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_idle.gd" id="9_73yag"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_limiter.gd" id="9_ac00x"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_leaf.gd" id="9_fbuja"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/trans_on_start_walking.gd" id="10_amkvh"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/UseBottle.gd" id="10_k40jm"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_walking.gd" id="11_rb27u"]
@@ -23,8 +24,12 @@
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/trans_on_stop_walking.gd" id="12_a13jv"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state_integration_return.gd" id="13_bsy2u"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_transformt.gd" id="13_har5q"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state_integrated_bt.gd" id="13_rq5d2"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_ghost.gd" id="14_k3bdi"]
+[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/trans_on_revive.gd" id="15_ahoqg"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_always_succeed.gd" id="16_igrlt"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="17_nswga"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_event.gd" id="18_45wr7"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_refreshing.gd" id="20_bve44"]
 
 [sub_resource type="Animation" id="Animation_ndcbh"]
@@ -143,6 +148,7 @@ radius = 3.0
 texture_filter = 3
 input_pickable = true
 script = ExtResource("1_a3qvv")
+death_age = 5
 thirst = 3
 navigation_agent = NodePath("NavigationAgent2D")
 animation_player = NodePath("AnimationPlayer")
@@ -173,6 +179,7 @@ radius = 5.0
 
 [node name="Behaviour" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("3_5mjdm")
+autostart = true
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
 
@@ -202,15 +209,60 @@ script = ExtResource("13_har5q")
 
 [node name="onFinishedTransformation" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TransformIntoGhost" node_paths=PackedStringArray("next_state")]
 script = ExtResource("17_nswga")
-next_state = NodePath("../../DoGhostThings")
+next_state = NodePath("../../TryToRevive")
 use_event = true
 event = "fully_transformed"
+
+[node name="TryToRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
+script = ExtResource("13_rq5d2")
+fire_event_on_status = true
+event = "revive"
+
+[node name="RevivalBehaviour" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive"]
+script = ExtResource("3_5mjdm")
+
+[node name="BTSelector" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour"]
+script = ExtResource("5_1bdaa")
+
+[node name="ReviveIfPossible" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector"]
+script = ExtResource("5_ndext")
+
+[node name="CanOnlyReviveOnce" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible"]
+script = ExtResource("9_ac00x")
+
+[node name="CanRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible/CanOnlyReviveOnce"]
+script = ExtResource("16_igrlt")
+
+[node name="BTLeaf" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible/CanOnlyReviveOnce/CanRevive"]
+script = ExtResource("9_fbuja")
+
+[node name="Cooldown" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible"]
+script = ExtResource("7_ff4kr")
+wait_for_ticks = 500
+
+[node name="FireEventFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector" node_paths=PackedStringArray("state_machine")]
+script = ExtResource("18_45wr7")
+event = "failed_revive"
+return_status = null
+state_machine = NodePath("../../../..")
+
+[node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]
+script = ExtResource("15_ahoqg")
+next_state = NodePath("../../Revive")
+use_event = true
+event = "revive"
+
+[node name="onFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]
+script = ExtResource("17_nswga")
+next_state = NodePath("../../DoGhostThings")
+use_event = true
+event = "failed_revive"
 
 [node name="DoGhostThings" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
 script = ExtResource("14_k3bdi")
 
 [node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/DoGhostThings" node_paths=PackedStringArray("next_state")]
-script = ExtResource("17_nswga")
+script = ExtResource("15_ahoqg")
 next_state = NodePath("../../Revive")
 use_event = true
 event = "revive"
