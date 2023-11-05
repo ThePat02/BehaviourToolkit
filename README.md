@@ -1,4 +1,4 @@
-# BehaviourToolkit
+# BehaviourToolkit for Godot 4
 ![Thumbnail](docs/thumbnail.svg)
 
 <p align="center">
