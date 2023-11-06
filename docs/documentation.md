@@ -3,6 +3,19 @@
 
 This documenation will give you an overview of the most important properties & methods of the different nodes and how to use them. If you want to dive deeper into the code, you can also check out the in-engine documentation [F1] or read the comments in the source code.
 
+
+**Icon Legend**<br>
+The node icons where designed/choosen to give you a quick overview of their purpose. The following table explains the meaning of the different colors and icons.
+
+| **Color** | **Meaning**                               |
+|-----------|-------------------------------------------|
+| Orange    | Base color of all plugin releated nodes.  |
+| Green     | Success                                   |
+| Red       | Failure, Limit                            |
+| Purple    | Random                                    |
+| Blue      | Integration of another Behaviour Pattern. |
+
+
 **Table of Contents**
 - [Documentation](#documentation)
 - [Finite State Machine](#finite-state-machine)
