@@ -5,6 +5,7 @@ type="CompressedTexture2D"
 uid="uid://dkt0bqwfmkmpq"
 path="res://.godot/imported/BTDecoratorSucceed.svg-5ae36e790992843eb08f1aaf9f19c05c.ctex"
 metadata={
+"has_editor_variant": true,
 "vram_texture": false
 }
 
@@ -33,5 +34,5 @@ process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
 svg/scale=1.0
-editor/scale_with_editor_scale=false
+editor/scale_with_editor_scale=true
 editor/convert_colors_with_editor_theme=false
