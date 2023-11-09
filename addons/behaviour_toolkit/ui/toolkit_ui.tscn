@@ -31,6 +31,8 @@ grow_vertical = 2
 script = ExtResource("1_51rvx")
 metadata/_edit_vertical_guides_ = []
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [node name="FileDialogNewBlackboard" type="FileDialog" parent="."]
 title = "Create a new Blackboard"
 size = Vector2i(800, 500)
@@ -253,13 +255,22 @@ layout_mode = 2
 text = "Repeat"
 icon = ExtResource("10_nvbp1")
 
+[node name="LinkGithub" type="LinkButton" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0823529, 0.756863, 0.32549, 1)
+text = "New Version available on GitHub!"
+uri = "https://github.com/ThePat02/BehaviourToolkit"
+
 [node name="Footer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Version" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "BehaviourToolkit v0.9.4"
+text = "BehaviourToolkit v1.0.0"
 
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
 [connection signal="file_selected" from="FileDialogNewBlackboard" to="." method="_on_file_dialog_new_blackboard_file_selected"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc/ButtonBlackboard" to="." method="_on_button_blackboard_pressed"]
