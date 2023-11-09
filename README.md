@@ -35,6 +35,8 @@ This plugin provides a set of tools to create custom and complex behaviour in th
 - [Templates](docs/documentation.md#using-script-templates) for easy extension and integration.
 - Example Scene
 
+When a new version is available on GitHub, the plugin will display a notification in the Toolbox! 
+
 
 
 ## Usage
