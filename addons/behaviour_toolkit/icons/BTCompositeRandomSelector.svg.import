@@ -5,6 +5,7 @@ type="CompressedTexture2D"
 uid="uid://bmc67ds148hrp"
 path="res://.godot/imported/BTCompositeRandomSelector.svg-0512a3de5f88f3ca2a3841f24ac587eb.ctex"
 metadata={
+"has_editor_variant": true,
 "vram_texture": false
 }
 
@@ -33,5 +34,5 @@ process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
 svg/scale=1.0
-editor/scale_with_editor_scale=false
+editor/scale_with_editor_scale=true
 editor/convert_colors_with_editor_theme=false
