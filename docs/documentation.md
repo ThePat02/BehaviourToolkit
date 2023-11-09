@@ -49,6 +49,8 @@ The node icons where designed/choosen to give you a quick overview of their purp
   - [Behaviour Tree nested in State Machine](#behaviour-tree-nested-in-state-machine)
 - [Using Script Templates](#using-script-templates)
 - [Examples](#examples)
+  - [Example: Busy villagers drinking, becoming ghosts and moving to random positions](#example-busy-villagers-drinking-becoming-ghosts-and-moving-to-random-positions)
+    - [What does a villager do?](#what-does-a-villager-do)
 
 
 
@@ -251,3 +253,30 @@ You can find all templates inside the `script_templates` directory, so make sure
 > 🚧 Work in progress 🚧
 
 Examples are located in the `examples` directory. (What a surprise!)
+
+## Example: Busy villagers drinking, becoming ghosts and moving to random positions
+This example is a very messy implementation of the BehaviourToolkit and is only meant to show (and test) as many features as possible. It will be replaced with a simpler example in the future. Here are some of the used features:
+
+- Behaviour Tree
+  - Composite Nodes
+  - Decorator Nodes
+  - Custom Leaf Nodes
+  - Nested State Machine
+- Finite State Machine
+  - Transition Events
+  - Nested Behaviour Tree
+- Global Blackboard (Saved as `global_blackboard.tres`)
+
+### What does a villager do?
+- Wandering around
+  - Wandering around to a random location picked from the `locations` key of the blackboard, which is shared between all villagers.
+  - After reaching the location, the villager will wait for either 100 or 159 ticks.
+- Hydrating
+  - When the villager is thirsty (thirst variable reaches a threshold), they will either drink from a one-time use bottle or make their way to the well and drink from it.
+- Death and ghostism
+  - The villager will die after their death age is reached. (They will complete their current action before dying)
+  - The nested `FiniteStateMachine` controls the ghosts behaviour, making them transparent.
+  - They will try to use their ghost powers to revive themselves, but it is only available once, by consulting a nested `BehaviourTree`.
+  - You can revive them by clicking on them, which will leave the State Machine and return them to their normal behaviour.
+
+There also is a seperate `FiniteStateMachine` used for handling simple animations.
