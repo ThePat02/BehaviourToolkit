@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=23 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
 [ext_resource type="Texture2D" uid="uid://guy2wtwpcskx" path="res://addons/behaviour_toolkit/icons/FSMTransition.svg" id="2_24di4"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/utils/update_manager.gd" id="2_ohrre"]
 [ext_resource type="Texture2D" uid="uid://5e6onda232gn" path="res://addons/behaviour_toolkit/icons/Blackboard.svg" id="2_u7fep"]
 [ext_resource type="Texture2D" uid="uid://b3u8ojxnwvwap" path="res://addons/behaviour_toolkit/icons/BTComposite.svg" id="4_ruq84"]
 [ext_resource type="Texture2D" uid="uid://dws1e5qbg3y2h" path="res://addons/behaviour_toolkit/icons/BTLeaf.svg" id="5_3hqj7"]
@@ -31,7 +32,12 @@ grow_vertical = 2
 script = ExtResource("1_51rvx")
 metadata/_edit_vertical_guides_ = []
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="UpdateManager" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_ohrre")
+active = true
+addon_config_path = "res://addons/behaviour_toolkit/plugin.cfg"
+repo_config_url = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/main/addons/behaviour_toolkit/plugin.cfg"
 
 [node name="FileDialogNewBlackboard" type="FileDialog" parent="."]
 title = "Create a new Blackboard"
@@ -269,8 +275,8 @@ layout_mode = 2
 [node name="Version" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "BehaviourToolkit v1.0.0"
+text = "BehaviourToolkit v<null>"
 
-[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="update_available" from="UpdateManager" to="." method="_on_update_manager_update_available"]
 [connection signal="file_selected" from="FileDialogNewBlackboard" to="." method="_on_file_dialog_new_blackboard_file_selected"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc/ButtonBlackboard" to="." method="_on_button_blackboard_pressed"]

@@ -8,19 +8,12 @@ const CONFIG_URL = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/
 var current_selection: Node
 var undo_redo: EditorUndoRedoManager
 
-var current_version
-var newest_version: String
-
 
 @onready var dialog_blackboard: FileDialog = $FileDialogNewBlackboard
-@onready var http_request: HTTPRequest = $HTTPRequest
 
 
 func _ready():
-	update_current_version()
-	update_newest_version()
-	
-	%Version.text = "BehaviourToolkit v" + str(current_version)
+	%Version.text = "BehaviourToolkit v" + str(%UpdateManager.current_version)
 
 	# Connect buttons
 	%ButtonState.connect("pressed", _on_button_pressed.bind(FSMState, "FSMState"))
@@ -51,18 +44,6 @@ func _ready():
 
 func set_current_selection(new_selection):
 	current_selection = new_selection
-
-
-func update_newest_version():
-	http_request.request(CONFIG_URL)
-
-
-func update_current_version():
-	var config = ConfigFile.new()
-	var err = config.load("res://addons/behaviour_toolkit/plugin.cfg")
-
-	current_version = config.get_value("plugin", "version")
-	config.clear()
 
 
 func _on_button_pressed(type, name: String):
@@ -97,14 +78,7 @@ func _on_button_blackboard_pressed():
 func _on_file_dialog_new_blackboard_file_selected(path:String):
 	var new_blackboard := Blackboard.new()
 	ResourceSaver.save(new_blackboard, path)
+		
 
-
-func _on_http_request_request_completed(result:int, response_code:int, headers:PackedStringArray, body:PackedByteArray):
-	var config = ConfigFile.new()
-	var err = config.parse(body.get_string_from_ascii())
-
-	newest_version = config.get_value("plugin", "version")
-	config.clear()
-
-	if newest_version != current_version:
-		%LinkGithub.show()
+func _on_update_manager_update_available():
+	%LinkGithub.show()
