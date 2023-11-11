@@ -1,4 +1,4 @@
-@icon("res://addons/behaviour_toolkit/icons/BTCompositeSequence.svg")
+@icon("res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg")
 class_name BTSimpleParallel extends BTComposite
 
 
