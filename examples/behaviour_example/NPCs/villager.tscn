@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ctbwpw7df4hay"]
+[gd_scene load_steps=39 format=3 uid="uid://ctbwpw7df4hay"]
 
 [ext_resource type="Script" path="res://examples/behaviour_example/actor/actor.gd" id="1_a3qvv"]
 [ext_resource type="Texture2D" uid="uid://bsjt61unufjgi" path="res://examples/assets/actors/tiny_village.png" id="2_p6pfm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_selector.gd" id="5_1bdaa"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_sequence.gd" id="5_ndext"]
 [ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/RandomPOI.gd" id="6_4e5n0"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_simple_parallel.gd" id="6_omusl"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_random.gd" id="7_75fan"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_integrated_fsm.gd" id="7_eoyf0"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_wait.gd" id="7_ff4kr"]
@@ -185,6 +186,9 @@ blackboard = ExtResource("4_opmou")
 
 [node name="Select" type="Node" parent="Behaviour"]
 script = ExtResource("5_1bdaa")
+
+[node name="BTSimpleParallel" type="Node" parent="Behaviour/Select"]
+script = ExtResource("6_omusl")
 
 [node name="BeAGhost" type="Node" parent="Behaviour/Select"]
 script = ExtResource("5_ndext")
