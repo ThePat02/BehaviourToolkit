@@ -21,6 +21,7 @@ enum ParallelPolicy {
 func tick(actor: Node, blackboard: Blackboard):
 	var leave_counter = 0
 	for leave in leaves:
+		# If the Parrallel is synchronized, skip leaves that have already returned SUCCESS.
 		if synchronize and responses[leave_counter] == Status.SUCCESS:
 			leave_counter += 1
 			continue
@@ -29,11 +30,14 @@ func tick(actor: Node, blackboard: Blackboard):
 		responses[leave_counter] = response
 		leave_counter += 1
 
+		# Abort if any child returns FAILURE.
 		if response == Status.FAILURE:
 			response = _init_array()
 			return Status.FAILURE
 
+	# Apply selected policy.
 	match policy:
+		# If all children return SUCCESS, return SUCCESS.
 		ParallelPolicy.SUCCESS_ON_ALL:
 			for response in responses:
 				if response == Status.FAILURE:
@@ -42,6 +46,7 @@ func tick(actor: Node, blackboard: Blackboard):
 			
 			responses = _init_array()
 			return Status.SUCCESS
+		# If any child returns SUCCESS, return SUCCESS.
 		ParallelPolicy.SUCCESS_ON_ONE:
 			for response in responses:
 				if response == Status.SUCCESS:
