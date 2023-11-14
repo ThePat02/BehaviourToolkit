@@ -113,19 +113,21 @@ layout_mode = 2
 text = "New State"
 icon = ExtResource("1_hqqj5")
 
-[node name="States" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
+[node name="States" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
 layout_mode = 2
 
 [node name="ButtonStateIntegratedBT" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine/States"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "IntegratedBT"
 icon = ExtResource("5_e6hj7")
 
 [node name="ButtonStateIntegrationReturn" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine/States"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "IntegrationReturn"
+size_flags_horizontal = 3
+text = "Return"
 icon = ExtResource("5_78p67")
 
 [node name="ButtonTransition" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
