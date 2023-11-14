@@ -7,14 +7,13 @@ const CONFIG_URL = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/
 
 var current_selection: Node
 var undo_redo: EditorUndoRedoManager
+@export var update_manager: UpdateManager
 
 
 @onready var dialog_blackboard: FileDialog = $FileDialogNewBlackboard
 
 
 func _ready():
-	%Version.text = "BehaviourToolkit v" + str(%UpdateManager.current_version)
-
 	# Connect buttons
 	%ButtonState.connect("pressed", _on_button_pressed.bind(FSMState, "FSMState"))
 	%ButtonTransition.connect("pressed", _on_button_pressed.bind(FSMTransition, "FSMTransition"))
@@ -46,6 +45,9 @@ func _ready():
 func set_current_selection(new_selection):
 	current_selection = new_selection
 
+
+func update_version_text():
+	%Version.text = "BehaviourToolkit v" + str(%UpdateManager.current_version)
 
 func _on_button_pressed(type, name: String):
 	var new_node: BehaviourToolkit = type.new()
@@ -83,3 +85,7 @@ func _on_file_dialog_new_blackboard_file_selected(path:String):
 
 func _on_update_manager_update_available():
 	%LinkGithub.show()
+
+
+func _on_update_manager_update_request_completed():
+	update_version_text()

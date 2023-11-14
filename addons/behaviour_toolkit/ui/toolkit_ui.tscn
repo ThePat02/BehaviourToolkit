@@ -24,19 +24,19 @@
 [ext_resource type="Texture2D" uid="uid://ddx7a726xhria" path="res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg" id="13_gmc6x"]
 [ext_resource type="Texture2D" uid="uid://scoo4wxugwy7" path="res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg" id="13_ijr7d"]
 
-[node name="ToolkitUi" type="Control"]
+[node name="ToolkitUi" type="Control" node_paths=PackedStringArray("update_manager")]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
 script = ExtResource("1_51rvx")
+update_manager = NodePath("UpdateManager")
 metadata/_edit_vertical_guides_ = []
 
 [node name="UpdateManager" type="HTTPRequest" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_ohrre")
-active = true
 addon_config_path = "res://addons/behaviour_toolkit/plugin.cfg"
 repo_config_url = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/main/addons/behaviour_toolkit/plugin.cfg"
 
@@ -282,8 +282,9 @@ layout_mode = 2
 [node name="Version" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "BehaviourToolkit v1.1.0"
+text = "BehaviourToolkit vX.X.X"
 
 [connection signal="update_available" from="UpdateManager" to="." method="_on_update_manager_update_available"]
+[connection signal="update_request_completed" from="UpdateManager" to="." method="_on_update_manager_update_request_completed"]
 [connection signal="file_selected" from="FileDialogNewBlackboard" to="." method="_on_file_dialog_new_blackboard_file_selected"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc/ButtonBlackboard" to="." method="_on_button_blackboard_pressed"]
