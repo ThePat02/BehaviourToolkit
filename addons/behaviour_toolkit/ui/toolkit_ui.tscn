@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=27 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -24,6 +24,14 @@
 [ext_resource type="Texture2D" uid="uid://hn65lqk8tero" path="res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg" id="10_nvbp1"]
 [ext_resource type="Texture2D" uid="uid://ddx7a726xhria" path="res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg" id="13_gmc6x"]
 [ext_resource type="Texture2D" uid="uid://scoo4wxugwy7" path="res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg" id="13_ijr7d"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_dernr"]
+device = -1
+ctrl_pressed = true
+keycode = 70
+
+[sub_resource type="Shortcut" id="Shortcut_xqhq3"]
+events = [SubResource("InputEventKey_dernr")]
 
 [node name="ToolkitUi" type="Control" node_paths=PackedStringArray("update_manager")]
 custom_minimum_size = Vector2(280, 0)
@@ -298,7 +306,9 @@ text = "BehaviourToolkit vX.X.X"
 [node name="ToggleSearchBar" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
 layout_mode = 2
 size_flags_horizontal = 10
+tooltip_text = "Toggle search bar"
 toggle_mode = true
+shortcut = SubResource("Shortcut_xqhq3")
 icon = ExtResource("3_plkhg")
 flat = true
 icon_alignment = 1

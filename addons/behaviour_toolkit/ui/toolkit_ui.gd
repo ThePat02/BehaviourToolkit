@@ -123,3 +123,6 @@ func _on_toggle_search_bar_toggled(button_pressed:bool):
 	%SearchBar.text = ""
 	%SearchBar.emit_signal("text_changed", "")
 	%SearchBar.visible = button_pressed
+
+	# Focus search bar
+	%SearchBar.grab_focus()
