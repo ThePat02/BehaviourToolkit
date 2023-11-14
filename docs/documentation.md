@@ -221,12 +221,32 @@ To create a new `Blackboard` you can instantiate it like any other `Resource` in
 You want to use a `Blackboard` to share data between different Behaviour Nodes. For example, you can use it to store the target position of an enemy that is shared between different states in a `FiniteStateMachine` or `BehaviourTree`. Whenever you don't define a `Blackboard` a new local one will be created for you, that can only be accessed by its own `BehaviourTree` or `FiniteStateMachine`.
 
 ### Adding and retrieving data
-The `Blackboard` stores its data inside a `Dictionary`. You can add and retrieve data by using the following methods:
+The `Blackboard` stores its data inside a `Dictionary`. You can add, retrieve and delete data by using the following methods:
 
-- void `set_value(key: StringName, value: Variant)`
-    - Sets the value of the given key.
-- Variant `get_value(key: StringName)`
-    - Returns the value of the given key. If the key does not exist, `null` will be returned.
+```gdscript
+class_name Blackboard extends Resource
+## A blackboard is a dictionary of key/value pairs that can be used to share data between nodes.
+
+
+## The blackboard's content stored as a dictionary.
+@export var content: Dictionary
+
+
+## Sets a value in the blackboard.
+func set_value(key: StringName, value: Variant) -> void
+
+
+## Returns a value from the blackboard. If the key doesn't exist, returns `null`.
+func get_value(key: StringName) -> Variant
+
+
+## Removes a value from the blackboard. Returns `true` if the key existed, `false` otherwise.
+func remove_value(key: StringName) -> bool
+
+
+## Clears the blackboard and removes all its values.
+func clear() -> void
+```
 
 Additionally can also directly access the dictionary through the `content` property.
 
