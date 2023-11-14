@@ -5,12 +5,16 @@ extends Control
 const CONFIG_URL = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/main/addons/behaviour_toolkit/plugin.cfg"
 
 
-var current_selection: Node
-var undo_redo: EditorUndoRedoManager
 @export var update_manager: UpdateManager
 
 
+
+var current_selection: Node
+var undo_redo: EditorUndoRedoManager
+
+
 @onready var dialog_blackboard: FileDialog = $FileDialogNewBlackboard
+@onready var toolbox: Control = %Toolbox
 
 
 func _ready():
@@ -89,3 +93,24 @@ func _on_update_manager_update_available():
 
 func _on_update_manager_update_request_completed():
 	update_version_text()
+
+
+func search_change_visbility(node: Node, query: String):
+	for child in node.get_children():
+		search_change_visbility(child, query)
+
+		if not child is Button:
+			continue
+		
+		if query == "":
+			child.show()
+			continue
+
+		if query.to_lower() in child.text.to_lower():
+			child.show()
+		else:
+			child.hide()
+
+
+func _on_search_bar_text_changed(new_text:String):
+	search_change_visbility(toolbox, new_text)
