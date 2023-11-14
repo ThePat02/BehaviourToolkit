@@ -19,6 +19,10 @@ config/icon="res://addons/behaviour_toolkit/icons/Logo.png"
 
 enabled=PackedStringArray("res://addons/behaviour_toolkit/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_left={
