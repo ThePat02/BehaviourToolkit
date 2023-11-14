@@ -15,7 +15,7 @@ enum ParallelPolicy {
 @export var synchronize: bool = false
 
 
-@onready var responses: Array = _init_array()
+@onready var responses: Dictionary
 
 
 func tick(actor: Node, blackboard: Blackboard):
@@ -32,7 +32,7 @@ func tick(actor: Node, blackboard: Blackboard):
 
 		# Abort if any child returns FAILURE.
 		if response == Status.FAILURE:
-			response = _init_array()
+			responses.clear()
 			return Status.FAILURE
 
 	# Apply selected policy.
@@ -41,25 +41,17 @@ func tick(actor: Node, blackboard: Blackboard):
 		ParallelPolicy.SUCCESS_ON_ALL:
 			for response in responses:
 				if response == Status.FAILURE:
-					responses = _init_array()
+					responses.clear()
 					return Status.FAILURE
 			
-			responses = _init_array()
+			responses.clear()
 			return Status.SUCCESS
 		# If any child returns SUCCESS, return SUCCESS.
 		ParallelPolicy.SUCCESS_ON_ONE:
 			for response in responses:
 				if response == Status.SUCCESS:
-					responses = _init_array()
+					responses.clear()
 					return Status.SUCCESS
 			
-			responses = _init_array()
+			responses.clear()
 			return Status.FAILURE
-
-
-func _init_array():
-	var array = []
-	for leave in leaves:
-		array.append(null)
-
-	return array
