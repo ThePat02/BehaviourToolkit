@@ -5,15 +5,21 @@ extends Control
 const CONFIG_URL = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/main/addons/behaviour_toolkit/plugin.cfg"
 
 
+@export var update_manager: UpdateManager
+
+
+
 var current_selection: Node
 var undo_redo: EditorUndoRedoManager
 
 
 @onready var dialog_blackboard: FileDialog = $FileDialogNewBlackboard
+@onready var toolbox: Control = %Toolbox
 
 
 func _ready():
-	%Version.text = "BehaviourToolkit v" + str(%UpdateManager.current_version)
+	# Hide SearchBar by default
+	%SearchBar.hide()
 
 	# Connect buttons
 	%ButtonState.connect("pressed", _on_button_pressed.bind(FSMState, "FSMState"))
@@ -46,6 +52,9 @@ func _ready():
 func set_current_selection(new_selection):
 	current_selection = new_selection
 
+
+func update_version_text():
+	%Version.text = "BehaviourToolkit v" + str(%UpdateManager.current_version)
 
 func _on_button_pressed(type, name: String):
 	var new_node: BehaviourToolkit = type.new()
@@ -83,3 +92,37 @@ func _on_file_dialog_new_blackboard_file_selected(path:String):
 
 func _on_update_manager_update_available():
 	%LinkGithub.show()
+
+
+func _on_update_manager_update_request_completed():
+	update_version_text()
+
+
+func search_change_visbility(node: Node, query: String):
+	for child in node.get_children():
+		search_change_visbility(child, query)
+
+		if not child is Button:
+			continue
+		
+		if query == "":
+			child.show()
+			continue
+
+		if query.to_lower() in child.text.to_lower():
+			child.show()
+		else:
+			child.hide()
+
+
+func _on_search_bar_text_changed(new_text:String):
+	search_change_visbility(toolbox, new_text)
+
+
+func _on_toggle_search_bar_toggled(button_pressed:bool):
+	%SearchBar.text = ""
+	%SearchBar.emit_signal("text_changed", "")
+	%SearchBar.visible = button_pressed
+
+	# Focus search bar
+	%SearchBar.grab_focus()

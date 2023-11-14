@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=27 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
 [ext_resource type="Texture2D" uid="uid://guy2wtwpcskx" path="res://addons/behaviour_toolkit/icons/FSMTransition.svg" id="2_24di4"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/utils/update_manager.gd" id="2_ohrre"]
 [ext_resource type="Texture2D" uid="uid://5e6onda232gn" path="res://addons/behaviour_toolkit/icons/Blackboard.svg" id="2_u7fep"]
+[ext_resource type="Texture2D" uid="uid://csdaju3etjpw4" path="res://addons/behaviour_toolkit/icons/Search.svg" id="3_plkhg"]
 [ext_resource type="Texture2D" uid="uid://b3u8ojxnwvwap" path="res://addons/behaviour_toolkit/icons/BTComposite.svg" id="4_ruq84"]
 [ext_resource type="Texture2D" uid="uid://dws1e5qbg3y2h" path="res://addons/behaviour_toolkit/icons/BTLeaf.svg" id="5_3hqj7"]
 [ext_resource type="Texture2D" uid="uid://cjfh8x8tx20cq" path="res://addons/behaviour_toolkit/icons/FSMStateIntegrationReturn.svg" id="5_78p67"]
@@ -24,19 +25,27 @@
 [ext_resource type="Texture2D" uid="uid://ddx7a726xhria" path="res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg" id="13_gmc6x"]
 [ext_resource type="Texture2D" uid="uid://scoo4wxugwy7" path="res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg" id="13_ijr7d"]
 
-[node name="ToolkitUi" type="Control"]
+[sub_resource type="InputEventKey" id="InputEventKey_dernr"]
+device = -1
+ctrl_pressed = true
+keycode = 70
+
+[sub_resource type="Shortcut" id="Shortcut_xqhq3"]
+events = [SubResource("InputEventKey_dernr")]
+
+[node name="ToolkitUi" type="Control" node_paths=PackedStringArray("update_manager")]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
 script = ExtResource("1_51rvx")
+update_manager = NodePath("UpdateManager")
 metadata/_edit_vertical_guides_ = []
 
 [node name="UpdateManager" type="HTTPRequest" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_ohrre")
-active = true
 addon_config_path = "res://addons/behaviour_toolkit/plugin.cfg"
 repo_config_url = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/main/addons/behaviour_toolkit/plugin.cfg"
 
@@ -66,6 +75,13 @@ theme_override_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="SearchBar" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+placeholder_text = "Search..."
+right_icon = ExtResource("3_plkhg")
+
 [node name="Panel" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 clip_contents = true
 layout_mode = 2
@@ -81,6 +97,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Toolbox" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -113,19 +130,21 @@ layout_mode = 2
 text = "New State"
 icon = ExtResource("1_hqqj5")
 
-[node name="States" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
+[node name="States" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
 layout_mode = 2
 
 [node name="ButtonStateIntegratedBT" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine/States"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "IntegratedBT"
 icon = ExtResource("5_e6hj7")
 
 [node name="ButtonStateIntegrationReturn" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine/States"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "IntegrationReturn"
+size_flags_horizontal = 3
+text = "Return"
 icon = ExtResource("5_78p67")
 
 [node name="ButtonTransition" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
@@ -282,8 +301,21 @@ layout_mode = 2
 [node name="Version" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "BehaviourToolkit v1.1.0"
+text = "BehaviourToolkit vX.X.X"
+
+[node name="ToggleSearchBar" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Toggle search bar"
+toggle_mode = true
+shortcut = SubResource("Shortcut_xqhq3")
+icon = ExtResource("3_plkhg")
+flat = true
+icon_alignment = 1
 
 [connection signal="update_available" from="UpdateManager" to="." method="_on_update_manager_update_available"]
+[connection signal="update_request_completed" from="UpdateManager" to="." method="_on_update_manager_update_request_completed"]
 [connection signal="file_selected" from="FileDialogNewBlackboard" to="." method="_on_file_dialog_new_blackboard_file_selected"]
+[connection signal="text_changed" from="ScrollContainer/MarginContainer/VBoxContainer/SearchBar" to="." method="_on_search_bar_text_changed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc/ButtonBlackboard" to="." method="_on_button_blackboard_pressed"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/Footer/ToggleSearchBar" to="." method="_on_toggle_search_bar_toggled"]

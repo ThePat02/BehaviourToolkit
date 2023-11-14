@@ -10,7 +10,7 @@ signal update_available
 
 
 ## If this is set to false, the plugin will not check for updates.
-@export var active: bool = false
+@export var auto_start: bool = false
 ## The path to the addon config file.
 @export_file("*.cfg") var addon_config_path = ""
 ## The URL to the repository config file. This file has to be the raw version!
@@ -28,13 +28,17 @@ func _ready():
 	connect("request_completed", _on_http_request_request_completed)
 
 	# Check if active
-	if not active:
+	if not auto_start:
 		return
 	
+	start()
+
+
+func start():
 	# Get versions
 	current_version = get_current_version()
 	get_newest_version()
-	
+
 
 ## Returns true if an update is available.
 func is_update_available() -> bool:
