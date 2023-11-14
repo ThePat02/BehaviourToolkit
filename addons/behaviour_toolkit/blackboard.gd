@@ -18,3 +18,13 @@ func get_value(key: StringName) -> Variant:
 		return content[key]
 	else:
 		return null
+
+
+## Removes a value from the blackboard. Returns `true` if the key existed, `false` otherwise.
+func remove_value(key: StringName) -> bool:
+	return content.erase(key)
+
+
+## Clears the blackboard and removes all its values.
+func clear() -> void:
+	content.clear()
