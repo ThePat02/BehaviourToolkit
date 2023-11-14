@@ -161,6 +161,10 @@ Composites nodes are used to combine multiple leaves into a single node and eval
 - ![BTCompositeSelector Icon](../addons/behaviour_toolkit/icons/BTCompositeSelector.svg) BTSelector
   - Selects the first leaf that succeeds, fails if all leaves fail.
   - ![BTCompositeRandomSelector Icon](../addons/behaviour_toolkit/icons/BTCompositeRandomSelector.svg) BTRandomSelector can be used to randomize the order of the leaves.
+- ![BTSimpleParallel Icon](../addons/behaviour_toolkit/icons/BTSimpleParallel.svg) BTSimpleParallel
+  - Executes all leaves in parallel.
+  - Fails if any leaf fails.
+  - Depending on the set policy it will succeed if all leaves succeed or if any leaf succeeds.
 - ![BTCompositeRandom Icon](../addons/behaviour_toolkit/icons/BTCompositeRandom.svg) BTRandom
   - One leaf is selected at random and executed.
 
