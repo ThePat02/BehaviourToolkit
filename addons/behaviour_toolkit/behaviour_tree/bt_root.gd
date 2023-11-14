@@ -3,7 +3,7 @@ class_name BTRoot extends BehaviourToolkit
 
 
 @export var autostart: bool = false
-@export var active: bool = false
+var active: bool = false
 @export var actor: Node
 @export var blackboard: Blackboard
 
