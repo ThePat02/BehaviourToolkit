@@ -29,6 +29,7 @@ func _ready():
 	%ButtonComposite.connect("pressed", _on_button_pressed.bind(BTComposite, "BTComposite"))
 	%ButtonSequence.connect("pressed", _on_button_pressed.bind(BTSequence, "BTSequence"))
 	%ButtonSelector.connect("pressed", _on_button_pressed.bind(BTSelector, "BTSelector"))
+	%ButtonSimpleParallel.connect("pressed", _on_button_pressed.bind(BTSimpleParallel, "BTSimpleParallel"))
 	%ButtonRandom.connect("pressed", _on_button_pressed.bind(BTRandom, "BTRandom"))
 	%ButtonRandomSequence.connect("pressed", _on_button_pressed.bind(BTRandomSequence, "BTRandomSequence"))
 	%ButtonRandomSelector.connect("pressed", _on_button_pressed.bind(BTRandomSelector, "BTRandomSelector"))
