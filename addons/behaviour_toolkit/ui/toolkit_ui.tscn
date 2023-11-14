@@ -69,6 +69,7 @@ layout_mode = 2
 
 [node name="SearchBar" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 placeholder_text = "Search..."
 right_icon = ExtResource("3_plkhg")
