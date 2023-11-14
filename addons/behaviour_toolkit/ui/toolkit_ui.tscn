@@ -22,10 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://cko2btxegkbtb" path="res://addons/behaviour_toolkit/icons/BTDecoratorLimiter.svg" id="10_ehr66"]
 [ext_resource type="Texture2D" uid="uid://hn65lqk8tero" path="res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg" id="10_nvbp1"]
 [ext_resource type="Texture2D" uid="uid://ddx7a726xhria" path="res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg" id="13_gmc6x"]
-[ext_resource type="Texture2D" uid="uid://scoo4wxugwy7" path="res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg" id="13_p01b2"]
+[ext_resource type="Texture2D" uid="uid://scoo4wxugwy7" path="res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg" id="13_ijr7d"]
 
 [node name="ToolkitUi" type="Control"]
-custom_minimum_size = Vector2(350, 0)
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -199,7 +199,7 @@ icon = ExtResource("6_mdg6v")
 unique_name_in_owner = true
 layout_mode = 2
 text = "SimpleParallel"
-icon = ExtResource("13_p01b2")
+icon = ExtResource("13_ijr7d")
 
 [node name="ButtonRandom" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites"]
 unique_name_in_owner = true
