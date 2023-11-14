@@ -18,6 +18,9 @@ var undo_redo: EditorUndoRedoManager
 
 
 func _ready():
+	# Hide SearchBar by default
+	%SearchBar.hide()
+
 	# Connect buttons
 	%ButtonState.connect("pressed", _on_button_pressed.bind(FSMState, "FSMState"))
 	%ButtonTransition.connect("pressed", _on_button_pressed.bind(FSMTransition, "FSMTransition"))
@@ -114,3 +117,9 @@ func search_change_visbility(node: Node, query: String):
 
 func _on_search_bar_text_changed(new_text:String):
 	search_change_visbility(toolbox, new_text)
+
+
+func _on_toggle_search_bar_toggled(button_pressed:bool):
+	%SearchBar.text = ""
+	%SearchBar.emit_signal("text_changed", "")
+	%SearchBar.visible = button_pressed
