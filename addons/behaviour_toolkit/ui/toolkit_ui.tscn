@@ -109,6 +109,8 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center][img]res://addons/behaviour_toolkit/icons/Gear.svg[/img] Toolbox[/center]"
+fit_content = true
+scroll_active = false
 
 [node name="ButtonBlackboard" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc"]
 layout_mode = 2
@@ -123,6 +125,8 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center][img]res://addons/behaviour_toolkit/icons/FiniteStateMachine.svg[/img] FiniteStateMachine[/center]"
+fit_content = true
+scroll_active = false
 
 [node name="ButtonState" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
 unique_name_in_owner = true
@@ -161,6 +165,8 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center][img]res://addons/behaviour_toolkit/icons/BTRoot.svg[/img] Behaviour Tree[/center]"
+fit_content = true
+scroll_active = false
 
 [node name="ButtonLeaf" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
 unique_name_in_owner = true
