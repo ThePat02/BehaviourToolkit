@@ -35,6 +35,16 @@ enum TweenValueType {
 ## The color value to tween to.
 @export var tween_value_color: Color
 
+@export_group("Advanced")
+## How many times to loop the tween. (0 = infinite)
+@export var loops: int = 1
+## Scales the speed of tweening.
+@export var speed_scale: float = 1.0
+## Determines the behavior of the Tween when the SceneTree is paused.
+@export var tween_pause_mode: Tween.TweenPauseMode
+## Determines whether the Tween should run after process frames or physics frames.
+@export var tween_process_mode: Tween.TweenProcessMode = Tween.TweenProcessMode.TWEEN_PROCESS_IDLE
+
 
 ## Setter function for the tween_value_type property.
 func set_tween_value_type(value):
@@ -64,6 +74,10 @@ func _init_tween(actor: Node):
 		# Set tween properties
 		tween.set_trans(transition_type)
 		tween.set_ease(ease_type)
+		tween.set_loop(loops)
+		tween.set_speed_scale(speed_scale)
+		tween.set_pause_mode(tween_pause_mode)
+		tween.set_process_mode(tween_process_mode)
 
 		# Set tween value
 		var tween_value: Variant
