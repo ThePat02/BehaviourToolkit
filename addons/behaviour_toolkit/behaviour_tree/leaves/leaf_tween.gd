@@ -13,14 +13,14 @@ enum TweenValueType {
 
 
 ## The transition type of the tween.
-@export var transition_type: Tween.TransitionType = Tween.TransitionType.TRANS_SINE
+@export var transition_type: Tween.TransitionType = Tween.TransitionType.TRANS_LINEAR
 ## The ease type of the tween.
 @export var ease_type: Tween.EaseType = Tween.EaseType.EASE_IN
 ## The duration of the tween.
 @export var duration: float = 2.0
 ## The property to tween.
 ## For example: "rotation:y" or "scale"
-@export var tween_property: String = "rotation:y"
+@export var tween_property: String
 ## The value type of the tween.
 @export var tween_value_type: TweenValueType: set = set_tween_value_type
 ## The integer value to tween to.
