@@ -1,4 +1,5 @@
 @tool
+@icon("res://addons/behaviour_toolkit/icons/BTLeafTween.svg")
 class_name LeafTween extends BTLeaf
 ## Tween a property of an actor.
 

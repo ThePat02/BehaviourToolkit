@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=28 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bmo340f2o6tai" path="res://addons/behaviour_toolkit/icons/BTDecoratorNot.svg" id="9_0k0nv"]
 [ext_resource type="Texture2D" uid="uid://bwsntsm8f3msh" path="res://addons/behaviour_toolkit/icons/BTCompositeRandomSequence.svg" id="9_ny08s"]
 [ext_resource type="Texture2D" uid="uid://bmc67ds148hrp" path="res://addons/behaviour_toolkit/icons/BTCompositeRandomSelector.svg" id="10_5qnkh"]
+[ext_resource type="Texture2D" uid="uid://3pj4756qk6p" path="res://addons/behaviour_toolkit/icons/BTLeafTween.svg" id="10_6w1yk"]
 [ext_resource type="Texture2D" uid="uid://cko2btxegkbtb" path="res://addons/behaviour_toolkit/icons/BTDecoratorLimiter.svg" id="10_ehr66"]
 [ext_resource type="Texture2D" uid="uid://hn65lqk8tero" path="res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg" id="10_nvbp1"]
 [ext_resource type="Texture2D" uid="uid://ddx7a726xhria" path="res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg" id="13_gmc6x"]
@@ -193,7 +194,7 @@ icon = ExtResource("5_3hqj7")
 unique_name_in_owner = true
 layout_mode = 2
 text = "Tween"
-icon = ExtResource("5_3hqj7")
+icon = ExtResource("10_6w1yk")
 
 [node name="ButtonFSMEvent" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
 unique_name_in_owner = true
