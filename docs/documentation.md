@@ -72,6 +72,9 @@ This is the root node of the State Machine. All `FSMStates` must be children of 
 #### Properties
 - bool `autostart`
     - If `true` the FSM will start automatically when ready.
+- Enum `process_type`
+    - When set to `Physics` the FSM _on_update() will be run in `_physics_process()` callback.
+    - When set to `Idle` the FSM _on_update() will be run in `_process()` callback.
 - bool `active`
     - When `true` the State Machine will run and update its current state.
 - FSMState `initial_state`
@@ -142,6 +145,9 @@ This is the root of your behaviour tree. It is designed to only have one child n
 #### Properties
 - bool `autostart`
     - If `true` the FSM will start automatically when ready.
+- Enum `process_type`
+    - When set to `Physics` the BTree tick() will be run in `_physics_process()` callback.
+    - When set to `Idle` the BTree tick() will be run in `_process()` callback.
 - bool `active`
     - When `true` the State Machine will run and update its current state.
 - FSMState `initial_state`
