@@ -1,9 +1,6 @@
 extends EditorInspectorPlugin
 
 
-var SelectTweenValue = preload("res://addons/behaviour_toolkit/inspector/select_tween_value.gd")
-
-
 func _can_handle(object):
 	return true
 
