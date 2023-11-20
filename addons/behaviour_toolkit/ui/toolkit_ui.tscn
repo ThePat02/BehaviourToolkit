@@ -189,6 +189,12 @@ layout_mode = 2
 text = "Wait"
 icon = ExtResource("5_3hqj7")
 
+[node name="ButtonTween" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tween"
+icon = ExtResource("5_3hqj7")
+
 [node name="ButtonFSMEvent" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
 unique_name_in_owner = true
 layout_mode = 2
