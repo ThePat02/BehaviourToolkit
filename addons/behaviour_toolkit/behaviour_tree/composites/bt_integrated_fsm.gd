@@ -6,17 +6,17 @@ class_name BTIntegratedFSM extends BTComposite
 
 
 func tick(_actor: Node, _blackboard: Blackboard) -> Status:
-    if state_machine.active == false:
-        state_machine.start()
+	if state_machine.active == false:
+		state_machine.start()
 
-    if not state_machine.current_bt_status == Status.RUNNING:
-        state_machine.active = false
-    
-    return state_machine.current_bt_status
+	if not state_machine.current_bt_status == Status.RUNNING:
+		state_machine.active = false
+	
+	return state_machine.current_bt_status
 
 
 func _get_machine() -> FiniteStateMachine:
-    if get_child_count() == 0:
-        return null
-    else:
-        return get_child(0)
+	if get_child_count() == 0:
+		return null
+	else:
+		return get_child(0)

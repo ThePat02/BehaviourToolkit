@@ -325,6 +325,7 @@ wait_for_ticks = 150
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 script = ExtResource("8_5ft4q")
 autostart = true
+process_type = 0
 initial_state = NodePath("Idle")
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")

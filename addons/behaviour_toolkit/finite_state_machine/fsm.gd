@@ -5,6 +5,12 @@ class_name FiniteStateMachine extends BehaviourToolkit
 ## The Finite State Machine is composed of states and transitions.
 
 
+enum ProcessType {
+	IDLE, ## Updates on every rendered frame (at current FPS).
+	PHYSICS ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
+}
+
+
 const ERROR_INITIAL_STATE_NULL: String = "The initial cannot be null when starting the State Machine."
 
 
@@ -14,6 +20,16 @@ signal state_changed(state: FSMState)
 
 ## Whether the FSM should start automatically.
 @export var autostart: bool = false
+
+## Can be used to select if FSM _on_update() is calculated on
+## rendering (IDLE) frame or physics (PHYSICS) frame.
+## [br]
+## More info: [method Node._process] and [method Node._physics_process]
+@export var process_type: ProcessType = ProcessType.PHYSICS:
+	set(value):
+		process_type = value
+		_setup_processing()
+
 ## Whether the FSM is active or not.
 @export var active: bool = true
 ## The initial state of the FSM.
@@ -46,6 +62,11 @@ func _ready() -> void:
 	else:
 		active = false
 
+	if not process_type:
+		process_type = ProcessType.PHYSICS
+
+	_setup_processing()
+
 
 func start() -> void:
 	current_bt_status = BTLeaf.Status.RUNNING
@@ -68,10 +89,18 @@ func start() -> void:
 	emit_signal("state_changed", active_state)
 
 
-func _process(_delta) -> void:
+func  _physics_process(delta: float) -> void:
+	_process_code(delta)
+
+
+func _process(delta: float) -> void:
+	_process_code(delta)
+
+
+func _process_code(delta: float) -> void:
 	if not active:
 		return
-
+	
 	# Check if there are states
 	if states.size() == 0:
 		return
@@ -124,6 +153,12 @@ func fire_event(event: String) -> void:
 func _create_local_blackboard() -> Blackboard:
 	var blackboard: Blackboard = Blackboard.new()
 	return blackboard
+
+
+# Configures process type to use, if FSM is not active both are disabled.
+func _setup_processing() -> void:
+	set_physics_process(process_type == ProcessType.PHYSICS)
+	set_process(process_type == ProcessType.IDLE)
 
 
 func _on_state_changed(state: FSMState) -> void:
