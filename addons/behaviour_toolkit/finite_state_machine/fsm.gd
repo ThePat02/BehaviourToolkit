@@ -16,6 +16,8 @@ signal state_changed(state: FSMState)
 @export var autostart: bool = false
 ## Whether the FSM is active or not.
 @export var active: bool = true
+## Process mode the FSM should run in.
+@export var process_type: ProcessType = ProcessType.PHYSICS
 ## The initial state of the FSM.
 @export var initial_state: FSMState
 
@@ -71,7 +73,24 @@ func start() -> void:
 func _process(_delta) -> void:
 	if not active:
 		return
+	
+	if not process_type == ProcessType.IDLE:
+		return
+	
+	tick()
 
+
+func _physics_process(_delta):
+	if not active:
+		return
+	
+	if not process_type == ProcessType.PHYSICS:
+		return
+	
+	tick()
+
+
+func tick():
 	# Check if there are states
 	if states.size() == 0:
 		return

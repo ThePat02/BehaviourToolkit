@@ -4,6 +4,7 @@ class_name BTRoot extends BehaviourToolkit
 
 @export var autostart: bool = false
 var active: bool = false
+@export var process_type: ProcessType = ProcessType.PHYSICS
 @export var actor: Node
 @export var blackboard: Blackboard
 
@@ -26,6 +27,23 @@ func _process(delta):
 	if not active:
 		return
 	
+	if not process_type == ProcessType.IDLE:
+		return
+
+	tick(delta)
+
+
+func _physics_process(delta):
+	if not active:
+		return
+	
+	if not process_type == ProcessType.PHYSICS:
+		return
+
+	tick(delta)
+
+
+func tick(delta):
 	blackboard.set_value("delta", delta)
 	current_status = entry_point.tick(actor, blackboard)
 
