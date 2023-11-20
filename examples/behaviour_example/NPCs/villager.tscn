@@ -1,6 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://ctbwpw7df4hay"]
+[gd_scene load_steps=39 format=3 uid="uid://ctbwpw7df4hay"]
 
 [ext_resource type="Script" path="res://examples/behaviour_example/actor/actor.gd" id="1_a3qvv"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_tween.gd" id="2_3trww"]
 [ext_resource type="Texture2D" uid="uid://bsjt61unufjgi" path="res://examples/assets/actors/tiny_village.png" id="2_p6pfm"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="3_5mjdm"]
 [ext_resource type="Resource" uid="uid://c60ird40hkxeb" path="res://examples/behaviour_example/global_blackboard.tres" id="4_opmou"]
@@ -155,6 +156,13 @@ animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("AnimationStateMachine")
 behaviour_tree = NodePath("Behaviour")
 ghost_state_machine = NodePath("Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine")
+
+[node name="LeafTween" type="Node" parent="."]
+script = ExtResource("2_3trww")
+
+[node name="OptionButton" type="OptionButton" parent="."]
+offset_right = 14.0
+offset_bottom = 20.0
 
 [node name="PlayerTick" type="Timer" parent="."]
 autostart = true
