@@ -3,12 +3,13 @@ class_name LeafTween extends BTLeaf
 ## Tween a property of an actor.
 
 
+## The value type of the tween value.
 enum TweenValueType {
-	INT,
-	FLOAT,
-	VECTOR2,
-	VECTOR3,
-	COLOR
+	INT, ## Integer value type.
+	FLOAT, ## Float value type.
+	VECTOR2, ## Vector2 value type.
+	VECTOR3, ## Vector3 value type.
+	COLOR ## Color value type.
 }
 
 
