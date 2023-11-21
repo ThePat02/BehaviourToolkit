@@ -64,6 +64,10 @@ func tick(actor: Node, _blackboard: Blackboard) -> Status:
 
 	if tween.is_running():
 		return Status.RUNNING
+
+	# Invalidate tween instance
+	tween.kill()
+	tween = null
 	return Status.SUCCESS
 
 
