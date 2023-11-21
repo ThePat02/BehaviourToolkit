@@ -1,4 +1,5 @@
-[gd_scene load_steps=28 format=3 uid="uid://o16emp4t4wb1"]
+
+[gd_scene load_steps=29 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -25,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://hn65lqk8tero" path="res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg" id="10_nvbp1"]
 [ext_resource type="Texture2D" uid="uid://ddx7a726xhria" path="res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg" id="13_gmc6x"]
 [ext_resource type="Texture2D" uid="uid://scoo4wxugwy7" path="res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg" id="13_ijr7d"]
+[ext_resource type="Texture2D" uid="uid://vqncyulwi24v" path="res://addons/behaviour_toolkit/icons/EditorFiniteStateMachine.svg" id="25_xk13i"]
+[ext_resource type="Texture2D" uid="uid://dxbd2qqx12a52" path="res://addons/behaviour_toolkit/icons/EditorBTRoot.svg" id="26_v63gq"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_dernr"]
 device = -1
@@ -119,6 +122,7 @@ text = "New Blackboard"
 icon = ExtResource("2_u7fep")
 
 [node name="FiniteStateMachine" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
@@ -159,6 +163,7 @@ text = "New Transition"
 icon = ExtResource("2_24di4")
 
 [node name="BehaviourTree" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
@@ -316,9 +321,27 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "BehaviourToolkit vX.X.X"
 
-[node name="ToggleSearchBar" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+[node name="ToggleFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
 layout_mode = 2
 size_flags_horizontal = 10
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("25_xk13i")
+flat = true
+icon_alignment = 1
+
+[node name="ToggleBT" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+layout_mode = 2
+size_flags_horizontal = 8
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("26_v63gq")
+flat = true
+icon_alignment = 1
+
+[node name="ToggleSearchBar" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+layout_mode = 2
+size_flags_horizontal = 8
 tooltip_text = "Toggle search bar"
 toggle_mode = true
 shortcut = SubResource("Shortcut_xqhq3")
@@ -331,4 +354,6 @@ icon_alignment = 1
 [connection signal="file_selected" from="FileDialogNewBlackboard" to="." method="_on_file_dialog_new_blackboard_file_selected"]
 [connection signal="text_changed" from="ScrollContainer/MarginContainer/VBoxContainer/SearchBar" to="." method="_on_search_bar_text_changed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc/ButtonBlackboard" to="." method="_on_button_blackboard_pressed"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/Footer/ToggleFSM" to="." method="_on_toggle_fsm_toggled"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/Footer/ToggleBT" to="." method="_on_toggle_bt_toggled"]
 [connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/Footer/ToggleSearchBar" to="." method="_on_toggle_search_bar_toggled"]

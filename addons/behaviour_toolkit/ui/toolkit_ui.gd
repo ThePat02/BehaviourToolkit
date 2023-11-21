@@ -15,6 +15,8 @@ var undo_redo: EditorUndoRedoManager
 
 @onready var dialog_blackboard: FileDialog = $FileDialogNewBlackboard
 @onready var toolbox: Control = %Toolbox
+@onready var toolbox_fsm = %FiniteStateMachine
+@onready var toolbox_bt = %BehaviourTree
 
 
 func _ready():
@@ -127,3 +129,11 @@ func _on_toggle_search_bar_toggled(button_pressed:bool):
 
 	# Focus search bar
 	%SearchBar.grab_focus()
+
+
+func _on_toggle_bt_toggled(button_pressed:bool):
+	toolbox_bt.visible = button_pressed
+
+
+func _on_toggle_fsm_toggled(button_pressed:bool):
+	toolbox_fsm.visible = button_pressed
