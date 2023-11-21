@@ -104,6 +104,9 @@ func _process_code(delta: float) -> void:
 	# Check if there are states
 	if states.size() == 0:
 		return
+
+	# Set the delta time
+	blackboard.set_value("delta", delta)
 	
 	# The current event
 	var event: String = ""
