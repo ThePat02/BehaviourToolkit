@@ -37,6 +37,8 @@ enum TweenValueType {
 @export var tween_value_color: Color
 
 @export_group("Advanced")
+## If true, the tween will be relative to the node's current value.
+@export var as_relative = false
 ## How many times to loop the tween. (0 = infinite)
 @export var loops: int = 1
 ## Scales the speed of tweening.
@@ -99,4 +101,7 @@ func _init_tween(actor: Node):
 				tween_value = tween_value_color
 
 		# Start tween
-		tween.tween_property(actor, tween_property, tween_value, duration)
+		if as_relative:
+			tween.tween_property(actor, tween_property, tween_value, duration).as_relative()
+		else:
+			tween.tween_property(actor, tween_property, tween_value, duration)
