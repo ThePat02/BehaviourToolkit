@@ -109,6 +109,7 @@ layout_mode = 2
 [node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+size_flags_horizontal = 3
 bbcode_enabled = true
 text = "[center][img]res://addons/behaviour_toolkit/icons/Gear.svg[/img] Toolbox[/center]"
 fit_content = true

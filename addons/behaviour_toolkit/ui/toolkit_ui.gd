@@ -2,11 +2,18 @@
 extends Control
 
 
+enum PlacementMode {
+	CHILD,
+	SIBLING,
+	PARENT,
+	REPLACE
+}
+
+
 const CONFIG_URL = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/main/addons/behaviour_toolkit/plugin.cfg"
 
 
 @export var update_manager: UpdateManager
-
 
 
 var current_selection: Node
@@ -59,6 +66,23 @@ func update_version_text():
 	%Version.text = "BehaviourToolkit v" + str(%UpdateManager.current_version)
 
 func _on_button_pressed(type, name: String):
+	# Determine placement mode
+	var is_pressed_ctrl: bool = Input.is_key_pressed(KEY_CTRL)
+	var is_pressed_shift: bool = Input.is_key_pressed(KEY_SHIFT)
+	var is_pressed_alt: bool = Input.is_key_pressed(KEY_ALT)
+
+	var placement_mode: PlacementMode
+
+	if is_pressed_ctrl and is_pressed_alt:
+		placement_mode = PlacementMode.REPLACE
+	elif is_pressed_ctrl:
+		placement_mode = PlacementMode.PARENT
+	elif is_pressed_shift:
+		placement_mode = PlacementMode.SIBLING
+	else:
+		placement_mode = PlacementMode.CHILD
+
+
 	var new_node: BehaviourToolkit = type.new()
 
 	# Check if name already exists
@@ -74,13 +98,48 @@ func _on_button_pressed(type, name: String):
 	else:
 		new_node.name = name + str(count + 1)
 
-	# Add undo/redo functionality
-	undo_redo.create_action("Add new node")
-	undo_redo.add_do_method(current_selection, "add_child", new_node)
-	undo_redo.add_do_method(new_node, "set_owner", current_selection.get_tree().edited_scene_root)
-	undo_redo.add_undo_method(current_selection, "remove_child", new_node)
-	undo_redo.add_undo_method(new_node, "queue_free")
-	undo_redo.commit_action()
+	# Add new node to scene
+	match placement_mode:
+		# Add new node as child
+		PlacementMode.CHILD:
+			undo_redo.create_action("Add new Behaviour Node as child")
+
+			undo_redo.add_do_method(current_selection, "add_child", new_node)
+			undo_redo.add_undo_method(current_selection, "remove_child", new_node)
+
+			undo_redo.add_do_method(new_node, "set_owner", current_selection.get_tree().edited_scene_root)
+			undo_redo.add_undo_method(new_node, "queue_free")
+
+			undo_redo.commit_action()
+
+		# Add new node as sibling
+		PlacementMode.SIBLING:
+			var current_selection_index = current_selection.get_index()
+
+			undo_redo.create_action("Add new Behaviour Node as sibling")
+
+			undo_redo.add_do_method(current_selection.get_parent(), "add_child", new_node)
+			undo_redo.add_do_method(current_selection.get_parent(), "move_child", new_node, current_selection_index + 1)
+			undo_redo.add_undo_method(current_selection.get_parent(), "remove_child", new_node)
+		
+			undo_redo.add_do_method(new_node, "set_owner", current_selection.get_tree().edited_scene_root)
+			undo_redo.add_undo_method(new_node, "queue_free")
+
+			undo_redo.commit_action()
+
+		# Add new node as parent
+		PlacementMode.PARENT:
+			pass
+
+		# Replace current node with new node
+		PlacementMode.REPLACE:
+			undo_redo.create_action("Replace Behaviour Node")
+
+			undo_redo.add_do_method(current_selection, "replace_by", new_node)
+			undo_redo.add_undo_method(current_selection, "replace_by", current_selection)
+
+			undo_redo.commit_action()
+
 
 
 func _on_button_blackboard_pressed():
