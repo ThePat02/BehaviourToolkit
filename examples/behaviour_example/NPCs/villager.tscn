@@ -156,10 +156,6 @@ state_machine = NodePath("AnimationStateMachine")
 behaviour_tree = NodePath("Behaviour")
 ghost_state_machine = NodePath("Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine")
 
-[node name="OptionButton" type="OptionButton" parent="."]
-offset_right = 14.0
-offset_bottom = 20.0
-
 [node name="PlayerTick" type="Timer" parent="."]
 autostart = true
 
