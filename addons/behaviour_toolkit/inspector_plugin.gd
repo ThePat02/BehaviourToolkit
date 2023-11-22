@@ -23,6 +23,20 @@ func _parse_property(object, type, name, hint_type, hint_string, usage_flags, wi
 		
 		if name == "tween_value_color":
 			return not tween_value_type == LeafTween.TweenValueType.COLOR
-
+	
+	# Leaf Condition
+	if object is LeafCondition:
+		var condition_type: LeafCondition.ConditionValue = object.value_type
+		if name == "condition_value_string":
+			return not condition_type == LeafCondition.ConditionValue.STRING
+		
+		if name == "condition_value_int":
+			return not condition_type == LeafCondition.ConditionValue.INT
+		
+		if name == "condition_value_float":
+			return not condition_type == LeafCondition.ConditionValue.FLOAT
+		
+		if name == "condition_value_bool":
+			return not condition_type == LeafCondition.ConditionValue.BOOL
 
 	return false
