@@ -32,6 +32,7 @@ func _ready():
 	%ButtonLeaf.connect("pressed", _on_button_pressed.bind(BTLeaf, "BTLeaf"))
 	%ButtonPrint.connect("pressed", _on_button_pressed.bind(LeafPrint, "LeafPrint"))
 	%ButtonWait.connect("pressed", _on_button_pressed.bind(LeafWait, "LeafWait"))
+	%ButtonCondition.connect("pressed", _on_button_pressed.bind(LeafCondition, "LeafCondition"))
 	%ButtonCall.connect("pressed", _on_button_pressed.bind(LeafCall, "LeafCall"))
 	%ButtonTween.connect("pressed", _on_button_pressed.bind(LeafTween, "LeafTween"))
 	%ButtonFSMEvent.connect("pressed", _on_button_pressed.bind(LeafFSMEvent, "LeafFSMEvent"))
