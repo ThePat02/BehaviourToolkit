@@ -111,7 +111,6 @@ func _on_button_pressed(type, name: String):
 			undo_redo.add_undo_method(current_selection, "remove_child", new_node)
 
 			undo_redo.add_do_method(new_node, "set_owner", current_selection.get_tree().edited_scene_root)
-			undo_redo.add_undo_method(new_node, "queue_free")
 
 			undo_redo.commit_action()
 
@@ -126,13 +125,22 @@ func _on_button_pressed(type, name: String):
 			undo_redo.add_undo_method(current_selection.get_parent(), "remove_child", new_node)
 		
 			undo_redo.add_do_method(new_node, "set_owner", current_selection.get_tree().edited_scene_root)
-			undo_redo.add_undo_method(new_node, "queue_free")
 
 			undo_redo.commit_action()
 
 		# Add new node as parent
 		PlacementMode.PARENT:
-			pass
+			undo_redo.create_action("Add new Behaviour Node as parent")
+
+			undo_redo.add_do_method(current_selection, "replace_by", new_node)
+
+			undo_redo.add_undo_method(new_node, "remove_child", current_selection)
+			undo_redo.add_undo_method(new_node, "replace_by", current_selection)
+
+			undo_redo.add_do_method(new_node, "add_child", current_selection)
+			undo_redo.add_do_method(current_selection, "set_owner", current_selection.get_tree().edited_scene_root)
+
+			undo_redo.commit_action()
 
 		# Replace current node with new node
 		PlacementMode.REPLACE:
