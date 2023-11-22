@@ -24,6 +24,7 @@ var undo_redo: EditorUndoRedoManager
 @onready var toolbox: Control = %Toolbox
 @onready var toolbox_fsm = %FiniteStateMachine
 @onready var toolbox_bt = %BehaviourTree
+@onready var label_shortcuts = %LabelShortcuts
 
 
 func _ready():
@@ -206,3 +207,7 @@ func _on_toggle_bt_toggled(button_pressed:bool):
 
 func _on_toggle_fsm_toggled(button_pressed:bool):
 	toolbox_fsm.visible = button_pressed
+
+
+func _on_toggle_shortcuts_toggled(button_pressed:bool):
+	label_shortcuts.visible = button_pressed

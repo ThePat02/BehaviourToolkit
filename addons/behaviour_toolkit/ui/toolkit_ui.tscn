@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=37 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -31,6 +31,15 @@
 [ext_resource type="Texture2D" uid="uid://scoo4wxugwy7" path="res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg" id="13_ijr7d"]
 [ext_resource type="Texture2D" uid="uid://vqncyulwi24v" path="res://addons/behaviour_toolkit/icons/EditorFiniteStateMachine.svg" id="25_xk13i"]
 [ext_resource type="Texture2D" uid="uid://dxbd2qqx12a52" path="res://addons/behaviour_toolkit/icons/EditorBTRoot.svg" id="26_v63gq"]
+[ext_resource type="Texture2D" uid="uid://dn8d4wli8uv1e" path="res://addons/behaviour_toolkit/icons/Help.svg" id="30_1ffks"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_iocl3"]
+device = -1
+ctrl_pressed = true
+keycode = 72
+
+[sub_resource type="Shortcut" id="Shortcut_67x2o"]
+events = [SubResource("InputEventKey_iocl3")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_dernr"]
 device = -1
@@ -41,10 +50,12 @@ keycode = 70
 events = [SubResource("InputEventKey_dernr")]
 
 [node name="ToolkitUi" type="Control" node_paths=PackedStringArray("update_manager")]
-custom_minimum_size = Vector2(280, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
+offset_right = 280.0
+offset_bottom = 320.0
 grow_vertical = 2
 script = ExtResource("1_51rvx")
 update_manager = NodePath("UpdateManager")
@@ -329,6 +340,14 @@ theme_override_colors/font_color = Color(0.0823529, 0.756863, 0.32549, 1)
 text = "New Version available on GitHub!"
 uri = "https://github.com/ThePat02/BehaviourToolkit"
 
+[node name="LabelShortcuts" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SHIFT: Add as sibling
+CTRL: Add as parent
+CTRL + ALT: Replace"
+fit_content = true
+
 [node name="Footer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -337,9 +356,20 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "BehaviourToolkit vX.X.X"
 
-[node name="ToggleFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+[node name="ToggleShortcuts" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
 layout_mode = 2
 size_flags_horizontal = 10
+tooltip_text = "Toggle Shortcut Help"
+toggle_mode = true
+button_pressed = true
+shortcut = SubResource("Shortcut_67x2o")
+icon = ExtResource("30_1ffks")
+flat = true
+icon_alignment = 1
+
+[node name="ToggleFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+layout_mode = 2
+size_flags_horizontal = 8
 tooltip_text = "Toggle FiniteStateMachine elements"
 toggle_mode = true
 button_pressed = true
@@ -372,6 +402,7 @@ icon_alignment = 1
 [connection signal="file_selected" from="FileDialogNewBlackboard" to="." method="_on_file_dialog_new_blackboard_file_selected"]
 [connection signal="text_changed" from="ScrollContainer/MarginContainer/VBoxContainer/SearchBar" to="." method="_on_search_bar_text_changed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc/ButtonBlackboard" to="." method="_on_button_blackboard_pressed"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/Footer/ToggleShortcuts" to="." method="_on_toggle_shortcuts_toggled"]
 [connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/Footer/ToggleFSM" to="." method="_on_toggle_fsm_toggled"]
 [connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/Footer/ToggleBT" to="." method="_on_toggle_bt_toggled"]
 [connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/Footer/ToggleSearchBar" to="." method="_on_toggle_search_bar_toggled"]
