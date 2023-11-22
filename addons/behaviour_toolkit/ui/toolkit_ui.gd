@@ -16,6 +16,7 @@ const CONFIG_URL = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/
 @export var update_manager: UpdateManager
 
 
+var editor_interface: EditorInterface
 var current_selection: Node
 var undo_redo: EditorUndoRedoManager
 
@@ -151,7 +152,6 @@ func _on_button_pressed(type, name: String):
 			undo_redo.add_undo_method(new_node, "replace_by", current_selection)
 
 			undo_redo.commit_action()
-
 
 
 func _on_button_blackboard_pressed():
