@@ -12,6 +12,8 @@ enum PlacementMode {
 
 const CONFIG_URL = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/main/addons/behaviour_toolkit/plugin.cfg"
 
+const ERROR_SELECTED_ROOT: String = "Error: Cannot perform this action on the root node."
+
 
 @export var update_manager: UpdateManager
 
@@ -107,6 +109,10 @@ func _on_button_pressed(type, name: String):
 
 		# Add new node as sibling
 		PlacementMode.SIBLING:
+			if current_selection == current_selection.get_tree().edited_scene_root:
+				print(ERROR_SELECTED_ROOT)
+				return
+
 			undo_redo.create_action("Add new Behaviour Node as sibling")
 
 			undo_redo.add_do_method(current_selection.get_parent(), "add_child", new_node)
@@ -119,6 +125,10 @@ func _on_button_pressed(type, name: String):
 
 		# Add new node as parent
 		PlacementMode.PARENT:
+			if current_selection == current_selection.get_tree().edited_scene_root:
+				print(ERROR_SELECTED_ROOT)
+				return
+
 			undo_redo.create_action("Add new Behaviour Node as parent")
 
 			undo_redo.add_do_method(current_selection.get_parent(), "add_child", new_node)
@@ -150,6 +160,10 @@ func _on_button_pressed(type, name: String):
 
 		# Replace current node with new node
 		PlacementMode.REPLACE:
+			if current_selection == current_selection.get_tree().edited_scene_root:
+				print(ERROR_SELECTED_ROOT)
+				return
+			
 			undo_redo.create_action("Replace Behaviour Node")
 
 			undo_redo.add_do_method(current_selection, "replace_by", new_node)
