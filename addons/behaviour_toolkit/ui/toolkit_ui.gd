@@ -103,6 +103,8 @@ func _on_button_pressed(type, name: String):
 	else:
 		new_node.name = name + str(count + 1)
 
+	var current_selection_index = current_selection.get_index()
+
 	# Add new node to scene
 	match placement_mode:
 		# Add new node as child
@@ -118,8 +120,6 @@ func _on_button_pressed(type, name: String):
 
 		# Add new node as sibling
 		PlacementMode.SIBLING:
-			var current_selection_index = current_selection.get_index()
-
 			undo_redo.create_action("Add new Behaviour Node as sibling")
 
 			undo_redo.add_do_method(current_selection.get_parent(), "add_child", new_node)
@@ -134,13 +134,20 @@ func _on_button_pressed(type, name: String):
 		PlacementMode.PARENT:
 			undo_redo.create_action("Add new Behaviour Node as parent")
 
-			undo_redo.add_do_method(current_selection, "replace_by", new_node)
+			undo_redo.add_do_method(current_selection.get_parent(), "add_child", new_node)
+			undo_redo.add_undo_method(current_selection.get_parent(), "remove_child", new_node)
 
-			undo_redo.add_undo_method(new_node, "remove_child", current_selection)
-			undo_redo.add_undo_method(new_node, "replace_by", current_selection)
+			undo_redo.add_do_method(current_selection, "reparent", new_node)
+			undo_redo.add_undo_method(current_selection, "reparent", current_selection.get_parent())
 
-			undo_redo.add_do_method(new_node, "add_child", current_selection)
+			undo_redo.add_do_method(new_node, "set_owner", current_selection.get_tree().edited_scene_root)
 			undo_redo.add_do_method(current_selection, "set_owner", current_selection.get_tree().edited_scene_root)
+			do_set_owners_of_children(current_selection, current_selection)
+
+			undo_redo.add_undo_method(current_selection, "set_owner", current_selection.get_tree().edited_scene_root)
+			undo_set_owners_of_children(current_selection, current_selection)
+
+			undo_redo.add_do_method(current_selection.get_parent(), "move_child", new_node, current_selection_index)
 
 			undo_redo.commit_action()
 
@@ -152,6 +159,18 @@ func _on_button_pressed(type, name: String):
 			undo_redo.add_undo_method(new_node, "replace_by", current_selection)
 
 			undo_redo.commit_action()
+
+
+func do_set_owners_of_children(node: Node, owner: Node):
+	for child in node.get_children():
+		undo_redo.add_do_method(child, "set_owner", owner.get_tree().edited_scene_root)
+		do_set_owners_of_children(child, owner)
+
+
+func undo_set_owners_of_children(node: Node, owner: Node):
+	for child in node.get_children():
+		undo_redo.add_undo_method(child, "set_owner", owner.get_tree().edited_scene_root)
+		undo_set_owners_of_children(child, owner)
 
 
 func _on_button_blackboard_pressed():

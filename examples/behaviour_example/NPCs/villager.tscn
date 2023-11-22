@@ -330,21 +330,6 @@ initial_state = NodePath("Idle")
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
 
-[node name="Idle" type="Node" parent="AnimationStateMachine"]
-script = ExtResource("9_73yag")
-
-[node name="onStartWalking" type="Node" parent="AnimationStateMachine/Idle" node_paths=PackedStringArray("next_state")]
-script = ExtResource("10_amkvh")
-next_state = NodePath("../../Walking")
-use_event = true
-event = "start_walking"
-
-[node name="onStartRefreshing" type="Node" parent="AnimationStateMachine/Idle" node_paths=PackedStringArray("next_state")]
-script = ExtResource("17_nswga")
-next_state = NodePath("../../Refreshing")
-use_event = true
-event = "start_refreshing"
-
 [node name="Walking" type="Node" parent="AnimationStateMachine"]
 script = ExtResource("11_rb27u")
 
@@ -373,6 +358,21 @@ script = ExtResource("10_amkvh")
 next_state = NodePath("../../Idle")
 use_event = true
 event = "start_idle"
+
+[node name="Idle" type="Node" parent="AnimationStateMachine"]
+script = ExtResource("9_73yag")
+
+[node name="onStartWalking" type="Node" parent="AnimationStateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("10_amkvh")
+next_state = NodePath("../../Walking")
+use_event = true
+event = "start_walking"
+
+[node name="onStartRefreshing" type="Node" parent="AnimationStateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("17_nswga")
+next_state = NodePath("../../Refreshing")
+use_event = true
+event = "start_refreshing"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="PlayerTick" to="." method="_on_player_tick_timeout"]
