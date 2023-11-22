@@ -148,6 +148,16 @@ func _on_button_pressed(type, name: String):
 			undo_set_owners_of_children(current_selection, current_selection)
 
 			undo_redo.add_do_method(current_selection.get_parent(), "move_child", new_node, current_selection_index)
+			undo_redo.add_undo_method(current_selection.get_parent(), "move_child", current_selection, current_selection_index)
+
+			undo_redo.add_do_method(editor_interface.get_selection(), "clear")
+			undo_redo.add_undo_method(editor_interface.get_selection(), "clear")
+
+			undo_redo.add_do_method(editor_interface.get_selection(), "add_node", new_node)
+			undo_redo.add_undo_method(editor_interface.get_selection(), "add_node", current_selection)
+
+			undo_redo.add_do_method(editor_interface, "edit_node", new_node)
+			undo_redo.add_undo_method(editor_interface, "edit_node", current_selection)
 
 			undo_redo.commit_action()
 
@@ -157,6 +167,15 @@ func _on_button_pressed(type, name: String):
 
 			undo_redo.add_do_method(current_selection, "replace_by", new_node)
 			undo_redo.add_undo_method(new_node, "replace_by", current_selection)
+
+			undo_redo.add_do_method(editor_interface.get_selection(), "clear")
+			undo_redo.add_undo_method(editor_interface.get_selection(), "clear")
+
+			undo_redo.add_do_method(editor_interface.get_selection(), "add_node", new_node)
+			undo_redo.add_undo_method(editor_interface.get_selection(), "add_node", current_selection)
+
+			undo_redo.add_do_method(editor_interface, "edit_node", new_node)
+			undo_redo.add_undo_method(editor_interface, "edit_node", current_selection)
 
 			undo_redo.commit_action()
 
