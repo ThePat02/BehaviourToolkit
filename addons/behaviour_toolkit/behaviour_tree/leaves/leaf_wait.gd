@@ -1,3 +1,4 @@
+@icon("res://addons/behaviour_toolkit/icons/BTLeafWait.svg")
 class_name LeafWait extends BTLeaf
 
 

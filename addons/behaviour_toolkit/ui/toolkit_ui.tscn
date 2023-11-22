@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=29 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=32 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -23,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://bmc67ds148hrp" path="res://addons/behaviour_toolkit/icons/BTCompositeRandomSelector.svg" id="10_5qnkh"]
 [ext_resource type="Texture2D" uid="uid://3pj4756qk6p" path="res://addons/behaviour_toolkit/icons/BTLeafTween.svg" id="10_6w1yk"]
 [ext_resource type="Texture2D" uid="uid://cko2btxegkbtb" path="res://addons/behaviour_toolkit/icons/BTDecoratorLimiter.svg" id="10_ehr66"]
+[ext_resource type="Texture2D" uid="uid://b45qiy5niriwu" path="res://addons/behaviour_toolkit/icons/BTLeafPrint.svg" id="10_ji4ht"]
+[ext_resource type="Texture2D" uid="uid://xi8li3jk2vs6" path="res://addons/behaviour_toolkit/icons/BTLeafWait.svg" id="10_n2nk3"]
 [ext_resource type="Texture2D" uid="uid://hn65lqk8tero" path="res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg" id="10_nvbp1"]
 [ext_resource type="Texture2D" uid="uid://ddx7a726xhria" path="res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg" id="13_gmc6x"]
 [ext_resource type="Texture2D" uid="uid://scoo4wxugwy7" path="res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg" id="13_ijr7d"]
@@ -187,13 +188,13 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "Print"
-icon = ExtResource("5_3hqj7")
+icon = ExtResource("10_ji4ht")
 
 [node name="ButtonWait" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Wait"
-icon = ExtResource("5_3hqj7")
+icon = ExtResource("10_n2nk3")
 
 [node name="ButtonTween" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
 unique_name_in_owner = true
