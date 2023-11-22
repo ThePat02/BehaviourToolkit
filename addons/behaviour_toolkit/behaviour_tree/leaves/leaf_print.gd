@@ -1,3 +1,4 @@
+@icon("res://addons/behaviour_toolkit/icons/BTLeafPrint.svg")
 class_name LeafPrint extends BTLeaf
 
 

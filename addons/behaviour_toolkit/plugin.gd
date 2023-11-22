@@ -9,6 +9,7 @@ var _ui_canvas: Control
 var _ui_spatial: Control
 
 
+var _inspector_plugin = preload("res://addons/behaviour_toolkit/inspector_plugin.gd")
 var _toolkit_ui = preload("res://addons/behaviour_toolkit/ui/toolkit_ui.tscn")
 
 
@@ -28,6 +29,10 @@ func _enter_tree():
     # Connect editor signals 
     get_editor_interface().get_selection().selection_changed.connect(_on_selection_changed)
 
+    # Add inspector plugin
+    _inspector_plugin = _inspector_plugin.new()
+    add_inspector_plugin(_inspector_plugin)
+
 
 
 func _exit_tree():
@@ -36,6 +41,8 @@ func _exit_tree():
 
     _ui_canvas.queue_free()
     _ui_spatial.queue_free()
+
+    remove_inspector_plugin(_inspector_plugin)
 
 
 func _on_selection_changed() -> void:
