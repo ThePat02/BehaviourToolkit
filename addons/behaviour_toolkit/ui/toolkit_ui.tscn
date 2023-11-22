@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=33 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://b45qiy5niriwu" path="res://addons/behaviour_toolkit/icons/BTLeafPrint.svg" id="10_ji4ht"]
 [ext_resource type="Texture2D" uid="uid://xi8li3jk2vs6" path="res://addons/behaviour_toolkit/icons/BTLeafWait.svg" id="10_n2nk3"]
 [ext_resource type="Texture2D" uid="uid://hn65lqk8tero" path="res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg" id="10_nvbp1"]
+[ext_resource type="Texture2D" uid="uid://cwvb6d7kvo53u" path="res://addons/behaviour_toolkit/icons/BTLeafCall.svg" id="12_axgn0"]
 [ext_resource type="Texture2D" uid="uid://ddx7a726xhria" path="res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg" id="13_gmc6x"]
 [ext_resource type="Texture2D" uid="uid://scoo4wxugwy7" path="res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg" id="13_ijr7d"]
 [ext_resource type="Texture2D" uid="uid://vqncyulwi24v" path="res://addons/behaviour_toolkit/icons/EditorFiniteStateMachine.svg" id="25_xk13i"]
@@ -195,6 +196,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Wait"
 icon = ExtResource("10_n2nk3")
+
+[node name="ButtonCall" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Call"
+icon = ExtResource("12_axgn0")
 
 [node name="ButtonTween" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
 unique_name_in_owner = true
