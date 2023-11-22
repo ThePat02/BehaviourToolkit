@@ -81,7 +81,7 @@ func _init_tween(actor: Node):
 		# Set tween properties
 		tween.set_trans(transition_type)
 		tween.set_ease(ease_type)
-		tween.set_loop(loops)
+		tween.set_loops(loops)
 		tween.set_speed_scale(speed_scale)
 		tween.set_pause_mode(tween_pause_mode)
 		tween.set_process_mode(tween_process_mode)
