@@ -90,19 +90,6 @@ func _on_button_pressed(type, name: String):
 
 	var new_node: BehaviourToolkit = type.new()
 
-	# Check if name already exists
-	var already_exists = false
-	var count = 0
-	for child in current_selection.get_children():
-		if child.name.begins_with(name):
-			count += 1
-			already_exists = true
-
-	if not already_exists:
-		new_node.name = name
-	else:
-		new_node.name = name + str(count + 1)
-
 	var current_selection_index = current_selection.get_index()
 
 	# Add new node to scene
@@ -178,6 +165,15 @@ func _on_button_pressed(type, name: String):
 			undo_redo.add_undo_method(editor_interface, "edit_node", current_selection)
 
 			undo_redo.commit_action()
+
+	# Find name for new node
+	var new_node_name: String = name
+	var i: int = 1
+	while new_node.get_parent().has_node(new_node_name):
+		new_node_name = name + str(i)
+		i += 1
+	
+	new_node.name = new_node_name
 
 
 func do_set_owners_of_children(node: Node, owner: Node):
