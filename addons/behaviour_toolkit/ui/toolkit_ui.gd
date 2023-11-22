@@ -139,7 +139,7 @@ func _on_button_pressed(type, name: String):
 			undo_redo.create_action("Replace Behaviour Node")
 
 			undo_redo.add_do_method(current_selection, "replace_by", new_node)
-			undo_redo.add_undo_method(current_selection, "replace_by", current_selection)
+			undo_redo.add_undo_method(new_node, "replace_by", current_selection)
 
 			undo_redo.commit_action()
 
