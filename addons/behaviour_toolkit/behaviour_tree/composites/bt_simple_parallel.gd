@@ -15,14 +15,14 @@ enum ParallelPolicy {
 @export var synchronize: bool = false
 
 
-@onready var responses: Dictionary
+@onready var responses: Dictionary = {}
 
 
 func tick(actor: Node, blackboard: Blackboard):
 	var leave_counter = 0
 	for leave in leaves:
 		# If the Parrallel is synchronized, skip leaves that have already returned SUCCESS.
-		if synchronize and responses[leave_counter] == Status.SUCCESS:
+		if synchronize and (responses.get(leave_counter) == Status.SUCCESS):
 			leave_counter += 1
 			continue
 
@@ -34,24 +34,21 @@ func tick(actor: Node, blackboard: Blackboard):
 		if response == Status.FAILURE:
 			responses.clear()
 			return Status.FAILURE
+		
+		if policy == ParallelPolicy.SUCCESS_ON_ONE:
+			if response == Status.SUCCESS:
+				responses.clear()
+				return Status.SUCCESS
 
-	# Apply selected policy.
-	match policy:
-		# If all children return SUCCESS, return SUCCESS.
-		ParallelPolicy.SUCCESS_ON_ALL:
-			for response in responses:
-				if response == Status.FAILURE:
-					responses.clear()
-					return Status.FAILURE
+	if policy == ParallelPolicy.SUCCESS_ON_ALL:
+		var index = 0
+		for response in responses.values():
+			if response != Status.SUCCESS:
+				return Status.RUNNING
 			
-			responses.clear()
-			return Status.SUCCESS
-		# If any child returns SUCCESS, return SUCCESS.
-		ParallelPolicy.SUCCESS_ON_ONE:
-			for response in responses:
-				if response == Status.SUCCESS:
-					responses.clear()
-					return Status.SUCCESS
-			
-			responses.clear()
-			return Status.FAILURE
+			index += 1
+		
+		responses.clear()
+		return Status.SUCCESS
+	
+	return Status.RUNNING
