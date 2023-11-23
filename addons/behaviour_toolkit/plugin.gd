@@ -2,6 +2,7 @@
 extends EditorPlugin
 
 
+var _editor_interface = get_editor_interface()
 var _undo_redo = get_undo_redo()
 
 
@@ -19,15 +20,17 @@ func _enter_tree():
 
     add_control_to_container(EditorPlugin.CONTAINER_CANVAS_EDITOR_SIDE_LEFT,_ui_canvas)
     _ui_canvas.visible = false
+    _ui_canvas.editor_interface = _editor_interface
     _ui_canvas.undo_redo = _undo_redo
     _ui_canvas.update_manager.start()
     add_control_to_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_SIDE_LEFT, _ui_spatial)
     _ui_spatial.visible = false
+    _ui_spatial.editor_interface = _editor_interface
     _ui_spatial.undo_redo = _undo_redo
     _ui_spatial.update_manager.start()
 
     # Connect editor signals 
-    get_editor_interface().get_selection().selection_changed.connect(_on_selection_changed)
+    _editor_interface.get_selection().selection_changed.connect(_on_selection_changed)
 
     # Add inspector plugin
     _inspector_plugin = _inspector_plugin.new()
@@ -48,7 +51,7 @@ func _exit_tree():
 func _on_selection_changed() -> void:
 
 	# Get current selection
-    var selection = get_editor_interface().get_selection().get_selected_nodes()
+    var selection = _editor_interface.get_selection().get_selected_nodes()
 
     if selection.size() == 0:
         _ui_canvas.visible = false
