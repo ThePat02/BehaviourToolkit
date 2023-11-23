@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=35 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://by4ymq46fp1ra" path="res://addons/behaviour_toolkit/icons/BTLeafCondition.svg" id="13_6h0vl"]
 [ext_resource type="Texture2D" uid="uid://ddx7a726xhria" path="res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg" id="13_gmc6x"]
 [ext_resource type="Texture2D" uid="uid://scoo4wxugwy7" path="res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg" id="13_ijr7d"]
+[ext_resource type="Texture2D" uid="uid://carjbhnt844yq" path="res://addons/behaviour_toolkit/icons/BTLeafSignal.svg" id="14_qw4e4"]
 [ext_resource type="Texture2D" uid="uid://vqncyulwi24v" path="res://addons/behaviour_toolkit/icons/EditorFiniteStateMachine.svg" id="25_xk13i"]
 [ext_resource type="Texture2D" uid="uid://dxbd2qqx12a52" path="res://addons/behaviour_toolkit/icons/EditorBTRoot.svg" id="26_v63gq"]
 
@@ -209,6 +210,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Call"
 icon = ExtResource("12_axgn0")
+
+[node name="ButtonSignal" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Signal"
+icon = ExtResource("14_qw4e4")
 
 [node name="ButtonTween" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
 unique_name_in_owner = true

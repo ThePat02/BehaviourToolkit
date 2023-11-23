@@ -182,10 +182,12 @@ Composites nodes are used to combine multiple leaves into a single node and eval
 ### ![BTLeaf Icon](../addons/behaviour_toolkit/icons/BTLeaf.svg) BTLeaf
 A leaf is where the actual behaviour logic is implemented. It is the base class for all leaves and can be extended to implement custom behaviour. The `tick(actor: Node, blackboard: Blackboard)` method is called every frame and should return a `Status`. There are a few example leaves that you can use out of the box:
 
-- Print
+- ![LeafPrint Icon](../addons/behaviour_toolkit/icons/BTLeafPrint.svg) Print
   - Prints a message to the console. Very handy for debugging.
-- Wait
+- ![LeafWait Icon](../addons/behaviour_toolkit/icons/BTLeafWait.svg) Wait
   - Waits for a given amount of ticks.
+- ![LeafSignal Icon](../addons/behaviour_toolkit/icons/BTLeafSignal.svg) Signal
+  - Emits a signal with optional arguments in an Array. Always returns a SUCCESS.
 
 A script template is also available to make it easier to extend the `BTLeaf` class.
 
