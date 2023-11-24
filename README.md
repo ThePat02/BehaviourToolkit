@@ -1,5 +1,5 @@
-# BehaviourToolkit for Godot 4
 ![Thumbnail](docs/thumbnail.svg)
+# BehaviourToolkit for Godot 4
 
 <p align="center">
 This plugin provides a set of tools to create custom and complex behaviour in the Godot 4.x Game Engine.
