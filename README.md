@@ -1,37 +1,14 @@
 ![Thumbnail](docs/thumbnail.svg)
 # BehaviourToolkit for Godot 4
-
-<p align="center">
 This plugin provides a set of tools to create custom and complex behaviour in the Godot 4.x Game Engine.
-</p>
-
-<p align="center">
-    <img src="addons/behaviour_toolkit/icons/FiniteStateMachine.svg">
-    <img src="addons/behaviour_toolkit/icons/FSMState.svg">
-    <img src="addons/behaviour_toolkit/icons/FSMTransition.svg">
-        <img src="addons/behaviour_toolkit/icons/Blackboard.svg">
-    <img src="addons/behaviour_toolkit/icons/BTRoot.svg">
-    <img src="addons/behaviour_toolkit/icons/BTComposite.svg">
-    <img src="addons/behaviour_toolkit/icons/BTCompositeSequence.svg">
-    <img src="addons/behaviour_toolkit/icons/BTCompositeSelector.svg">
-    <img src="addons/behaviour_toolkit/icons/BTCompositeRandom.svg">
-    <img src="addons/behaviour_toolkit/icons/BTCompositeRandomSequence.svg">
-    <img src="addons/behaviour_toolkit/icons/BTCompositeRandomSelector.svg">
-    <img src="addons/behaviour_toolkit/icons/BTLeaf.svg">
-    <img src="addons/behaviour_toolkit/icons/BTDecorator.svg">
-    <img src="addons/behaviour_toolkit/icons/BTDecoratorSucceed.svg">
-    <img src="addons/behaviour_toolkit/icons/BTDecoratorFail.svg">
-    <img src="addons/behaviour_toolkit/icons/BTDecoratorLimiter.svg">
-    <img src="addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg">
-</p>
 
 ### Features
 - ![GEAR ICON](addons/behaviour_toolkit/icons/Gear.svg) Behaviour Architectures
     - ![FMS ICON](addons/behaviour_toolkit/icons/FiniteStateMachine.svg) Finite State Machine
-    - ![BT ICON](addons/behaviour_toolkit/icons/BTRoot.svg) Behaviour Tree
+    - ![BT ICON](addons/behaviour_toolkit/icons/BTRoot.svg) Behaviour Tree with generic utility 
     - ![Integration Icon](addons/behaviour_toolkit/icons/BTCompositeIntegration.svg) Nest Behaviour Trees inside State Machines and vice versa!
 - ![BLACKBOARD ICON](addons/behaviour_toolkit/icons/Blackboard.svg) Blackboard Resource
-- Editor Interface
+- Editor Interface with shortcuts
 - [Templates](docs/documentation.md#using-script-templates) for easy extension and integration.
 - Example Scene
 
