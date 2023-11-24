@@ -60,17 +60,17 @@ func set_tween_value_type(value):
 var tween : Tween
 
 
-func tick(actor: Node, _blackboard: Blackboard) -> Status:
+func tick(actor: Node, _blackboard: Blackboard) -> BTStatus:
 	# Initialize tween, if not already initialized
 	_init_tween(actor)
 
 	if tween.is_running():
-		return Status.RUNNING
+		return BTStatus.RUNNING
 
 	# Invalidate tween instance
 	tween.kill()
 	tween = null
-	return Status.SUCCESS
+	return BTStatus.SUCCESS
 
 
 func _init_tween(actor: Node):

@@ -14,17 +14,17 @@ func tick(actor: Node, blackboard: Blackboard):
 	if current_leaf > leaves.size() -1:
 		current_leaf = 0
 		is_shuffled = false
-		return Status.FAILURE
+		return BTStatus.FAILURE
 	
 	var response = leaves[current_leaf].tick(actor, blackboard)
 
-	if response == Status.SUCCESS:
+	if response == BTStatus.SUCCESS:
 		current_leaf = 0
 		is_shuffled = false
 		return response
 	
-	if response == Status.RUNNING:
+	if response == BTStatus.RUNNING:
 		return response
 	
 	current_leaf += 1
-	return Status.RUNNING
+	return BTStatus.RUNNING

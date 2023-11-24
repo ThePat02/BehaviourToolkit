@@ -9,17 +9,17 @@ var current_leaf: int = 0
 func tick(actor: Node, blackboard: Blackboard):
 	if current_leaf > leaves.size() -1:
 		current_leaf = 0
-		return Status.SUCCESS
+		return BTStatus.SUCCESS
 
 	var response = leaves[current_leaf].tick(actor, blackboard)
 
-	if response == Status.RUNNING:
+	if response == BTStatus.RUNNING:
 		return response
 	
-	if response == Status.FAILURE:
+	if response == BTStatus.FAILURE:
 		current_leaf = 0
 		return response
 	
 	
 	current_leaf += 1
-	return Status.RUNNING
+	return BTStatus.RUNNING

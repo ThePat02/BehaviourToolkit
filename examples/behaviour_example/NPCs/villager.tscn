@@ -215,7 +215,7 @@ event = "fully_transformed"
 
 [node name="TryToRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
 script = ExtResource("13_rq5d2")
-fire_event_on_status = true
+fire_event_on_BTStatus = true
 event = "revive"
 
 [node name="RevivalBehaviour" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive"]
@@ -243,7 +243,7 @@ wait_for_ticks = 500
 [node name="FireEventFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector" node_paths=PackedStringArray("state_machine")]
 script = ExtResource("18_45wr7")
 event = "failed_revive"
-return_status = null
+return_BTStatus = null
 state_machine = NodePath("../../../..")
 
 [node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]

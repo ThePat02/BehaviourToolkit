@@ -5,14 +5,14 @@ class_name BTIntegratedFSM extends BTComposite
 @onready var state_machine: FiniteStateMachine = _get_machine()
 
 
-func tick(_actor: Node, _blackboard: Blackboard) -> Status:
+func tick(_actor: Node, _blackboard: Blackboard) -> BTStatus:
 	if state_machine.active == false:
 		state_machine.start()
 
-	if not state_machine.current_bt_status == Status.RUNNING:
+	if not state_machine.current_bt_BTStatus == BTStatus.RUNNING:
 		state_machine.active = false
 	
-	return state_machine.current_bt_status
+	return state_machine.current_bt_BTStatus
 
 
 func _get_machine() -> FiniteStateMachine:

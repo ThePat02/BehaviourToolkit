@@ -4,7 +4,7 @@ class_name BTLimiter extends BTDecorator
 
 
 @export var limit: int = 1
-@export var on_limit: Status = Status.FAILURE
+@export var on_limit: BTStatus = BTStatus.FAILURE
 
 
 @onready var cache_key = 'limiter_%s' % self.get_instance_id()
@@ -17,7 +17,7 @@ func tick(actor: Node, blackboard: Blackboard):
 	
 	if current_count < limit:
 		var response = leaf.tick(actor, blackboard)
-		if response == Status.RUNNING:
+		if response == BTStatus.RUNNING:
 			return response
 
 		blackboard.set_value(cache_key, current_count + 1)

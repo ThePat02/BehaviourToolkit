@@ -6,7 +6,7 @@ class_name BTAlwaysSucceed extends BTDecorator
 func tick(actor: Node, blackboard: Blackboard):
 	var response = leaf.tick(actor, blackboard)
 
-	if response == Status.RUNNING:
-		return Status.RUNNING
+	if response == BTStatus.RUNNING:
+		return BTStatus.RUNNING
 
-	return Status.SUCCESS
+	return BTStatus.SUCCESS

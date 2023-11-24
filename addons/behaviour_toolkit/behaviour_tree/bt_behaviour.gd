@@ -2,7 +2,7 @@
 class_name BTBehaviour extends BehaviourToolkit
 
 
-enum Status {
+enum BTStatus {
 	SUCCESS,
 	FAILURE,
 	RUNNING
