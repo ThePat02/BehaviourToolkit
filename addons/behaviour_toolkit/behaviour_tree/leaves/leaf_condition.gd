@@ -30,7 +30,7 @@ enum ConditionType {
 
 
 ## The property of the target node to query.
-@export var condition_property: String
+@export var condition_property: StringName
 ## The type of comparison to perform.
 @export var condition_type: ConditionType = ConditionType.EQUAL
 ## The type of the value to compare to.

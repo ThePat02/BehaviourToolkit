@@ -21,21 +21,20 @@ enum EmitTarget {
 signal leaf_emitted(arguments_array: Array)
 
 
+## The signal name to call on the target node.
+@export var signal_name: StringName
 ## Array of arguments emitted with the [code]leaf_emitted/code] signal.
 @export var arguments: Array = []
 
 @export_category("Target")
-
 ## The target type to emit signal. Can be the actor, a custom node
 ## or [LeafSignal] own signal `leaf_emitted` (When target type is `Self`).
 @export var target_type: EmitTarget = EmitTarget.SELF
-
 ## The custom node to call the method on. Only used if target_type
 ## is set toCallTarget.CUSTOM.
 @export var custom_target: Node
 
-## The signal name to call on the target node.
-@export var signal_name: StringName
+
 
 
 func tick(_actor: Node, _blackboard: Blackboard) -> Status:

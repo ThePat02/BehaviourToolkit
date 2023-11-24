@@ -13,7 +13,7 @@ enum CallTarget {
 
 
 ## The method to call on the target node.
-@export var method: String
+@export var method: StringName
 ## The arguments to pass to the method.
 @export var arguments: Array = []
 
