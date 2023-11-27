@@ -11,7 +11,7 @@ enum BTStatus {
 
 ## Executes after the state is entered.
 func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
-	get_parent().current_bt_BTStatus = return_value
+	get_parent().current_bt_status = return_value
 
 
 ## Executes every process call, if the state is active.

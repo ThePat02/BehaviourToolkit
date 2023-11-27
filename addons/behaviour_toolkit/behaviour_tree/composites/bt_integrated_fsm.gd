@@ -9,10 +9,10 @@ func tick(_actor: Node, _blackboard: Blackboard) -> BTStatus:
 	if state_machine.active == false:
 		state_machine.start()
 
-	if not state_machine.current_bt_BTStatus == BTStatus.RUNNING:
+	if not state_machine.current_status == BTStatus.RUNNING:
 		state_machine.active = false
 	
-	return state_machine.current_bt_BTStatus
+	return state_machine.current_status
 
 
 func _get_machine() -> FiniteStateMachine:
