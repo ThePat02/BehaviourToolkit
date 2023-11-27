@@ -29,11 +29,11 @@ Now you can implement your own behaviour logic using the virtual methods provide
 
 
 ## Documentation
-- [Documentation](docs/documentation.md)
-  -   [Finite State Machine](docs/documentation.md#finite-state-machine)
-  -   [Behaviour Tree](docs/documentation.md#behaviour-tree)
-  -   [Blackboard](docs/documentation.md#-blackboard)
-  -   [Nesting Behaviours inside Behaviours](docs/documentation.md#nesting-behaviours-inside-behaviours)
+- [Documentation](docs/DOCUMENTATION.md)
+  -   [Finite State Machine](docs/DOCUMENTATION.md#finite-state-machine)
+  -   [Behaviour Tree](docs/DOCUMENTATION.md#behaviour-tree)
+  -   [Blackboard](docs/DOCUMENTATION.md#-blackboard)
+  -   [Nesting Behaviours inside Behaviours](docs/DOCUMENTATION.md#nesting-behaviours-inside-behaviours)
   
 ![Screenshot](docs/screenshot-ui.PNG)
 
