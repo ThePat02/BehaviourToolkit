@@ -22,7 +22,7 @@ func tick(actor: Node, blackboard: Blackboard):
     
     var response = active_leave.tick(actor, blackboard)
     
-    if response == Status.RUNNING:
+    if response == BTStatus.RUNNING:
         return response
     
     active_leave = null

@@ -1,12 +1,12 @@
 @icon("res://addons/behaviour_toolkit/icons/FSMStateIntegrationReturn.svg")
 class_name FSMStateIntegrationReturn extends FSMState
 
-enum Status {
+enum BTStatus {
 	SUCCESS,
 	FAILURE
 }
 
-@export var return_value: Status = Status.SUCCESS
+@export var return_value: BTStatus = BTStatus.SUCCESS
 
 
 ## Executes after the state is entered.

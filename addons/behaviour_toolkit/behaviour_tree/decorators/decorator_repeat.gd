@@ -4,7 +4,7 @@ class_name BTRepeat extends BTDecorator
 
 
 @export var repetition: int = 1
-@export var on_limit: Status = Status.FAILURE
+@export var on_limit: BTStatus = BTStatus.FAILURE
 
 
 @onready var cache_key = 'repeat_%s' % self.get_instance_id()
@@ -18,13 +18,13 @@ func tick(actor: Node, blackboard: Blackboard):
 	if current_count <= repetition:
 		var response = leaf.tick(actor, blackboard)
 
-		if response == Status.RUNNING:
+		if response == BTStatus.RUNNING:
 			return response
 
-		if response == Status.SUCCESS:
+		if response == BTStatus.SUCCESS:
 			current_count += 1
 			blackboard.set_value(cache_key, current_count)
-			return Status.RUNNING
+			return BTStatus.RUNNING
 		else:
 			return response
 	else:

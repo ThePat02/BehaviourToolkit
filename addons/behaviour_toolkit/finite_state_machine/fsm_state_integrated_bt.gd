@@ -7,7 +7,7 @@ class_name FSMStateIntegratedBT extends FSMState
 
 
 @export var fire_event_on_status: bool = false
-@export var on_status: BTBehaviour.Status = BTBehaviour.Status.SUCCESS
+@export var on_status: BTBehaviour.BTStatus = BTBehaviour.BTStatus.SUCCESS
 @export var event: String
 
 

@@ -47,8 +47,8 @@ var states: Array[FSMState]
 var active_state: FSMState
 ## The list of current events.
 var current_events: Array[String]
-## Current BT Status
-var current_bt_status: BTLeaf.Status
+## Current BT BTStatus
+var current_bt_status: BTBehaviour.BTStatus
 
 
 func _ready() -> void:
@@ -69,7 +69,7 @@ func _ready() -> void:
 
 
 func start() -> void:
-	current_bt_status = BTLeaf.Status.RUNNING
+	current_bt_status = BTBehaviour.BTStatus.RUNNING
 	
 	# Check if the initial state is valid
 	assert(initial_state != null, ERROR_INITIAL_STATE_NULL)

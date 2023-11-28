@@ -13,6 +13,6 @@ func tick(actor: Node, blackboard: Blackboard):
         print("Hello World!")
     
     if success:
-        return Status.SUCCESS
+        return BTStatus.SUCCESS
     
-    return Status.FAILURE
+    return BTStatus.FAILURE

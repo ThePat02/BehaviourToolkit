@@ -25,7 +25,7 @@ enum ProcessType {
 
 
 var active: bool = false
-var current_status: BTBehaviour.Status
+var current_status: BTBehaviour.BTStatus
 
 
 @onready var entry_point = get_child(0)

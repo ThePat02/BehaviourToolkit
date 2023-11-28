@@ -11,7 +11,7 @@ var ticks: int = 0
 func tick(_actor: Node, _blackboard: Blackboard):
     if ticks < wait_for_ticks:
         ticks += 1
-        return Status.RUNNING
+        return BTStatus.RUNNING
     else:
         ticks = 0
-        return Status.SUCCESS
+        return BTStatus.SUCCESS

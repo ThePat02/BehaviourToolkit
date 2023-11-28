@@ -37,7 +37,7 @@ signal leaf_emitted(arguments_array: Array)
 
 
 
-func tick(_actor: Node, _blackboard: Blackboard) -> Status:
+func tick(_actor: Node, _blackboard: Blackboard) -> BTStatus:
 	var target: Node
 	
 	match target_type:
@@ -47,13 +47,13 @@ func tick(_actor: Node, _blackboard: Blackboard) -> Status:
 			target = custom_target
 		EmitTarget.SELF:
 			emit_signal("leaf_emitted", arguments)
-			return Status.SUCCESS
+			return BTStatus.SUCCESS
 	
 	if target.has_signal(signal_name):
 		target.emit_signal(signal_name, arguments)
 	else:
 		print("Signal " + signal_name + " not found on target " + target.to_string())
-		return Status.FAILURE
+		return BTStatus.FAILURE
 
-	return Status.SUCCESS
+	return BTStatus.SUCCESS
 
