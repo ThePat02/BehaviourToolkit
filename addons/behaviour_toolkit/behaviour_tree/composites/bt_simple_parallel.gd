@@ -18,6 +18,11 @@ enum ParallelPolicy {
 @onready var responses: Dictionary = {}
 
 
+func _ready() -> void:
+	# Important to add when extending BTComposite!
+	super()
+
+
 func tick(actor: Node, blackboard: Blackboard):
 	var leave_counter = 0
 	for leave in leaves:

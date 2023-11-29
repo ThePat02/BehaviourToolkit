@@ -6,6 +6,11 @@ class_name BTSequence extends BTComposite
 var current_leaf: int = 0
 
 
+func _ready() -> void:
+	# Important to add when extending BTComposite!
+	super()
+
+
 func tick(actor: Node, blackboard: Blackboard):
 	if current_leaf > leaves.size() -1:
 		current_leaf = 0
