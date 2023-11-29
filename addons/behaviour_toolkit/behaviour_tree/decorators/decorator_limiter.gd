@@ -10,13 +10,13 @@ class_name BTLimiter extends BTDecorator
 @onready var cache_key = 'limiter_%s' % self.get_instance_id()
 
 
-func tick(actor: Node, blackboard: Blackboard):
+func tick(delta: float, actor: Node, blackboard: Blackboard):
 	var current_count = blackboard.get_value(cache_key)
 	if current_count == null:
 		current_count = 0
 	
 	if current_count < limit:
-		var response = leaf.tick(actor, blackboard)
+		var response = leaf.tick(delta, actor, blackboard)
 		if response == BTStatus.RUNNING:
 			return response
 

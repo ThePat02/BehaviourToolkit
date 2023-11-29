@@ -18,7 +18,7 @@ enum ParallelPolicy {
 @onready var responses: Dictionary = {}
 
 
-func tick(actor: Node, blackboard: Blackboard):
+func tick(delta: float, actor: Node, blackboard: Blackboard):
 	var leave_counter = 0
 	for leave in leaves:
 		# If the Parrallel is synchronized, skip leaves that have already returned SUCCESS.
@@ -26,7 +26,7 @@ func tick(actor: Node, blackboard: Blackboard):
 			leave_counter += 1
 			continue
 
-		var response = leave.tick(actor, blackboard)
+		var response = leave.tick(delta, actor, blackboard)
 		responses[leave_counter] = response
 		leave_counter += 1
 

@@ -24,7 +24,7 @@ enum CallTarget {
 @export var custom_target: Node
 
 
-func tick(actor: Node, blackboard: Blackboard):
+func tick(delta: float, actor: Node, blackboard: Blackboard):
     var target
 
     match target_type:

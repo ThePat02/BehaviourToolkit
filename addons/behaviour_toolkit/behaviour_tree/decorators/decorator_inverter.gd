@@ -3,13 +3,13 @@ class_name BTInverter extends BTDecorator
 ## The result of the leaf is inverted.
 
 
-func tick(actor: Node, blackboard: Blackboard):
-    var response = leaf.tick(actor, blackboard)
+func tick(delta: float, actor: Node, blackboard: Blackboard):
+	var response = leaf.tick(delta, actor, blackboard)
 
-    if response == BTStatus.SUCCESS:
-        return BTStatus.FAILURE
-    
-    if response == BTStatus.FAILURE:
-        return BTStatus.SUCCESS
+	if response == BTStatus.SUCCESS:
+		return BTStatus.FAILURE
+	
+	if response == BTStatus.FAILURE:
+		return BTStatus.SUCCESS
 
-    return BTStatus.RUNNING
+	return BTStatus.RUNNING

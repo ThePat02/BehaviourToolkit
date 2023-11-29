@@ -7,7 +7,7 @@ var is_shuffled: bool = false
 var current_leaf: int = 0
 
 
-func tick(actor: Node, blackboard: Blackboard):
+func tick(delta: float, actor: Node, blackboard: Blackboard):
 	if not is_shuffled:
 		leaves.shuffle()
 
@@ -16,7 +16,7 @@ func tick(actor: Node, blackboard: Blackboard):
 		is_shuffled = false
 		return BTStatus.FAILURE
 	
-	var response = leaves[current_leaf].tick(actor, blackboard)
+	var response = leaves[current_leaf].tick(delta, actor, blackboard)
 
 	if response == BTStatus.SUCCESS:
 		current_leaf = 0

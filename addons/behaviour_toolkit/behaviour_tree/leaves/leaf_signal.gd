@@ -37,7 +37,7 @@ signal leaf_emitted(arguments_array: Array)
 
 
 
-func tick(_actor: Node, _blackboard: Blackboard) -> BTStatus:
+func tick(_delta: float, _actor: Node, _blackboard: Blackboard) -> BTStatus:
 	var target: Node
 	
 	match target_type:
