@@ -3,10 +3,10 @@ class_name BTAlwaysFail extends BTDecorator
 ## The leaf will always fail after running.
 
 
-func tick(actor: Node, blackboard: Blackboard):
-    var response = leaf.tick(actor, blackboard)
+func tick(delta: float, actor: Node, blackboard: Blackboard):
+	var response = leaf.tick(delta, actor, blackboard)
 
-    if response ==  BTStatus.RUNNING:
-        return BTStatus.RUNNING
+	if response ==  BTStatus.RUNNING:
+		return BTStatus.RUNNING
 
-    return BTStatus.FAILURE
+	return BTStatus.FAILURE

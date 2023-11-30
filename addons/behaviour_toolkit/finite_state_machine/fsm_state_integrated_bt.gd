@@ -17,7 +17,7 @@ func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 
 
 ## Executes every process call, if the state is active.
-func _on_update(_actor: Node, _blackboard: Blackboard) -> void:
+func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
 	if behaviour_tree.current_status == on_status:
 		if fire_event_on_status:
 			get_parent().fire_event(event)
