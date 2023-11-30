@@ -1,3 +1,4 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/FiniteStateMachine.svg")
 class_name FiniteStateMachine extends BehaviourToolkit
 ## An implementation of a simple finite state machine.
@@ -33,8 +34,10 @@ signal state_changed(state: FSMState)
 ## Whether the FSM is active or not.
 @export var active: bool = true
 ## The initial state of the FSM.
-@export var initial_state: FSMState
-
+@export var initial_state: FSMState:
+	set(value):
+		initial_state = value
+		update_configuration_warnings()
 ## The actor of the FSM.
 @export var actor: Node
 ## The blackboard of the FSM.
@@ -52,6 +55,12 @@ var current_bt_status: BTBehaviour.BTStatus
 
 
 func _ready() -> void:
+	# Don't run in editor
+	if Engine.is_editor_hint():
+		set_physics_process(false)
+		set_process(false)
+		return
+
 	connect("state_changed", _on_state_changed)
 
 	if blackboard == null:
@@ -163,3 +172,21 @@ func _setup_processing() -> void:
 
 func _on_state_changed(state: FSMState) -> void:
 	pass
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: Array = []
+
+	if not initial_state:
+		warnings.append("Initial state is not set.")
+	
+	var children: Array = get_children()
+
+	if children.size() == 0:
+		warnings.append("No states found.")
+
+	for child in children:
+		if not child is FSMState:
+			warnings.append("Node '" + child.get_name() + "' is not a FSMState.")
+
+	return warnings
