@@ -48,7 +48,7 @@ func _get_behaviour_tree() -> BTRoot:
 
 	return null
 
-func _get_configuration_warnings() -> PackedStringArray:
+func _get_configuration_warnings():
 	var warnings: Array = []
 
 	warnings.append_array(super._get_configuration_warnings())
