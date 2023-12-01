@@ -24,7 +24,7 @@ func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
 	pass
 
 
-func _get_configuration_warnings() -> PackedStringArray:
+func _get_configuration_warnings():
 	var warnings: Array = []
 
 	warnings.append_array(super._get_configuration_warnings())
