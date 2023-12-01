@@ -15,14 +15,12 @@ class_name FSMState extends BehaviourToolkit
 var transitions: Array[FSMTransition] = []
 
 
-func _ready() -> void:
-	# Don't run in editor
-	if Engine.is_editor_hint():
-		return
-
-	for transition in get_children():
-		if transition is FSMTransition:
-			transitions.append(transition)
+# Connecting signal using @onready to omit the need to use super() call
+# in _ready() of extended nodes if they override _ready().
+@onready var __connect_update_transitions: int = \
+	child_order_changed.connect(_update_transitions)
+@onready var __connect_update_transition_on_ready: int = \
+	ready.connect(_update_transitions)
 
 
 ## Executes after the state is entered.
@@ -40,11 +38,22 @@ func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
 	pass
 
 
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings: Array = []
+func _update_transitions() -> void:
+	# Don't run in editor
+	if Engine.is_editor_hint():
+		return
+		
+	transitions.clear()
+	for transition in get_children():
+		if transition is FSMTransition:
+			transitions.append(transition)
+
+
+func _get_configuration_warnings():
+	var warnings = []
 
 	var parent: Node = get_parent()
 	if not parent is FiniteStateMachine:
-		warnings.append("FSMState should be a child of a FiniteStateMachine node.")
+		warnings.append("FSMState must be a child of a FiniteStateMachine node.")
 
 	return warnings
