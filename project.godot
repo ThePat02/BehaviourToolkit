@@ -19,6 +19,17 @@ config/icon="res://addons/behaviour_toolkit/icons/Logo.png"
 
 enabled=PackedStringArray("res://addons/behaviour_toolkit/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://addons/behaviour_toolkit/": "orange",
+"res://addons/behaviour_toolkit/icons/": "purple",
+"res://addons/behaviour_toolkit/ui/": "green",
+"res://docs/": "blue",
+"res://examples/": "pink",
+"res://script_templates/": "green"
+}
+
 [filesystem]
 
 import/blender/enabled=false
