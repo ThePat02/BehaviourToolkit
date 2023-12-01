@@ -12,12 +12,23 @@ config_version=5
 
 config/name="BehaviourToolkit"
 run/main_scene="res://examples/behaviour_example/behaviour_example.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://addons/behaviour_toolkit/icons/Logo.png"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/behaviour_toolkit/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/behaviour_toolkit/": "orange",
+"res://addons/behaviour_toolkit/icons/": "purple",
+"res://addons/behaviour_toolkit/ui/": "green",
+"res://docs/": "blue",
+"res://examples/": "pink",
+"res://script_templates/": "green"
+}
 
 [filesystem]
 
