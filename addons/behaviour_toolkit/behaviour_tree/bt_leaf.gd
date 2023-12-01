@@ -1,6 +1,8 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/BTLeaf.svg")
 class_name BTLeaf extends BTBehaviour
+## Basic Leaf node used as a base to model and write custom behaviours for
+## [BTRoot]
 
 
 func tick(_delta: float, _actor: Node, _blackboard: Blackboard) -> BTStatus:
@@ -15,8 +17,5 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 	if not parent is BTBehaviour and not parent is BTRoot:
 		warnings.append("BTLeaf node must be a child of BTBehaviour or BTRoot node.")
-	
-	if children.size() > 0:
-		warnings.append("BTLeaf node must not have any children.")
 
 	return warnings
