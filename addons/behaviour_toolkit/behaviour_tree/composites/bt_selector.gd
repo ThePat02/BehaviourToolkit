@@ -1,3 +1,4 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/BTCompositeSelector.svg")
 class_name BTSelector extends BTComposite
 ## Selects the first child that succeeds, or fails if none do.
