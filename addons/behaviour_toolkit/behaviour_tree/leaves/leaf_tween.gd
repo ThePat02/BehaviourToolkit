@@ -10,8 +10,13 @@ enum TweenValueType {
 	FLOAT, ## Float value type.
 	VECTOR2, ## Vector2 value type.
 	VECTOR3, ## Vector3 value type.
-	COLOR ## Color value type.
+	COLOR, ## Color value type.
+	CUSTOM_SCRIPT, ## Custom script that returns a value.
 }
+
+
+## The default custom script template.
+const DEFAULT_CUSTOM_SCRIPT = "# Custom Tween Value\nstatic func get_tween_value(_actor: Node, _blackboard: Blackboard) -> Variant:\n\t# Compute your custom logic here\n\treturn 0\n"
 
 
 ## The transition type of the tween.
@@ -35,6 +40,17 @@ enum TweenValueType {
 @export var tween_value_vector3: Vector3
 ## The color value to tween to.
 @export var tween_value_color: Color
+## The custom script to use for the tween value.
+@export var tween_value_custom_script: Script:
+	set(value):
+		if value == null:
+			tween_value_custom_script = null
+			return
+		
+		if not value.has_source_code():
+			value.source_code = DEFAULT_CUSTOM_SCRIPT
+		
+		tween_value_custom_script = value
 
 @export_group("Advanced")
 ## If true, the tween will be relative to the node's current value.
@@ -60,9 +76,9 @@ func set_tween_value_type(value):
 var tween : Tween
 
 
-func tick(delta: float, actor: Node, _blackboard: Blackboard) -> BTStatus:
+func tick(_delta: float, actor: Node, _blackboard: Blackboard) -> BTStatus:
 	# Initialize tween, if not already initialized
-	_init_tween(actor)
+	_init_tween(actor, blackboard)
 
 	if tween.is_running():
 		return BTStatus.RUNNING
@@ -73,7 +89,7 @@ func tick(delta: float, actor: Node, _blackboard: Blackboard) -> BTStatus:
 	return BTStatus.SUCCESS
 
 
-func _init_tween(actor: Node):
+func _init_tween(actor: Node, blackboard: Blackboard):
 	if tween == null:
 		# Create new tween instance
 		tween = get_tree().create_tween().bind_node(actor)
@@ -99,6 +115,8 @@ func _init_tween(actor: Node):
 				tween_value = tween_value_vector3
 			TweenValueType.COLOR:
 				tween_value = tween_value_color
+			TweenValueType.CUSTOM_SCRIPT:
+				tween_value = tween_value_custom_script.get_tween_value(actor, blackboard)
 
 		# Start tween
 		if as_relative:

@@ -23,6 +23,9 @@ func _parse_property(object, type, name, hint_type, hint_string, usage_flags, wi
 		
 		if name == "tween_value_color":
 			return not tween_value_type == LeafTween.TweenValueType.COLOR
+		
+		if name == "tween_value_custom_script":
+			return not tween_value_type == LeafTween.TweenValueType.CUSTOM_SCRIPT
 	
 	# Leaf Condition
 	if object is LeafCondition:
