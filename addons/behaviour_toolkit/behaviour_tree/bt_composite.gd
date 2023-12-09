@@ -13,7 +13,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 	var parent = get_parent()
 	var children = get_children()
 
-	if not parent is BTComposite and not parent is BTRoot:
+	if not parent is BTComposite and not parent is BTRoot and not parent is BTDecorator:
 		warnings.append("BTComposite node must be a child of BTComposite or BTRoot node.")
 	
 	if children.size() == 0:
