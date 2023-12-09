@@ -76,7 +76,7 @@ func set_tween_value_type(value):
 var tween : Tween
 
 
-func tick(_delta: float, actor: Node, _blackboard: Blackboard) -> BTStatus:
+func tick(_delta: float, actor: Node, blackboard: Blackboard) -> BTStatus:
 	# Initialize tween, if not already initialized
 	_init_tween(actor, blackboard)
 
