@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://rwa0wwd6ly1p"]
+
+[ext_resource type="Script" path="res://examples/fsm_character_controller/MrBlacksmith.gd" id="1_wkmei"]
+[ext_resource type="Texture2D" uid="uid://cp4n4mks4l6t4" path="res://examples/assets/actors/tiny_blacksmith.png" id="2_e64qd"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="3_psqpj"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state.gd" id="4_i8sms"]
+[ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStartMoving.gd" id="5_jyefn"]
+[ext_resource type="Script" path="res://examples/fsm_character_controller/states/MOVING.gd" id="6_1b351"]
+[ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStopMoving.gd" id="6_udvq6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4o76h"]
+radius = 8.0
+
+[node name="FSMCharacterController" type="Node2D"]
+texture_filter = 1
+
+[node name="MrBlacksmith" type="CharacterBody2D" parent="."]
+script = ExtResource("1_wkmei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MrBlacksmith"]
+shape = SubResource("CircleShape2D_4o76h")
+
+[node name="Sprite2D" type="Sprite2D" parent="MrBlacksmith"]
+texture = ExtResource("2_e64qd")
+
+[node name="FSMController" type="Node" parent="MrBlacksmith" node_paths=PackedStringArray("initial_state", "actor")]
+script = ExtResource("3_psqpj")
+autostart = true
+initial_state = NodePath("IDLE")
+actor = NodePath("..")
+
+[node name="IDLE" type="Node" parent="MrBlacksmith/FSMController"]
+script = ExtResource("4_i8sms")
+
+[node name="onStartMoving" type="Node" parent="MrBlacksmith/FSMController/IDLE" node_paths=PackedStringArray("next_state")]
+script = ExtResource("5_jyefn")
+next_state = NodePath("../../MOVING")
+
+[node name="MOVING" type="Node" parent="MrBlacksmith/FSMController"]
+script = ExtResource("6_1b351")
+
+[node name="onStopMoving" type="Node" parent="MrBlacksmith/FSMController/MOVING" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_udvq6")
+next_state = NodePath("../../IDLE")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
