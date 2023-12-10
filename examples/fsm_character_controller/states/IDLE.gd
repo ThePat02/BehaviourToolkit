@@ -3,6 +3,9 @@ extends FSMState
 
 # Executes after the state is entered.
 func _on_enter(actor, _blackboard: Blackboard):
+	# Cast actor
+	actor = actor as CharacterBody2D
+
 	actor.animation_player.play("idle")
 
 
