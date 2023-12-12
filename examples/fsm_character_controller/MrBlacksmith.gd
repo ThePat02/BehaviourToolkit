@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED := 100.0
+const SPRINT_MULTIPLIER := 1.7
 
 
 var movement_direction := Vector2.ZERO

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cphaljkgsj3dl"]
+[gd_scene load_steps=19 format=3 uid="uid://cphaljkgsj3dl"]
 
 [ext_resource type="Script" path="res://examples/fsm_character_controller/MrBlacksmith.gd" id="1_o56o3"]
 [ext_resource type="Texture2D" uid="uid://cp4n4mks4l6t4" path="res://examples/assets/actors/tiny_blacksmith.png" id="2_qa7vs"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStartMoving.gd" id="5_tacxr"]
 [ext_resource type="Script" path="res://examples/fsm_character_controller/states/MOVING.gd" id="6_xf37u"]
 [ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStopMoving.gd" id="7_tyq7y"]
+[ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStartSprinting.gd" id="8_diwgw"]
+[ext_resource type="Script" path="res://examples/fsm_character_controller/states/SPRINTING.gd" id="9_dcfr7"]
+[ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStopSprinting.gd" id="10_did35"]
 
 [sub_resource type="Animation" id="Animation_c3jgb"]
 length = 0.001
@@ -124,3 +127,14 @@ script = ExtResource("6_xf37u")
 [node name="onStopMoving" type="Node" parent="FSMController/MOVING" node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_tyq7y")
 next_state = NodePath("../../IDLE")
+
+[node name="onStartSprinting" type="Node" parent="FSMController/MOVING" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_diwgw")
+next_state = NodePath("../../SPRINTING")
+
+[node name="SPRINTING" type="Node" parent="FSMController"]
+script = ExtResource("9_dcfr7")
+
+[node name="onStopSprinting" type="Node" parent="FSMController/SPRINTING" node_paths=PackedStringArray("next_state")]
+script = ExtResource("10_did35")
+next_state = NodePath("../../MOVING")

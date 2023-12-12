@@ -1,11 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://rwa0wwd6ly1p"]
+[gd_scene load_steps=5 format=3 uid="uid://rwa0wwd6ly1p"]
 
 [ext_resource type="TileSet" uid="uid://dtkgrk566xb21" path="res://examples/assets/tileset.tres" id="1_21cfp"]
 [ext_resource type="PackedScene" uid="uid://cphaljkgsj3dl" path="res://examples/fsm_character_controller/mr_blacksmith.tscn" id="2_a1fe5"]
 [ext_resource type="PackedScene" uid="uid://ds1mew31yiyj" path="res://examples/fsm_character_controller/crab.tscn" id="3_0c8cf"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_855cg"]
+
 [node name="FSMCharacterController" type="Node2D"]
 texture_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+text = "Move with [WASD].
+Press [SHIFT] to sprint."
+label_settings = SubResource("LabelSettings_855cg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
