@@ -1,3 +1,4 @@
+@tool
 extends FSMTransition
 
 # Executed when the transition is taken.
