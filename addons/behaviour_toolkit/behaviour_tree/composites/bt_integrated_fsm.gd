@@ -39,8 +39,7 @@ var _default_status: BTStatus = BTStatus.FAILURE
 
 # Connecting signal using @onready to omit the need to use super() call
 # in _ready() of extended nodes if they override _ready().
-@onready var __connect_finite_state_machine_changed: int = \
-	child_order_changed.connect(_finite_state_machine_changed)
+@onready var __connect_finite_state_machine_changed: int = child_order_changed.connect(_finite_state_machine_changed)
 
 @onready var state_machine: FiniteStateMachine = _get_machine()
 

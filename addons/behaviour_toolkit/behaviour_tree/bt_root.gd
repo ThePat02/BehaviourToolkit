@@ -44,8 +44,7 @@ var current_status: BTBehaviour.BTStatus
 
 # Connecting signal using @onready to omit the need to use super() call
 # in _ready() of extended nodes if they override _ready().
-@onready var __connect_child_order_changed: int = \
-	child_order_changed.connect(_on_child_order_changed)
+@onready var __connect_child_order_changed: int = child_order_changed.connect(_on_child_order_changed)
 
 @onready var entry_point: BTBehaviour = get_entry_point()
 
