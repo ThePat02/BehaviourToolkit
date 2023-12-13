@@ -15,3 +15,15 @@ func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
 # Executes before the state is exited.
 func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
 	pass
+
+
+# Add custom configuration warnings
+# Note: Can be deleted if you don't want to define your own warnings.
+func _get_configuration_warnings():
+	var warnings: Array = []
+
+	warnings.append_array(super._get_configuration_warnings())
+
+	# Add your own warnings to the array here
+
+	return warnings
