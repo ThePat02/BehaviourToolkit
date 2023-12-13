@@ -1,3 +1,4 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/BTCompositeRandomSequence.svg")
 class_name BTRandomSequence extends BTComposite
 ## The squence composite but with a random order of the leaves.

@@ -1,3 +1,4 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/BTDecoratorSucceed.svg")
 class_name BTAlwaysSucceed extends BTDecorator
 ## The leaf will always succeed after running.

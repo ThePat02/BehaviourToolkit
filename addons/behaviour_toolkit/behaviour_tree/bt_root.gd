@@ -1,3 +1,4 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/BTRoot.svg")
 class_name BTRoot extends BehaviourToolkit
 ## Node used as a base parent (root) of a Behaviour Tree
@@ -32,6 +33,12 @@ var current_status: BTBehaviour.BTStatus
 
 
 func _ready() -> void:
+	# Don't run in editor
+	if Engine.is_editor_hint():
+		set_physics_process(false)
+		set_process(false)
+		return
+	
 	if blackboard == null:
 		blackboard = _create_local_blackboard()
 
@@ -68,3 +75,19 @@ func _create_local_blackboard() -> Blackboard:
 func _setup_processing() -> void:
 	set_physics_process(process_type == ProcessType.PHYSICS)
 	set_process(process_type == ProcessType.IDLE)
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: Array = []
+	
+	var children = get_children()
+
+	if children.size() == 0:
+		warnings.append("Behaviour Tree needs to have one Behaviour child.")
+	elif children.size() == 1:
+		if not children[0] is BTBehaviour:
+			warnings.append("The child of Behaviour Tree needs to be a Behaviour.")
+	elif children.size() > 1:
+		warnings.append("Behaviour Tree can have only one Behaviour child.")
+
+	return warnings

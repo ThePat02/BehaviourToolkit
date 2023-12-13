@@ -22,3 +22,16 @@ func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
 ## Executes before the state is exited.
 func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
 	pass
+
+
+func _get_configuration_warnings():
+	var warnings: Array = []
+
+	warnings.append_array(super._get_configuration_warnings())
+
+	var fsm_parent: Node = get_parent().get_parent()
+
+	if not fsm_parent is BTIntegratedFSM:
+		warnings.append("Can only return from a BTIntegratedFSM.")
+
+	return warnings

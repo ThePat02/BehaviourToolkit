@@ -1,3 +1,4 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/BTDecoratorLimiter.svg")
 class_name BTLimiter extends BTDecorator
 ## Limits the number of times a leaf can be run. (The leaf will fully run, before triggering the limit.)

@@ -1,3 +1,4 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/FSMState.svg")
 class_name FSMState extends BehaviourToolkit
 ## A state in a [FiniteStateMachine].
@@ -8,6 +9,10 @@ var transitions: Array[FSMTransition] = []
 
 
 func _ready() -> void:
+	# Don't run in editor
+	if Engine.is_editor_hint():
+		return
+
 	for transition in get_children():
 		if transition is FSMTransition:
 			transitions.append(transition)
@@ -26,3 +31,13 @@ func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
 ## Executes before the state is exited.
 func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
 	pass
+
+
+func _get_configuration_warnings():
+	var warnings = []
+
+	var parent: Node = get_parent()
+	if not parent is FiniteStateMachine:
+		warnings.append("FSMState should be a child of a FiniteStateMachine node.")
+
+	return warnings
