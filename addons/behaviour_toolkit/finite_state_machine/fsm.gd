@@ -69,8 +69,7 @@ var current_bt_status: BTBehaviour.BTStatus
 
 # Connecting signal using @onready to omit the need to use super() call
 # in _ready() of extended nodes if they override _ready().
-@onready var __connect_child_order_changed: int = \
-	child_order_changed.connect(_update_states_list)
+@onready var __connect_child_order_changed: int = child_order_changed.connect(_update_states_list)
 
 
 func _validate_property(property: Dictionary) -> void:

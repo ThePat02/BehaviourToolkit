@@ -10,10 +10,8 @@ var transitions: Array[FSMTransition] = []
 
 # Connecting signal using @onready to omit the need to use super() call
 # in _ready() of extended nodes if they override _ready().
-@onready var __connect_update_transitions: int = \
-	child_order_changed.connect(_update_transitions)
-@onready var __connect_update_transition_on_ready: int = \
-	ready.connect(_update_transitions)
+@onready var __connect_update_transitions: int = child_order_changed.connect(_update_transitions)
+@onready var __connect_update_transition_on_ready: int = ready.connect(_update_transitions)
 
 
 ## Executes after the state is entered.
