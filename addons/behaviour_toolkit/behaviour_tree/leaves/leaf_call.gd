@@ -24,7 +24,7 @@ enum CallTarget {
 @export var custom_target: Node
 
 
-func tick(actor: Node, blackboard: Blackboard):
+func tick(delta: float, actor: Node, blackboard: Blackboard):
     var target
 
     match target_type:
@@ -39,6 +39,6 @@ func tick(actor: Node, blackboard: Blackboard):
         target.callv(method, arguments)
     else:
         print("Method " + method + " not found on target " + target.to_string())
-        return Status.FAILURE
+        return BTStatus.FAILURE
 
-    return Status.SUCCESS
+    return BTStatus.SUCCESS

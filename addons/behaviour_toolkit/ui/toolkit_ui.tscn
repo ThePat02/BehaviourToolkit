@@ -1,5 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://o16emp4t4wb1"]
-
+[gd_scene load_steps=38 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]

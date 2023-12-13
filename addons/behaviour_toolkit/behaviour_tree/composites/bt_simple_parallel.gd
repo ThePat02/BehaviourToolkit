@@ -18,37 +18,37 @@ enum ParallelPolicy {
 @onready var responses: Dictionary = {}
 
 
-func tick(actor: Node, blackboard: Blackboard):
+func tick(delta: float, actor: Node, blackboard: Blackboard):
 	var leave_counter = 0
 	for leave in leaves:
 		# If the Parrallel is synchronized, skip leaves that have already returned SUCCESS.
-		if synchronize and (responses.get(leave_counter) == Status.SUCCESS):
+		if synchronize and (responses.get(leave_counter) == BTStatus.SUCCESS):
 			leave_counter += 1
 			continue
 
-		var response = leave.tick(actor, blackboard)
+		var response = leave.tick(delta, actor, blackboard)
 		responses[leave_counter] = response
 		leave_counter += 1
 
 		# Abort if any child returns FAILURE.
-		if response == Status.FAILURE:
+		if response == BTStatus.FAILURE:
 			responses.clear()
-			return Status.FAILURE
+			return BTStatus.FAILURE
 		
 		if policy == ParallelPolicy.SUCCESS_ON_ONE:
-			if response == Status.SUCCESS:
+			if response == BTStatus.SUCCESS:
 				responses.clear()
-				return Status.SUCCESS
+				return BTStatus.SUCCESS
 
 	if policy == ParallelPolicy.SUCCESS_ON_ALL:
 		var index = 0
 		for response in responses.values():
-			if response != Status.SUCCESS:
-				return Status.RUNNING
+			if response != BTStatus.SUCCESS:
+				return BTStatus.RUNNING
 			
 			index += 1
 		
 		responses.clear()
-		return Status.SUCCESS
+		return BTStatus.SUCCESS
 	
-	return Status.RUNNING
+	return BTStatus.RUNNING

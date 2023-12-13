@@ -47,8 +47,8 @@ var states: Array[FSMState]
 var active_state: FSMState
 ## The list of current events.
 var current_events: Array[String]
-## Current BT Status
-var current_bt_status: BTLeaf.Status
+## Current BT BTStatus
+var current_bt_status: BTBehaviour.BTStatus
 
 
 func _ready() -> void:
@@ -69,7 +69,7 @@ func _ready() -> void:
 
 
 func start() -> void:
-	current_bt_status = BTLeaf.Status.RUNNING
+	current_bt_status = BTBehaviour.BTStatus.RUNNING
 	
 	# Check if the initial state is valid
 	assert(initial_state != null, ERROR_INITIAL_STATE_NULL)
@@ -105,9 +105,6 @@ func _process_code(delta: float) -> void:
 	if states.size() == 0:
 		return
 
-	# Set the delta time
-	blackboard.set_value("delta", delta)
-	
 	# The current event
 	var event: String = ""
 
@@ -122,7 +119,7 @@ func _process_code(delta: float) -> void:
 	for transition in active_state.transitions:
 		if transition.is_valid(actor, blackboard) or transition.is_valid_event(event):
 			# Process the transition
-			transition._on_transition(actor, blackboard)
+			transition._on_transition(delta, actor, blackboard)
 			
 			# Change the current state
 			change_state(transition.get_next_state())
@@ -130,7 +127,7 @@ func _process_code(delta: float) -> void:
 			break
 	
 	# Process the current state
-	active_state._on_update(actor, blackboard)
+	active_state._on_update(delta, actor, blackboard)
 
 
 ## Changes the current state and calls the appropriate methods like _on_exit and _on_enter.

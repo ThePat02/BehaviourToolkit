@@ -54,7 +54,7 @@ enum ConditionType {
 @export var custom_target: Node
 
 
-func tick(actor: Node, _blackboard: Blackboard):
+func tick(delta: float, actor: Node, _blackboard: Blackboard):
     var target: Node
     match target_type:
         ConditionTarget.ACTOR:
@@ -76,7 +76,7 @@ func tick(actor: Node, _blackboard: Blackboard):
     var property_value = target.get(condition_property)
 
     if property_value == null:
-        return Status.FAILURE
+        return BTStatus.FAILURE
     
     var result: bool
     match condition_type:
@@ -94,6 +94,6 @@ func tick(actor: Node, _blackboard: Blackboard):
             result = property_value <= value
     
     if not result:
-        return Status.FAILURE
+        return BTStatus.FAILURE
 
-    return Status.SUCCESS
+    return BTStatus.SUCCESS

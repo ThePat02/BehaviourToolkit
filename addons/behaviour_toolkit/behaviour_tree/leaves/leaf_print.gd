@@ -6,13 +6,13 @@ class_name LeafPrint extends BTLeaf
 @export var success: bool = true
 
 
-func tick(actor: Node, blackboard: Blackboard):
-    if custom_text != "":
-        print(custom_text)
-    else:
-        print("Hello World!")
-    
-    if success:
-        return Status.SUCCESS
-    
-    return Status.FAILURE
+func tick(delta: float, actor: Node, blackboard: Blackboard):
+	if custom_text != "":
+		print(custom_text)
+	else:
+		print("Hello World!")
+	
+	if success:
+		return BTStatus.SUCCESS
+	
+	return BTStatus.FAILURE

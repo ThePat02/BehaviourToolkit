@@ -1,12 +1,12 @@
 @icon("res://addons/behaviour_toolkit/icons/FSMStateIntegrationReturn.svg")
 class_name FSMStateIntegrationReturn extends FSMState
 
-enum Status {
+enum BTStatus {
 	SUCCESS,
 	FAILURE
 }
 
-@export var return_value: Status = Status.SUCCESS
+@export var return_value: BTStatus = BTStatus.SUCCESS
 
 
 ## Executes after the state is entered.
@@ -15,7 +15,7 @@ func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 
 
 ## Executes every process call, if the state is active.
-func _on_update(_actor: Node, _blackboard: Blackboard) -> void:
+func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
 	pass
 
 

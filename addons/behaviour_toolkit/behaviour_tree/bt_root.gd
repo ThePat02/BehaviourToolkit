@@ -25,7 +25,7 @@ enum ProcessType {
 
 
 var active: bool = false
-var current_status: BTBehaviour.Status
+var current_status: BTBehaviour.BTStatus
 
 
 @onready var entry_point = get_child(0)
@@ -56,8 +56,7 @@ func _process_code(delta: float) -> void:
 	if not active:
 		return
 	
-	blackboard.set_value("delta", delta)
-	current_status = entry_point.tick(actor, blackboard)
+	current_status = entry_point.tick(delta, actor, blackboard)
 
 
 func _create_local_blackboard() -> Blackboard:
