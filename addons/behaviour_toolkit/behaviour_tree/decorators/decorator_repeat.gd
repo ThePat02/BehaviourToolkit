@@ -1,3 +1,4 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/BTDecoratorRepeat.svg")
 class_name BTRepeat extends BTDecorator
 ## Repeats the leaf a number of times.
