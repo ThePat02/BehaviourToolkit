@@ -30,8 +30,8 @@ jobs:
     
     - name: Commit changes
       run: |
-        git config --local user.email "${{ secrets.OWNER_USERNAME }}"
-        git config --local user.name "${{ secrets.OWNER_MAIL }}"
+        git config --local user.email "${{ secrets.OWNER_MAIL }}"
+        git config --local user.name "${{ secrets.OWNER_USERNAME }}"
 
         git add -A
         git commit -m "Format GDScript files with GDToolkit"
