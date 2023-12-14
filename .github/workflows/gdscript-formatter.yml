@@ -22,4 +22,5 @@ jobs:
         pip3 install "gdtoolkit==4.*"
     - name: Format with GDToolkit
       run: |
+        tree
         gdformat
