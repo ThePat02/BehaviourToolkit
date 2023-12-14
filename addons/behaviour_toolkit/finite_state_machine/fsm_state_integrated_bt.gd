@@ -1,10 +1,7 @@
 @icon("res://addons/behaviour_toolkit/icons/FSMStateIntegration.svg")
 class_name FSMStateIntegratedBT extends FSMState
 
-
-
 @onready var behaviour_tree: BTRoot = _get_behaviour_tree()
-
 
 @export var fire_event_on_status: bool = false
 @export var on_status: BTBehaviour.Status = BTBehaviour.Status.SUCCESS
@@ -31,7 +28,7 @@ func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
 func _get_behaviour_tree() -> BTRoot:
 	if get_child_count() == 0:
 		return null
-	
+
 	for child in get_children():
 		if child is BTRoot:
 			return child

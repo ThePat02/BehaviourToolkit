@@ -3,21 +3,18 @@
 class_name LeafTween extends BTLeaf
 ## Tween a property of an actor.
 
-
 ## The value type of the tween value.
 enum TweenValueType {
-	INT, ## Integer value type.
-	FLOAT, ## Float value type.
-	VECTOR2, ## Vector2 value type.
-	VECTOR3, ## Vector3 value type.
-	COLOR, ## Color value type.
-	CUSTOM_SCRIPT, ## Custom script that returns a value.
+	INT,  ## Integer value type.
+	FLOAT,  ## Float value type.
+	VECTOR2,  ## Vector2 value type.
+	VECTOR3,  ## Vector3 value type.
+	COLOR,  ## Color value type.
+	CUSTOM_SCRIPT,  ## Custom script that returns a value.
 }
-
 
 ## The default custom script template.
 const DEFAULT_CUSTOM_SCRIPT = "# Custom Tween Value\nstatic func get_tween_value(_actor: Node, _blackboard: Blackboard) -> Variant:\n\t# Compute your custom logic here\n\treturn 0\n"
-
 
 ## The transition type of the tween.
 @export var transition_type: Tween.TransitionType = Tween.TransitionType.TRANS_LINEAR
@@ -29,7 +26,8 @@ const DEFAULT_CUSTOM_SCRIPT = "# Custom Tween Value\nstatic func get_tween_value
 ## For example: "rotation:y" or "scale"
 @export var tween_property: String
 ## The value type of the tween.
-@export var tween_value_type: TweenValueType: set = set_tween_value_type
+@export var tween_value_type: TweenValueType:
+	set = set_tween_value_type
 ## The integer value to tween to.
 @export var tween_value_int: int
 ## The float value to tween to.
@@ -46,10 +44,10 @@ const DEFAULT_CUSTOM_SCRIPT = "# Custom Tween Value\nstatic func get_tween_value
 		if value == null:
 			tween_value_custom_script = null
 			return
-		
+
 		if not value.has_source_code():
 			value.source_code = DEFAULT_CUSTOM_SCRIPT
-		
+
 		tween_value_custom_script = value
 
 @export_group("Advanced")
@@ -73,7 +71,7 @@ func set_tween_value_type(value):
 
 
 ## The tween instance.
-var tween : Tween
+var tween: Tween
 
 
 func tick(actor: Node, blackboard: Blackboard) -> Status:
