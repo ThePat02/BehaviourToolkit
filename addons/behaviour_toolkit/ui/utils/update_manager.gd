@@ -2,10 +2,12 @@
 class_name UpdateManager extends HTTPRequest
 ## This class is used to check for updates of the plugin.
 
+
 ## Emitted when the request to the repository is completed.
 signal update_request_completed
 ## Emitted when the request to the repository is completed and an update is available.
 signal update_available
+
 
 ## If this is set to false, the plugin will not check for updates.
 @export var auto_start: bool = false
@@ -13,6 +15,7 @@ signal update_available
 @export_file("*.cfg") var addon_config_path = ""
 ## The URL to the repository config file. This file has to be the raw version!
 @export var repo_config_url = ""
+
 
 ## The current version of the plugin.
 var current_version: String
@@ -27,7 +30,7 @@ func _ready():
 	# Check if active
 	if not auto_start:
 		return
-
+	
 	start()
 
 
@@ -41,7 +44,7 @@ func start():
 func is_update_available() -> bool:
 	if current_version != newest_version:
 		return true
-
+	
 	return false
 
 
@@ -62,9 +65,7 @@ func get_newest_version() -> void:
 
 
 ## Called when the request to the repository is completed, parses the config file and sets the newest version.
-func _on_http_request_request_completed(
-	result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray
-):
+func _on_http_request_request_completed(result:int, response_code:int, headers:PackedStringArray, body:PackedByteArray):
 	var config = ConfigFile.new()
 	var err = config.parse(body.get_string_from_ascii())
 

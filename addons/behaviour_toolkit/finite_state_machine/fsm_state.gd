@@ -2,6 +2,7 @@
 class_name FSMState extends BehaviourToolkit
 ## A state in a [FiniteStateMachine].
 
+
 ## List of transitions from this state.
 var transitions: Array[FSMTransition] = []
 
