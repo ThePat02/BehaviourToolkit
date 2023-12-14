@@ -1,5 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+# This workflow will format all GDScript files in the repository using GDToolkit
 
 name: GDScript Formatter
 
@@ -22,5 +21,5 @@ jobs:
         pip3 install "gdtoolkit==4.*"
     - name: Format with GDToolkit
       run: |
-        tree
-        gdformat
+        # Format all files in the repository
+        gdformat .
