@@ -2,12 +2,17 @@
 class_name BTRoot extends BehaviourToolkit
 ## Node used as a base parent (root) of a Behaviour Tree
 
-enum ProcessType { IDLE, PHYSICS }  ## Updates on every rendered frame (at current FPS).  ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread.
+
+enum ProcessType {
+	IDLE, ## Updates on every rendered frame (at current FPS).
+	PHYSICS ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
+}
+
 
 @export var autostart: bool = false
 
 ## Can be used to select if Behaviour Tree tick() is calculated on
-## rendering (IDLE) frame or physics (PHYSICS) frame.
+## rendering (IDLE) frame or physics (PHYSICS) frame. 
 ## [br]
 ## More info: [method Node._process] and [method Node._physics_process]
 @export var process_type: ProcessType = ProcessType.PHYSICS:
@@ -18,8 +23,10 @@ enum ProcessType { IDLE, PHYSICS }  ## Updates on every rendered frame (at curre
 @export var actor: Node
 @export var blackboard: Blackboard
 
+
 var active: bool = false
 var current_status: BTBehaviour.Status
+
 
 @onready var entry_point = get_child(0)
 
@@ -37,7 +44,7 @@ func _ready() -> void:
 	_setup_processing()
 
 
-func _physics_process(delta: float) -> void:
+func  _physics_process(delta: float) -> void:
 	_process_code(delta)
 
 
@@ -48,7 +55,7 @@ func _process(delta: float) -> void:
 func _process_code(delta: float) -> void:
 	if not active:
 		return
-
+	
 	blackboard.set_value("delta", delta)
 	current_status = entry_point.tick(actor, blackboard)
 

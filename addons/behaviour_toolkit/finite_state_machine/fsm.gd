@@ -4,12 +4,19 @@ class_name FiniteStateMachine extends BehaviourToolkit
 ##
 ## The Finite State Machine is composed of states and transitions.
 
-enum ProcessType { IDLE, PHYSICS }  ## Updates on every rendered frame (at current FPS).  ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread.
+
+enum ProcessType {
+	IDLE, ## Updates on every rendered frame (at current FPS).
+	PHYSICS ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
+}
+
 
 const ERROR_INITIAL_STATE_NULL: String = "The initial cannot be null when starting the State Machine."
 
+
 ## The signal emitted when the state changes.
 signal state_changed(state: FSMState)
+
 
 ## Whether the FSM should start automatically.
 @export var autostart: bool = false
@@ -32,6 +39,7 @@ signal state_changed(state: FSMState)
 @export var actor: Node
 ## The blackboard of the FSM.
 @export var blackboard: Blackboard
+
 
 ## The list of states in the FSM.
 var states: Array[FSMState]
@@ -62,7 +70,7 @@ func _ready() -> void:
 
 func start() -> void:
 	current_bt_status = BTLeaf.Status.RUNNING
-
+	
 	# Check if the initial state is valid
 	assert(initial_state != null, ERROR_INITIAL_STATE_NULL)
 
@@ -81,7 +89,7 @@ func start() -> void:
 	emit_signal("state_changed", active_state)
 
 
-func _physics_process(delta: float) -> void:
+func  _physics_process(delta: float) -> void:
 	_process_code(delta)
 
 
@@ -92,14 +100,14 @@ func _process(delta: float) -> void:
 func _process_code(delta: float) -> void:
 	if not active:
 		return
-
+	
 	# Check if there are states
 	if states.size() == 0:
 		return
 
 	# Set the delta time
 	blackboard.set_value("delta", delta)
-
+	
 	# The current event
 	var event: String = ""
 
@@ -115,12 +123,12 @@ func _process_code(delta: float) -> void:
 		if transition.is_valid(actor, blackboard) or transition.is_valid_event(event):
 			# Process the transition
 			transition._on_transition(actor, blackboard)
-
+			
 			# Change the current state
 			change_state(transition.get_next_state())
 
 			break
-
+	
 	# Process the current state
 	active_state._on_update(actor, blackboard)
 

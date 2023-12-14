@@ -2,6 +2,7 @@
 class_name FSMTransition extends BehaviourToolkit
 ## A transition between two [FSMState]s in a [FiniteStateMachine].
 
+
 ## The state to transition to.
 @export var next_state: FSMState
 
@@ -25,7 +26,7 @@ func is_valid(_actor: Node, _blackboard: Blackboard) -> bool:
 func is_valid_event(current_event: String) -> bool:
 	if current_event == "":
 		return false
-
+	
 	return current_event == event
 
 
