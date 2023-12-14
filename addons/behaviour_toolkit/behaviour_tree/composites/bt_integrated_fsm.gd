@@ -1,7 +1,6 @@
 @icon("res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg")
 class_name BTIntegratedFSM extends BTComposite
 
-
 @onready var state_machine: FiniteStateMachine = _get_machine()
 
 
@@ -11,7 +10,7 @@ func tick(_actor: Node, _blackboard: Blackboard) -> Status:
 
 	if not state_machine.current_bt_status == Status.RUNNING:
 		state_machine.active = false
-	
+
 	return state_machine.current_bt_status
 
 

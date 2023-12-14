@@ -1,5 +1,6 @@
 extends FSMTransition
 
+
 ## Executed when the transition is taken.
 func _on_transition(actor: Node, _blackboard: Blackboard):
 	actor.alive = true
