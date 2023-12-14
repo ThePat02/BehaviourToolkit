@@ -2,6 +2,7 @@
 class_name BTRandomSequence extends BTComposite
 ## The squence composite but with a random order of the leaves.
 
+
 var is_shuffled: bool = false
 var current_leaf: int = 0
 
@@ -10,7 +11,7 @@ func tick(actor: Node, blackboard: Blackboard):
 	if not is_shuffled:
 		leaves.shuffle()
 
-	if current_leaf > leaves.size() - 1:
+	if current_leaf > leaves.size() -1:
 		current_leaf = 0
 		is_shuffled = false
 		return Status.SUCCESS
@@ -19,11 +20,11 @@ func tick(actor: Node, blackboard: Blackboard):
 
 	if response == Status.RUNNING:
 		return response
-
+	
 	if response == Status.FAILURE:
 		current_leaf = 0
 		is_shuffled = false
 		return response
-
+	
 	current_leaf += 1
 	return Status.RUNNING

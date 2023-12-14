@@ -2,6 +2,7 @@
 class_name Blackboard extends Resource
 ## A blackboard is a dictionary of key/value pairs that can be used to share data between nodes.
 
+
 ## The blackboard's content stored as a dictionary.
 @export var content: Dictionary
 

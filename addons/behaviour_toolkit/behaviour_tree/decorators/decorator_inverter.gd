@@ -4,12 +4,12 @@ class_name BTInverter extends BTDecorator
 
 
 func tick(actor: Node, blackboard: Blackboard):
-	var response = leaf.tick(actor, blackboard)
+    var response = leaf.tick(actor, blackboard)
 
-	if response == Status.SUCCESS:
-		return Status.FAILURE
+    if response == Status.SUCCESS:
+        return Status.FAILURE
+    
+    if response == Status.FAILURE:
+        return Status.SUCCESS
 
-	if response == Status.FAILURE:
-		return Status.SUCCESS
-
-	return Status.RUNNING
+    return Status.RUNNING
