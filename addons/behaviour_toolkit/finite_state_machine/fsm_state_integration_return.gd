@@ -3,7 +3,7 @@ class_name FSMStateIntegrationReturn extends FSMState
 
 enum BTStatus {
 	SUCCESS,
-	FAILURE
+	FAILURE,
 }
 
 @export var return_value: BTStatus = BTStatus.SUCCESS

@@ -9,7 +9,7 @@ class_name LeafCall extends BTLeaf
 enum CallTarget {
 	ACTOR,          ## The actor node set on the BTRoot node.
 	BLACKBOARD,     ## The blackboard node set on the BTRoot node.
-	CUSTOM          ## A custom node set on the custom_target variable.
+	CUSTOM,         ## A custom node set on the custom_target variable.
 }
 
 

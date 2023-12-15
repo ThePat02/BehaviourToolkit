@@ -5,5 +5,5 @@ class_name BTBehaviour extends BehaviourToolkit
 enum BTStatus {
 	SUCCESS,
 	FAILURE,
-	RUNNING
+	RUNNING,
 }

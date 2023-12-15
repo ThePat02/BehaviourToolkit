@@ -7,7 +7,7 @@ class_name LeafCondition extends BTLeaf
 
 enum ConditionTarget {
 	ACTOR,
-	CUSTOM
+	CUSTOM,
 }
 
 
@@ -15,7 +15,7 @@ enum ConditionValue {
 	STRING,
 	INT,
 	FLOAT,
-	BOOL
+	BOOL,
 }
 
 
@@ -25,7 +25,7 @@ enum ConditionType {
 	GREATER,
 	GREATER_EQUAL,
 	LESS,
-	LESS_EQUAL
+	LESS_EQUAL,
 }
 
 

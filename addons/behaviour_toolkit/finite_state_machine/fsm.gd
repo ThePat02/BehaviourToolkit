@@ -8,7 +8,7 @@ class_name FiniteStateMachine extends BehaviourToolkit
 
 enum ProcessType {
 	IDLE, ## Updates on every rendered frame (at current FPS).
-	PHYSICS ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
+	PHYSICS, ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
 }
 
 

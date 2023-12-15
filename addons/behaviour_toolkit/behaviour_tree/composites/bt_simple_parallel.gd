@@ -6,7 +6,7 @@ class_name BTSimpleParallel extends BTComposite
 
 enum ParallelPolicy {
 	SUCCESS_ON_ALL,		## Returns SUCCESS if all children return SUCCESS.
-	SUCCESS_ON_ONE		## Returns SUCCESS if any child returns SUCCESS.
+	SUCCESS_ON_ONE,		## Returns SUCCESS if any child returns SUCCESS.
 }
 
 
