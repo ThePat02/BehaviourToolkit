@@ -4,7 +4,7 @@ class_name LeafSignal extends BTLeaf
 ## Leaf that emits a signal with optional array of arguments.
 ## 
 ## [LeafSignal] if `target_type` is set to `Self` emits it's own signal
-## `leaf_emitted(arguments_array)` but can also emit signals from the `Actor`,
+## `leaf_emitted(arguments_array)` but can also emit signals from the `actor`,
 ## or any `Custom` [Node].
 
 

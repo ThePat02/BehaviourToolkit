@@ -2,6 +2,11 @@
 @icon("res://addons/behaviour_toolkit/icons/BTRoot.svg")
 class_name BTRoot extends BehaviourToolkit
 ## Node used as a base parent (root) of a Behaviour Tree
+##
+## This is the root of your behaviour tree.[br]
+## It is designed to expect first child node to be a BTComposite node to start
+## the execution of the behaviour tree.[br]
+## The root node is responsible for updating the tree.
 
 
 enum ProcessType {

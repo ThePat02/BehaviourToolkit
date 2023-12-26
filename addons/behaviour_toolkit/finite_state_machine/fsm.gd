@@ -4,6 +4,10 @@ class_name FiniteStateMachine extends BehaviourToolkit
 ## An implementation of a simple finite state machine.
 ##
 ## The Finite State Machine is composed of states and transitions.
+## This is the class to handle all states and their transitions.
+## On ready, all FSMTransition child nodes will be set up as transitions.
+## To implement your logic you can override the [code]_on_enter, _on_update and
+## _on_exit[/code] methods when extending the node's script.
 
 
 enum ProcessType {

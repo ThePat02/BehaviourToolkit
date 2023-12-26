@@ -1,6 +1,7 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/BTLeafPrint.svg")
 class_name LeafPrint extends BTLeaf
+## Leaf that prints a custom text in console.
 
 
 @export var custom_text: String

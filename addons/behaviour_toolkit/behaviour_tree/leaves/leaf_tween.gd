@@ -2,6 +2,9 @@
 @icon("res://addons/behaviour_toolkit/icons/BTLeafTween.svg")
 class_name LeafTween extends BTLeaf
 ## Tween a property of an actor.
+##
+## Leaf that allows you to specify a property that you want to
+## animate/interpolate using a tween.
 
 
 ## The value type of the tween value.

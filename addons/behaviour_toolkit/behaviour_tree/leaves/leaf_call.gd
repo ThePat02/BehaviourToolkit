@@ -1,7 +1,9 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/BTLeafCall.svg")
 class_name LeafCall extends BTLeaf
-## Leaf that calls a method on a target node. The target can be the actor, the blackboard or a custom node.
+## Leaf that calls a method on a target node.
+##
+## The target can be the actor, the blackboard or a custom node.
 ## Returns FAILURE if the method is not found on the target node.
 
 
