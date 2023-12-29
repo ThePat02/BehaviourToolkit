@@ -1,5 +1,12 @@
 @icon("res://addons/behaviour_toolkit/icons/FSMStateIntegrationReturn.svg")
 class_name FSMStateIntegrationReturn extends FSMState
+## A state in a [FiniteStateMachine] that allows to exit State Machine nested
+## inside of a Behaviour Tree.
+##
+## The state when active returns [enum BTStatus.SUCCESS] or
+## [enum BTStatus.FAILURE] depending on the state's return_status property,
+## which stops execution of FSM attached to [BTIntegratedFSM].
+
 
 enum BTStatus {
 	SUCCESS,

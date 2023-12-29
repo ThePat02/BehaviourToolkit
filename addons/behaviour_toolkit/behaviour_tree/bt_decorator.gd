@@ -1,6 +1,10 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/BTDecorator.svg")
 class_name BTDecorator extends BTBehaviour
+## Base class for decorators.
+##
+## Decorators are used to augment the behaviour of a leaf.[br]
+## Think of it as another layer of logic that is executed before the leaf.
 
 
 ## The leaf the decorator is decorating.

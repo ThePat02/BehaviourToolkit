@@ -1,6 +1,9 @@
 @icon("res://addons/behaviour_toolkit/icons/Blackboard.svg")
 class_name Blackboard extends Resource
-## A blackboard is a dictionary of key/value pairs that can be used to share data between nodes.
+## A blackboard is a dictionary of key/value pairs that can be used to share
+## data between nodes.
+##
+## [Blackboard] can be used by BT plugin nodes to store and pass the data.
 
 
 ## The blackboard's content stored as a dictionary.

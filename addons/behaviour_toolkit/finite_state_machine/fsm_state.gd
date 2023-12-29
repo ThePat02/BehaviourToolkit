@@ -1,7 +1,14 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/FSMState.svg")
 class_name FSMState extends BehaviourToolkit
-## A state in a [FiniteStateMachine].
+## A state in a [FiniteStateMachine]. This is the base class for all states.
+##
+## It's a basic building block to build full State Machines, only one state
+## held by [FiniteStateMachine] is active, to switch to a different state,
+## a [FSMTransition] must be triggered or you can use FSM methods to switch
+## states manually.
+## To implement your logic you can override the [code]_on_enter, _on_update and
+## _on_exit[/code] methods when extending the node's script.
 
 
 ## List of transitions from this state.

@@ -1,7 +1,8 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/BTSimpleParallel.svg")
 class_name BTSimpleParallel extends BTComposite
-## Executes all children in parallel, and returns SUCCESS depending on the policy. It returns FAILURE if any child returns FAILURE.
+## Executes all children in parallel, and returns SUCCESS depending on the
+## policy. It returns FAILURE if any child returns FAILURE.
 
 
 enum ParallelPolicy {

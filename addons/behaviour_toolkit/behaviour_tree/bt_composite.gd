@@ -1,6 +1,10 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/BTComposite.svg")
 class_name BTComposite extends BTBehaviour
+## Base class to build composite behaviour nodes.
+##
+## Composites can hold multiple behaviour nodes and evalute/execute them
+## based on custom logic based on their return values.
 
 
 ## The leaves under the composite node.

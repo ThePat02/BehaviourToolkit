@@ -200,9 +200,6 @@ script = ExtResource("7_eoyf0")
 
 [node name="FiniteStateMachine" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost" node_paths=PackedStringArray("initial_state", "actor")]
 script = ExtResource("8_5ft4q")
-autostart = null
-process_type = null
-active = null
 initial_state = NodePath("TransformIntoGhost")
 actor = NodePath("../../../../..")
 blackboard = ExtResource("4_opmou")
@@ -219,7 +216,6 @@ event = "fully_transformed"
 [node name="TryToRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
 script = ExtResource("13_rq5d2")
 fire_event_on_status = true
-on_status = null
 event = "revive"
 
 [node name="RevivalBehaviour" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive"]
@@ -246,7 +242,7 @@ wait_for_ticks = 500
 
 [node name="FireEventFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector" node_paths=PackedStringArray("state_machine")]
 script = ExtResource("18_45wr7")
-event = "failed_revive"
+event = &"failed_revive"
 state_machine = NodePath("../../../..")
 
 [node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]
@@ -329,7 +325,6 @@ wait_for_ticks = 150
 script = ExtResource("8_5ft4q")
 autostart = true
 process_type = 0
-active = null
 initial_state = NodePath("Idle")
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
@@ -340,7 +335,6 @@ script = ExtResource("11_rb27u")
 [node name="onStopWalking" type="Node" parent="AnimationStateMachine/Walking" node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_a13jv")
 next_state = NodePath("../../Idle")
-use_event = null
 event = "stop_walking"
 
 [node name="onStartRefreshing" type="Node" parent="AnimationStateMachine/Walking" node_paths=PackedStringArray("next_state")]

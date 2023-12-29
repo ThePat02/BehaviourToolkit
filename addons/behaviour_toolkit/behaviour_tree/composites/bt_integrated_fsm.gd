@@ -1,14 +1,27 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/BTCompositeIntegration.svg")
 class_name BTIntegratedFSM extends BTComposite
+## A composite behaviour node that allows to integrate [FiniteStateMachine]
+## in a behaviour tree by handling FSM node.
+##
+## To nest a FSM you need to add a [FiniteStateMachine] as a first child of
+## [BTIntegratedFSM]. When this behaviour is evaluated the child FSM
+## is set to active.
+## [br][br]
+## After the FSM is started it returns status
+## [enum BTBehaviour.BTStatus.RUNNING]. If FSM return
+## [enum BTBehaviour.BTStatus.SUCCESS] or [enum BTBehaviour.BTStatus.FAILURE]
+## the child FSM is stopped.
 
 
 var state_machine: FiniteStateMachine = null
+
 
 func _ready():
 	if not Engine.is_editor_hint():
 		state_machine = _get_machine()
 		
+
 
 func tick(_delta: float, _actor: Node, _blackboard: Blackboard) -> BTStatus:
 	if state_machine.active == false:

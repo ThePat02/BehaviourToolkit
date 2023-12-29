@@ -1,7 +1,10 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/BTLeafCondition.svg")
 class_name LeafCondition extends BTLeaf
-## Leaf that queries a property of the actor or a custom node and compares it to a value. Returns SUCCESS if the condition is met, FAILURE otherwise.
+## Leaf evaluating a condition statement using a property.
+##
+## The node queries a property of the actor or a custom node and compares it
+## to a value. Returns SUCCESS if the condition is met, FAILURE otherwise.
 ## Also returns FAILURE if the property does not exist.
 
 

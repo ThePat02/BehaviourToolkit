@@ -1,6 +1,6 @@
 @tool
 class_name LeafFSMEvent extends BTLeafIntegration
-## This node fires an event on a state machine.
+## This node fires an event on a specified state machine.
 
 
 @export var event: StringName:

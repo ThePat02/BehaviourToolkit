@@ -1,6 +1,18 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/FSMStateIntegration.svg")
 class_name FSMStateIntegratedBT extends FSMState
+## A state in a [FiniteStateMachine] that allows to integrate Behaviour tree
+## in State Machines by handling [BTRoot] node.
+##
+## To nest a Behaviour Tree you need to add a BTRoot as a first child of
+## [FSMStateIntegratedBT]. When this state is entered, the Behaviour Tree
+## is set to active.
+## [br][br]
+## You can use the [method FSMStateIntegratedBT.fire_event_on_status property
+## to fire an event when the Behaviour Tree returns a specific status.
+## This allows you to trigger transitions based on the status of the
+## Behaviour Tree. You can also use the [FSMEvent] leaf to trigger custom
+## events inside the nested State Machine.
 
 
 @onready var behaviour_tree: BTRoot = _get_behaviour_tree()
