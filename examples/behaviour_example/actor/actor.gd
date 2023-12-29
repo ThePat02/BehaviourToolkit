@@ -1,4 +1,4 @@
-class_name Actor extends CharacterBody2D
+extends CharacterBody2D
 
 
 @export var age: int = 1
