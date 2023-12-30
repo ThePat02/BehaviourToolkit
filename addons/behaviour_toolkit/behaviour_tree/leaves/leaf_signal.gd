@@ -1,9 +1,10 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/BTLeafSignal.svg")
 class_name LeafSignal extends BTLeaf
 ## Leaf that emits a signal with optional array of arguments.
 ## 
 ## [LeafSignal] if `target_type` is set to `Self` emits it's own signal
-## `leaf_emitted(arguments_array)` but can also emit signals from the `Actor`,
+## `leaf_emitted(arguments_array)` but can also emit signals from the `actor`,
 ## or any `Custom` [Node].
 
 
@@ -22,22 +23,31 @@ signal leaf_emitted(arguments_array: Array)
 
 
 ## The signal name to call on the target node.
-@export var signal_name: StringName
+@export var signal_name: StringName:
+	set(value):
+		signal_name = value
+		update_configuration_warnings()
 ## Array of arguments emitted with the [code]leaf_emitted/code] signal.
 @export var arguments: Array = []
 
 @export_category("Target")
 ## The target type to emit signal. Can be the actor, a custom node
 ## or [LeafSignal] own signal `leaf_emitted` (When target type is `Self`).
-@export var target_type: EmitTarget = EmitTarget.SELF
+@export var target_type: EmitTarget = EmitTarget.SELF:
+	set(value):
+		target_type = value
+		update_configuration_warnings()
 ## The custom node to call the method on. Only used if target_type
 ## is set toCallTarget.CUSTOM.
-@export var custom_target: Node
+@export var custom_target: Node:
+	set(value):
+		custom_target = value
+		update_configuration_warnings()
 
 
 
 
-func tick(_actor: Node, _blackboard: Blackboard) -> Status:
+func tick(_delta: float, _actor: Node, _blackboard: Blackboard) -> BTStatus:
 	var target: Node
 	
 	match target_type:
@@ -47,13 +57,26 @@ func tick(_actor: Node, _blackboard: Blackboard) -> Status:
 			target = custom_target
 		EmitTarget.SELF:
 			emit_signal("leaf_emitted", arguments)
-			return Status.SUCCESS
+			return BTStatus.SUCCESS
 	
 	if target.has_signal(signal_name):
 		target.emit_signal(signal_name, arguments)
 	else:
 		print("Signal " + signal_name + " not found on target " + target.to_string())
-		return Status.FAILURE
+		return BTStatus.FAILURE
 
-	return Status.SUCCESS
+	return BTStatus.SUCCESS
 
+
+func _get_configuration_warnings():
+	var warnings: Array = []
+
+	warnings.append_array(super._get_configuration_warnings())
+
+	if signal_name == "":
+		warnings.append("Signal is not set.")
+	
+	if target_type == EmitTarget.CUSTOM and custom_target == null:
+		warnings.append("Target type is set to Custom but no custom target is set.")
+
+	return warnings

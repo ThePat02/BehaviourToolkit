@@ -160,10 +160,10 @@ ghost_state_machine = NodePath("Behaviour/Select/BeAGhost/BehaveLikeAGhost/Finit
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_default_blend_time = 0.15
 libraries = {
 "": SubResource("AnimationLibrary_bvcex")
 }
+playback_default_blend_time = 0.15
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_p6pfm")
@@ -242,8 +242,7 @@ wait_for_ticks = 500
 
 [node name="FireEventFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector" node_paths=PackedStringArray("state_machine")]
 script = ExtResource("18_45wr7")
-event = "failed_revive"
-return_status = null
+event = &"failed_revive"
 state_machine = NodePath("../../../..")
 
 [node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]

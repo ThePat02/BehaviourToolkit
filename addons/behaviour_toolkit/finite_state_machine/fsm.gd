@@ -1,13 +1,18 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/FiniteStateMachine.svg")
 class_name FiniteStateMachine extends BehaviourToolkit
 ## An implementation of a simple finite state machine.
 ##
 ## The Finite State Machine is composed of states and transitions.
+## This is the class to handle all states and their transitions.
+## On ready, all FSMTransition child nodes will be set up as transitions.
+## To implement your logic you can override the [code]_on_enter, _on_update and
+## _on_exit[/code] methods when extending the node's script.
 
 
 enum ProcessType {
 	IDLE, ## Updates on every rendered frame (at current FPS).
-	PHYSICS ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
+	PHYSICS, ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
 }
 
 
@@ -33,8 +38,10 @@ signal state_changed(state: FSMState)
 ## Whether the FSM is active or not.
 @export var active: bool = true
 ## The initial state of the FSM.
-@export var initial_state: FSMState
-
+@export var initial_state: FSMState:
+	set(value):
+		initial_state = value
+		update_configuration_warnings()
 ## The actor of the FSM.
 @export var actor: Node
 ## The blackboard of the FSM.
@@ -47,11 +54,17 @@ var states: Array[FSMState]
 var active_state: FSMState
 ## The list of current events.
 var current_events: Array[String]
-## Current BT Status
-var current_bt_status: BTLeaf.Status
+## Current BT BTStatus
+var current_bt_status: BTBehaviour.BTStatus
 
 
 func _ready() -> void:
+	# Don't run in editor
+	if Engine.is_editor_hint():
+		set_physics_process(false)
+		set_process(false)
+		return
+
 	connect("state_changed", _on_state_changed)
 
 	if blackboard == null:
@@ -69,7 +82,7 @@ func _ready() -> void:
 
 
 func start() -> void:
-	current_bt_status = BTLeaf.Status.RUNNING
+	current_bt_status = BTBehaviour.BTStatus.RUNNING
 	
 	# Check if the initial state is valid
 	assert(initial_state != null, ERROR_INITIAL_STATE_NULL)
@@ -105,9 +118,6 @@ func _process_code(delta: float) -> void:
 	if states.size() == 0:
 		return
 
-	# Set the delta time
-	blackboard.set_value("delta", delta)
-	
 	# The current event
 	var event: String = ""
 
@@ -122,7 +132,7 @@ func _process_code(delta: float) -> void:
 	for transition in active_state.transitions:
 		if transition.is_valid(actor, blackboard) or transition.is_valid_event(event):
 			# Process the transition
-			transition._on_transition(actor, blackboard)
+			transition._on_transition(delta, actor, blackboard)
 			
 			# Change the current state
 			change_state(transition.get_next_state())
@@ -130,7 +140,7 @@ func _process_code(delta: float) -> void:
 			break
 	
 	# Process the current state
-	active_state._on_update(actor, blackboard)
+	active_state._on_update(delta, actor, blackboard)
 
 
 ## Changes the current state and calls the appropriate methods like _on_exit and _on_enter.
@@ -166,3 +176,21 @@ func _setup_processing() -> void:
 
 func _on_state_changed(state: FSMState) -> void:
 	pass
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: Array = []
+
+	if not initial_state:
+		warnings.append("Initial state is not set.")
+	
+	var children: Array = get_children()
+
+	if children.size() == 0:
+		warnings.append("No states found.")
+
+	for child in children:
+		if not child is FSMState:
+			warnings.append("Node '" + child.get_name() + "' is not a FSMState.")
+
+	return warnings

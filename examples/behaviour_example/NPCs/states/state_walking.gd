@@ -8,7 +8,7 @@ func _on_enter(actor: Node, _blackboard: Blackboard):
 
 
 ## Executes every _process call, if the state is active.
-func _on_update(_actor: Node, _blackboard: Blackboard):
+func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard):
 	pass
 
 

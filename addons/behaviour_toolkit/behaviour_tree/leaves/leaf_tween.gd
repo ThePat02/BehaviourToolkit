@@ -2,6 +2,9 @@
 @icon("res://addons/behaviour_toolkit/icons/BTLeafTween.svg")
 class_name LeafTween extends BTLeaf
 ## Tween a property of an actor.
+##
+## Leaf that allows you to specify a property that you want to
+## animate/interpolate using a tween.
 
 
 ## The value type of the tween value.
@@ -27,7 +30,10 @@ const DEFAULT_CUSTOM_SCRIPT = "# Custom Tween Value\nstatic func get_tween_value
 @export var duration: float = 2.0
 ## The property to tween.
 ## For example: "rotation:y" or "scale"
-@export var tween_property: String
+@export var tween_property: String:
+	set(value):
+		tween_property = value
+		update_configuration_warnings()
 ## The value type of the tween.
 @export var tween_value_type: TweenValueType: set = set_tween_value_type
 ## The integer value to tween to.
@@ -76,17 +82,17 @@ func set_tween_value_type(value):
 var tween : Tween
 
 
-func tick(actor: Node, blackboard: Blackboard) -> Status:
+func tick(_delta: float, actor: Node, blackboard: Blackboard) -> BTStatus:
 	# Initialize tween, if not already initialized
 	_init_tween(actor, blackboard)
 
 	if tween.is_running():
-		return Status.RUNNING
+		return BTStatus.RUNNING
 
 	# Invalidate tween instance
 	tween.kill()
 	tween = null
-	return Status.SUCCESS
+	return BTStatus.SUCCESS
 
 
 func _init_tween(actor: Node, blackboard: Blackboard):
@@ -123,3 +129,14 @@ func _init_tween(actor: Node, blackboard: Blackboard):
 			tween.tween_property(actor, tween_property, tween_value, duration).as_relative()
 		else:
 			tween.tween_property(actor, tween_property, tween_value, duration)
+
+
+func _get_configuration_warnings():
+	var warnings: Array = []
+
+	warnings.append_array(super._get_configuration_warnings())
+
+	if tween_property == "":
+		warnings.append("Tween property is empty.")
+
+	return warnings

@@ -1,11 +1,17 @@
+@tool
 @icon("res://addons/behaviour_toolkit/icons/BTRoot.svg")
 class_name BTRoot extends BehaviourToolkit
 ## Node used as a base parent (root) of a Behaviour Tree
+##
+## This is the root of your behaviour tree.[br]
+## It is designed to expect first child node to be a BTComposite node to start
+## the execution of the behaviour tree.[br]
+## The root node is responsible for updating the tree.
 
 
 enum ProcessType {
 	IDLE, ## Updates on every rendered frame (at current FPS).
-	PHYSICS ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
+	PHYSICS, ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
 }
 
 
@@ -25,13 +31,19 @@ enum ProcessType {
 
 
 var active: bool = false
-var current_status: BTBehaviour.Status
+var current_status: BTBehaviour.BTStatus
 
 
 @onready var entry_point = get_child(0)
 
 
 func _ready() -> void:
+	# Don't run in editor
+	if Engine.is_editor_hint():
+		set_physics_process(false)
+		set_process(false)
+		return
+	
 	if blackboard == null:
 		blackboard = _create_local_blackboard()
 
@@ -56,8 +68,7 @@ func _process_code(delta: float) -> void:
 	if not active:
 		return
 	
-	blackboard.set_value("delta", delta)
-	current_status = entry_point.tick(actor, blackboard)
+	current_status = entry_point.tick(delta, actor, blackboard)
 
 
 func _create_local_blackboard() -> Blackboard:
@@ -69,3 +80,19 @@ func _create_local_blackboard() -> Blackboard:
 func _setup_processing() -> void:
 	set_physics_process(process_type == ProcessType.PHYSICS)
 	set_process(process_type == ProcessType.IDLE)
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: Array = []
+	
+	var children = get_children()
+
+	if children.size() == 0:
+		warnings.append("Behaviour Tree needs to have one Behaviour child.")
+	elif children.size() == 1:
+		if not children[0] is BTBehaviour:
+			warnings.append("The child of Behaviour Tree needs to be a Behaviour.")
+	elif children.size() > 1:
+		warnings.append("Behaviour Tree can have only one Behaviour child.")
+
+	return warnings

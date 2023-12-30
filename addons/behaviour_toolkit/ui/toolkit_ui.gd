@@ -6,7 +6,7 @@ enum PlacementMode {
 	CHILD,
 	SIBLING,
 	PARENT,
-	REPLACE
+	REPLACE,
 }
 
 
