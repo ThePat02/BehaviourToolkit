@@ -1,7 +1,9 @@
 # Documentation
-> 🚧 The documentation is still work in progress and will be updated over time.
+> [!WARNING]  
+> The documentation is still work in progress and will be updated over time. There have been a few syntax changes since the update to `2.0.0` that still might be missing in the documentation.
 
-This documenation will give you an overview of the most important properties & methods of the different nodes and how to use them. If you want to dive deeper into the code, you can also check out the in-engine documentation [F1] or read the comments in the source code.
+> [!IMPORTANT]  
+> This documenation will give you an overview of the most important properties & methods of the different nodes and how to use them. If you want to dive deeper into the code, you can also check out the in-engine documentation [F1] or read the comments in the source code.
 
 
 **Icon Legend**<br>
