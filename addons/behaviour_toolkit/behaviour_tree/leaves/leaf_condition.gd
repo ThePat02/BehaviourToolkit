@@ -29,7 +29,12 @@ enum ConditionType {
 	GREATER_EQUAL,
 	LESS,
 	LESS_EQUAL,
+	CUSTOM_SCRIPT,
 }
+
+
+## The default custom script template.
+const DEFAULT_CUSTOM_SCRIPT = "# Custom Condition\nstatic func is_valid(_actor: Node, _blackboard: Blackboard) -> bool:\n\t# Compute your custom logic here\n\treturn true\n"
 
 
 ## The property of the target node to query.
@@ -38,7 +43,21 @@ enum ConditionType {
 		condition_property = value
 		update_configuration_warnings()
 ## The type of comparison to perform.
-@export var condition_type: ConditionType = ConditionType.EQUAL
+@export var condition_type: ConditionType = ConditionType.EQUAL:
+	set(value):
+		condition_type = value
+		notify_property_list_changed()
+## The custom script to use for the comparison. Only used if condition_type is set to CUSTOM_SCRIPT.
+@export var custom_script: Script:
+	set(value):
+		if value == null:
+			custom_script = null
+			return
+
+		if not value.has_source_code():
+			value.source_code = DEFAULT_CUSTOM_SCRIPT
+
+		custom_script = value
 ## The type of the value to compare to.
 @export var value_type: ConditionValue = ConditionValue.STRING:
 	set(value):
@@ -74,6 +93,15 @@ func tick(delta: float, actor: Node, _blackboard: Blackboard):
 		ConditionTarget.CUSTOM:
 			target = custom_target
 	
+	# If it is a custom script condition, call it
+	if condition_type == ConditionType.CUSTOM_SCRIPT:
+		var result: bool = custom_script.is_valid(target, _blackboard)
+
+		if not result:
+			return BTStatus.FAILURE
+		else:
+			return BTStatus.SUCCESS
+	
 	var value: Variant
 	match value_type:
 		ConditionValue.STRING:
@@ -107,8 +135,8 @@ func tick(delta: float, actor: Node, _blackboard: Blackboard):
 	
 	if not result:
 		return BTStatus.FAILURE
-
-	return BTStatus.SUCCESS
+	else:
+		return BTStatus.SUCCESS
 
 
 func _get_configuration_warnings():
@@ -116,8 +144,11 @@ func _get_configuration_warnings():
 
 	warnings.append_array(super._get_configuration_warnings())
 
-	if condition_property == "":
+	if condition_property == "" and condition_type != ConditionType.CUSTOM_SCRIPT:
 		warnings.append("Condition property is empty.")
+	
+	if condition_type == ConditionType.CUSTOM_SCRIPT and custom_script == null:
+		warnings.append("Custom script is not assigned.")
 	
 	if target_type == ConditionTarget.CUSTOM and custom_target == null:
 		warnings.append("Custom target is not assigned.")
