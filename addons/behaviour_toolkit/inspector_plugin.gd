@@ -29,17 +29,28 @@ func _parse_property(object, type, name, hint_type, hint_string, usage_flags, wi
 	
 	# Leaf Condition
 	if object is LeafCondition:
-		var condition_type: LeafCondition.ConditionValue = object.value_type
+		var value_type: LeafCondition.ConditionValue = object.value_type
+		var condition_type: LeafCondition.ConditionType = object.condition_type
+
+		if name == "condition_property":
+			return condition_type == LeafCondition.ConditionType.CUSTOM_SCRIPT
+
 		if name == "condition_value_string":
-			return not condition_type == LeafCondition.ConditionValue.STRING
+			return not value_type == LeafCondition.ConditionValue.STRING or condition_type == LeafCondition.ConditionType.CUSTOM_SCRIPT
 		
 		if name == "condition_value_int":
-			return not condition_type == LeafCondition.ConditionValue.INT
+			return not value_type == LeafCondition.ConditionValue.INT or condition_type == LeafCondition.ConditionType.CUSTOM_SCRIPT
 		
 		if name == "condition_value_float":
-			return not condition_type == LeafCondition.ConditionValue.FLOAT
+			return not value_type == LeafCondition.ConditionValue.FLOAT or condition_type == LeafCondition.ConditionType.CUSTOM_SCRIPT
 		
 		if name == "condition_value_bool":
-			return not condition_type == LeafCondition.ConditionValue.BOOL
+			return not value_type == LeafCondition.ConditionValue.BOOL or condition_type == LeafCondition.ConditionType.CUSTOM_SCRIPT
+		
+		if name == "custom_script":
+			return not condition_type == LeafCondition.ConditionType.CUSTOM_SCRIPT
+
+		if name == "value_type":
+			return condition_type == LeafCondition.ConditionType.CUSTOM_SCRIPT
 
 	return false
