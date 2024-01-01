@@ -4,18 +4,15 @@ class_name BTSimpleParallel extends BTComposite
 ## Executes all children in parallel, and returns SUCCESS depending on the
 ## policy. It returns FAILURE if any child returns FAILURE.
 
-
 enum ParallelPolicy {
-	SUCCESS_ON_ALL,		## Returns SUCCESS if all children return SUCCESS.
-	SUCCESS_ON_ONE,		## Returns SUCCESS if any child returns SUCCESS.
+	SUCCESS_ON_ALL,  ## Returns SUCCESS if all children return SUCCESS.
+	SUCCESS_ON_ONE,  ## Returns SUCCESS if any child returns SUCCESS.
 }
-
 
 ## Select when to return SUCCESS.
 @export var policy: ParallelPolicy = ParallelPolicy.SUCCESS_ON_ALL
 ## If true, children that have already returned SUCCESS will not be ticked again, until one of the children returns FAILURE or the composite is reset.
 @export var synchronize: bool = false
-
 
 @onready var responses: Dictionary = {}
 
@@ -36,7 +33,7 @@ func tick(delta: float, actor: Node, blackboard: Blackboard):
 		if response == BTStatus.FAILURE:
 			responses.clear()
 			return BTStatus.FAILURE
-		
+
 		if policy == ParallelPolicy.SUCCESS_ON_ONE:
 			if response == BTStatus.SUCCESS:
 				responses.clear()
@@ -47,10 +44,10 @@ func tick(delta: float, actor: Node, blackboard: Blackboard):
 		for response in responses.values():
 			if response != BTStatus.SUCCESS:
 				return BTStatus.RUNNING
-			
+
 			index += 1
-		
+
 		responses.clear()
 		return BTStatus.SUCCESS
-	
+
 	return BTStatus.RUNNING

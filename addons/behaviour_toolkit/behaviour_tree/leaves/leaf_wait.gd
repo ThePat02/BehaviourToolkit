@@ -4,9 +4,7 @@ class_name LeafWait extends BTLeaf
 ## Leaf that waits set ammount of calls of [code]tick()[/code] before returning
 ## SUCCESS.
 
-
 @export var wait_for_ticks: int = 100
-
 
 var ticks: int = 0
 

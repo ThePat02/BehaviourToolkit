@@ -3,7 +3,7 @@ extends FSMState
 
 ## Executes after the state is entered.
 func _on_enter(actor: Node, _blackboard: Blackboard):
-	actor.animation_player.play("RESET")  
+	actor.animation_player.play("RESET")
 	actor.animation_player.play("idle")
 
 

@@ -7,7 +7,6 @@ class_name FSMStateIntegrationReturn extends FSMState
 ## [enum BTStatus.FAILURE] depending on the state's return_status property,
 ## which stops execution of FSM attached to [BTIntegratedFSM].
 
-
 enum BTStatus {
 	SUCCESS,
 	FAILURE,

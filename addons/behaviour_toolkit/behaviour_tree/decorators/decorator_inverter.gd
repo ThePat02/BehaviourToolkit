@@ -9,7 +9,7 @@ func tick(delta: float, actor: Node, blackboard: Blackboard):
 
 	if response == BTStatus.SUCCESS:
 		return BTStatus.FAILURE
-	
+
 	if response == BTStatus.FAILURE:
 		return BTStatus.SUCCESS
 

@@ -17,4 +17,3 @@ func _on_update(_delta, _actor, _blackboard: Blackboard):
 # Executes before the state is exited.
 func _on_exit(_actor, _blackboard: Blackboard):
 	pass
-

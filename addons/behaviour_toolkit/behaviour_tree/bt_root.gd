@@ -8,17 +8,15 @@ class_name BTRoot extends BehaviourToolkit
 ## the execution of the behaviour tree.[br]
 ## The root node is responsible for updating the tree.
 
-
 enum ProcessType {
-	IDLE, ## Updates on every rendered frame (at current FPS).
-	PHYSICS, ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
+	IDLE,  ## Updates on every rendered frame (at current FPS).
+	PHYSICS,  ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread.
 }
-
 
 @export var autostart: bool = false
 
 ## Can be used to select if Behaviour Tree tick() is calculated on
-## rendering (IDLE) frame or physics (PHYSICS) frame. 
+## rendering (IDLE) frame or physics (PHYSICS) frame.
 ## [br]
 ## More info: [method Node._process] and [method Node._physics_process]
 @export var process_type: ProcessType = ProcessType.PHYSICS:
@@ -29,10 +27,8 @@ enum ProcessType {
 @export var actor: Node
 @export var blackboard: Blackboard
 
-
 var active: bool = false
 var current_status: BTBehaviour.BTStatus
-
 
 @onready var entry_point = get_child(0)
 
@@ -43,7 +39,7 @@ func _ready() -> void:
 		set_physics_process(false)
 		set_process(false)
 		return
-	
+
 	if blackboard == null:
 		blackboard = _create_local_blackboard()
 
@@ -56,7 +52,7 @@ func _ready() -> void:
 	_setup_processing()
 
 
-func  _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	_process_code(delta)
 
 
@@ -67,7 +63,7 @@ func _process(delta: float) -> void:
 func _process_code(delta: float) -> void:
 	if not active:
 		return
-	
+
 	current_status = entry_point.tick(delta, actor, blackboard)
 
 
@@ -84,7 +80,7 @@ func _setup_processing() -> void:
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
-	
+
 	var children = get_children()
 
 	if children.size() == 0:

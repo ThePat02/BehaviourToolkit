@@ -1,12 +1,9 @@
 extends CharacterBody2D
 
-
 const SPEED := 100.0
 const SPRINT_MULTIPLIER := 1.7
 
-
 var movement_direction := Vector2.ZERO
-
 
 @onready var state_machine := $FSMController
 @onready var sprite := $Sprite2D
@@ -16,8 +13,7 @@ var movement_direction := Vector2.ZERO
 
 func _physics_process(_delta):
 	movement_direction = Vector2(
-		Input.get_axis("ui_left", "ui_right"),
-		Input.get_axis("ui_up", "ui_down")
+		Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down")
 	)
 
 
