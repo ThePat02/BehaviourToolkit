@@ -5,6 +5,7 @@ class_name Blackboard extends Resource
 ##
 ## [Blackboard] can be used by BT plugin nodes to store and pass the data.
 
+
 ## The blackboard's content stored as a dictionary.
 @export var content: Dictionary
 

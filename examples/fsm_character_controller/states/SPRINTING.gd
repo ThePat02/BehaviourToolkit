@@ -31,3 +31,4 @@ func _on_exit(actor, _blackboard: Blackboard):
 	actor = actor as CharacterBody2D
 
 	actor.particles_walking.emitting = false
+

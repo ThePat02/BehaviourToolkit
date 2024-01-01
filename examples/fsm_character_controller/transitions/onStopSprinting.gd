@@ -1,6 +1,5 @@
 extends FSMTransition
 
-
 # Executed when the transition is taken.
 func _on_transition(_delta, _actor, _blackboard: Blackboard):
 	pass
@@ -12,3 +11,4 @@ func is_valid(_actor, _blackboard: Blackboard):
 		return true
 	else:
 		return false
+	

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @export var age: int = 1
 @export var death_age: int = 100
 @export var movement_speed: float = 200
@@ -30,7 +31,7 @@ func _physics_process(_delta):
 		return
 
 	var next_position = navigation_agent.get_next_path_position()
-
+	
 	var new_velocity: Vector2 = (next_position - position).normalized() * movement_speed
 
 	navigation_agent.set_velocity(new_velocity)
@@ -44,12 +45,12 @@ func _on_velocity_computed(safe_velocity: Vector2):
 func _on_player_tick_timeout():
 	if thirst > 0:
 		thirst -= 1
-
+	
 	age += 1
 
 	if age >= death_age:
 		alive = false
 
 
-func _on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int):
+func _on_input_event(_viewport:Node, _event:InputEvent, _shape_idx:int):
 	ghost_state_machine.fire_event("revive")

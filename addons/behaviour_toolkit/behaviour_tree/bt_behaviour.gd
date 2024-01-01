@@ -6,6 +6,7 @@ class_name BTBehaviour extends BehaviourToolkit
 ## [enum BTBehaviour.BTStatus.FAILURE] or [enum BTBehaviour.BTStatus.RUNNING]
 ## which control the flow of the behaviours in Behaviour Tree system.
 
+
 enum BTStatus {
 	SUCCESS,
 	FAILURE,

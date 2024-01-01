@@ -7,7 +7,7 @@ class_name BTAlwaysFail extends BTDecorator
 func tick(delta: float, actor: Node, blackboard: Blackboard):
 	var response = leaf.tick(delta, actor, blackboard)
 
-	if response == BTStatus.RUNNING:
+	if response ==  BTStatus.RUNNING:
 		return BTStatus.RUNNING
 
 	return BTStatus.FAILURE

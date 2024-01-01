@@ -1,6 +1,8 @@
 extends Camera2D
 
+
 @export var speed: float = 300.0
+
 
 var zoom_speed: float = 0.1
 
@@ -22,8 +24,8 @@ func _input(event):
 		if event.is_pressed():
 			# Zoom in
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				zoom += Vector2.ONE * zoom_speed
-
+					zoom += Vector2.ONE * zoom_speed
+			
 			# Zoom out
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				# Clamp zoom to avoid negative values

@@ -10,6 +10,7 @@ class_name FSMState extends BehaviourToolkit
 ## To implement your logic you can override the [code]_on_enter, _on_update and
 ## _on_exit[/code] methods when extending the node's script.
 
+
 ## List of transitions from this state.
 var transitions: Array[FSMTransition] = []
 

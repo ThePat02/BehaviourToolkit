@@ -6,12 +6,14 @@ class_name LeafCall extends BTLeaf
 ## The target can be the actor, the blackboard or a custom node.
 ## Returns FAILURE if the method is not found on the target node.
 
+
 ## The target type of the call. Can be the actor, the blackboard or a custom node.
 enum CallTarget {
-	ACTOR,  ## The actor node set on the BTRoot node.
-	BLACKBOARD,  ## The blackboard node set on the BTRoot node.
-	CUSTOM,  ## A custom node set on the custom_target variable.
+	ACTOR,          ## The actor node set on the BTRoot node.
+	BLACKBOARD,     ## The blackboard node set on the BTRoot node.
+	CUSTOM,         ## A custom node set on the custom_target variable.
 }
+
 
 ## The method to call on the target node.
 @export var method: StringName:
@@ -44,7 +46,7 @@ func tick(delta: float, actor: Node, blackboard: Blackboard):
 			target = blackboard
 		CallTarget.CUSTOM:
 			target = custom_target
-
+	
 	if target.has_method(method):
 		target.callv(method, arguments)
 	else:
@@ -61,7 +63,7 @@ func _get_configuration_warnings():
 
 	if method == "":
 		warnings.append("Method is not set.")
-
+	
 	if target_type == CallTarget.CUSTOM and custom_target == null:
 		warnings.append("Target type is set to CUSTOM but no custom target is set.")
 

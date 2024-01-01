@@ -1,6 +1,7 @@
 @tool
 extends Control
 
+
 enum PlacementMode {
 	CHILD,
 	SIBLING,
@@ -8,15 +9,19 @@ enum PlacementMode {
 	REPLACE,
 }
 
+
 const CONFIG_URL = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/main/addons/behaviour_toolkit/plugin.cfg"
 
 const ERROR_SELECTED_ROOT: String = "Error: Cannot perform this action on the root node."
 
+
 @export var update_manager: UpdateManager
+
 
 var editor_interface: EditorInterface
 var current_selection: Node
 var undo_redo: EditorUndoRedoManager
+
 
 @onready var dialog_blackboard: FileDialog = $FileDialogNewBlackboard
 @onready var toolbox: Control = %Toolbox
@@ -32,12 +37,8 @@ func _ready():
 	# Connect buttons
 	%ButtonState.connect("pressed", _on_button_pressed.bind(FSMState, "FSMState"))
 	%ButtonTransition.connect("pressed", _on_button_pressed.bind(FSMTransition, "FSMTransition"))
-	%ButtonStateIntegratedBT.connect(
-		"pressed", _on_button_pressed.bind(FSMStateIntegratedBT, "FSMStateIntegratedBT")
-	)
-	%ButtonStateIntegrationReturn.connect(
-		"pressed", _on_button_pressed.bind(FSMStateIntegrationReturn, "FSMStateIntegrationReturn")
-	)
+	%ButtonStateIntegratedBT.connect("pressed", _on_button_pressed.bind(FSMStateIntegratedBT, "FSMStateIntegratedBT"))
+	%ButtonStateIntegrationReturn.connect("pressed", _on_button_pressed.bind(FSMStateIntegrationReturn, "FSMStateIntegrationReturn"))
 
 	%ButtonLeaf.connect("pressed", _on_button_pressed.bind(BTLeaf, "BTLeaf"))
 	%ButtonPrint.connect("pressed", _on_button_pressed.bind(LeafPrint, "LeafPrint"))
@@ -51,25 +52,15 @@ func _ready():
 	%ButtonComposite.connect("pressed", _on_button_pressed.bind(BTComposite, "BTComposite"))
 	%ButtonSequence.connect("pressed", _on_button_pressed.bind(BTSequence, "BTSequence"))
 	%ButtonSelector.connect("pressed", _on_button_pressed.bind(BTSelector, "BTSelector"))
-	%ButtonSimpleParallel.connect(
-		"pressed", _on_button_pressed.bind(BTSimpleParallel, "BTSimpleParallel")
-	)
+	%ButtonSimpleParallel.connect("pressed", _on_button_pressed.bind(BTSimpleParallel, "BTSimpleParallel"))
 	%ButtonRandom.connect("pressed", _on_button_pressed.bind(BTRandom, "BTRandom"))
-	%ButtonRandomSequence.connect(
-		"pressed", _on_button_pressed.bind(BTRandomSequence, "BTRandomSequence")
-	)
-	%ButtonRandomSelector.connect(
-		"pressed", _on_button_pressed.bind(BTRandomSelector, "BTRandomSelector")
-	)
-	%ButtonIntegratedFSM.connect(
-		"pressed", _on_button_pressed.bind(BTIntegratedFSM, "BTIntegratedFSM")
-	)
+	%ButtonRandomSequence.connect("pressed", _on_button_pressed.bind(BTRandomSequence, "BTRandomSequence"))
+	%ButtonRandomSelector.connect("pressed", _on_button_pressed.bind(BTRandomSelector, "BTRandomSelector"))
+	%ButtonIntegratedFSM.connect("pressed", _on_button_pressed.bind(BTIntegratedFSM, "BTIntegratedFSM"))
 
 	%ButtonDecorator.connect("pressed", _on_button_pressed.bind(BTDecorator, "BTDecorator"))
 	%ButtonAlwaysFail.connect("pressed", _on_button_pressed.bind(BTAlwaysFail, "BTAlwaysFail"))
-	%ButtonAlwaysSucceed.connect(
-		"pressed", _on_button_pressed.bind(BTAlwaysSucceed, "BTAlwaysSucceed")
-	)
+	%ButtonAlwaysSucceed.connect("pressed", _on_button_pressed.bind(BTAlwaysSucceed, "BTAlwaysSucceed"))
 	%ButtonLimiter.connect("pressed", _on_button_pressed.bind(BTLimiter, "BTLimiter"))
 	%ButtonInverter.connect("pressed", _on_button_pressed.bind(BTInverter, "BTInverter"))
 	%ButtonRepeat.connect("pressed", _on_button_pressed.bind(BTRepeat, "BTRepeat"))
@@ -81,7 +72,6 @@ func set_current_selection(new_selection):
 
 func update_version_text():
 	%Version.text = "BehaviourToolkit v" + str(%UpdateManager.current_version)
-
 
 func _on_button_pressed(type, name: String):
 	# Determine placement mode
@@ -100,6 +90,7 @@ func _on_button_pressed(type, name: String):
 	else:
 		placement_mode = PlacementMode.CHILD
 
+
 	var new_node: BehaviourToolkit = type.new()
 
 	var current_selection_index = current_selection.get_index()
@@ -113,9 +104,7 @@ func _on_button_pressed(type, name: String):
 			undo_redo.add_do_method(current_selection, "add_child", new_node)
 			undo_redo.add_undo_method(current_selection, "remove_child", new_node)
 
-			undo_redo.add_do_method(
-				new_node, "set_owner", current_selection.get_tree().edited_scene_root
-			)
+			undo_redo.add_do_method(new_node, "set_owner", current_selection.get_tree().edited_scene_root)
 
 			undo_redo.commit_action()
 
@@ -128,14 +117,10 @@ func _on_button_pressed(type, name: String):
 			undo_redo.create_action("Add new Behaviour Node as sibling")
 
 			undo_redo.add_do_method(current_selection.get_parent(), "add_child", new_node)
-			undo_redo.add_do_method(
-				current_selection.get_parent(), "move_child", new_node, current_selection_index + 1
-			)
+			undo_redo.add_do_method(current_selection.get_parent(), "move_child", new_node, current_selection_index + 1)
 			undo_redo.add_undo_method(current_selection.get_parent(), "remove_child", new_node)
-
-			undo_redo.add_do_method(
-				new_node, "set_owner", current_selection.get_tree().edited_scene_root
-			)
+		
+			undo_redo.add_do_method(new_node, "set_owner", current_selection.get_tree().edited_scene_root)
 
 			undo_redo.commit_action()
 
@@ -153,36 +138,21 @@ func _on_button_pressed(type, name: String):
 			undo_redo.add_do_method(current_selection, "reparent", new_node)
 			undo_redo.add_undo_method(current_selection, "reparent", current_selection.get_parent())
 
-			undo_redo.add_do_method(
-				new_node, "set_owner", current_selection.get_tree().edited_scene_root
-			)
-			undo_redo.add_do_method(
-				current_selection, "set_owner", current_selection.get_tree().edited_scene_root
-			)
+			undo_redo.add_do_method(new_node, "set_owner", current_selection.get_tree().edited_scene_root)
+			undo_redo.add_do_method(current_selection, "set_owner", current_selection.get_tree().edited_scene_root)
 			do_set_owners_of_children(current_selection, current_selection)
 
-			undo_redo.add_undo_method(
-				current_selection, "set_owner", current_selection.get_tree().edited_scene_root
-			)
+			undo_redo.add_undo_method(current_selection, "set_owner", current_selection.get_tree().edited_scene_root)
 			undo_set_owners_of_children(current_selection, current_selection)
 
-			undo_redo.add_do_method(
-				current_selection.get_parent(), "move_child", new_node, current_selection_index
-			)
-			undo_redo.add_undo_method(
-				current_selection.get_parent(),
-				"move_child",
-				current_selection,
-				current_selection_index
-			)
+			undo_redo.add_do_method(current_selection.get_parent(), "move_child", new_node, current_selection_index)
+			undo_redo.add_undo_method(current_selection.get_parent(), "move_child", current_selection, current_selection_index)
 
 			undo_redo.add_do_method(editor_interface.get_selection(), "clear")
 			undo_redo.add_undo_method(editor_interface.get_selection(), "clear")
 
 			undo_redo.add_do_method(editor_interface.get_selection(), "add_node", new_node)
-			undo_redo.add_undo_method(
-				editor_interface.get_selection(), "add_node", current_selection
-			)
+			undo_redo.add_undo_method(editor_interface.get_selection(), "add_node", current_selection)
 
 			undo_redo.add_do_method(editor_interface, "edit_node", new_node)
 			undo_redo.add_undo_method(editor_interface, "edit_node", current_selection)
@@ -194,7 +164,7 @@ func _on_button_pressed(type, name: String):
 			if current_selection == current_selection.get_tree().edited_scene_root:
 				print(ERROR_SELECTED_ROOT)
 				return
-
+			
 			undo_redo.create_action("Replace Behaviour Node")
 
 			undo_redo.add_do_method(current_selection, "replace_by", new_node)
@@ -204,9 +174,7 @@ func _on_button_pressed(type, name: String):
 			undo_redo.add_undo_method(editor_interface.get_selection(), "clear")
 
 			undo_redo.add_do_method(editor_interface.get_selection(), "add_node", new_node)
-			undo_redo.add_undo_method(
-				editor_interface.get_selection(), "add_node", current_selection
-			)
+			undo_redo.add_undo_method(editor_interface.get_selection(), "add_node", current_selection)
 
 			undo_redo.add_do_method(editor_interface, "edit_node", new_node)
 			undo_redo.add_undo_method(editor_interface, "edit_node", current_selection)
@@ -219,7 +187,7 @@ func _on_button_pressed(type, name: String):
 	while new_node.get_parent().has_node(new_node_name):
 		new_node_name = name + str(i)
 		i += 1
-
+	
 	new_node.name = new_node_name
 
 
@@ -239,10 +207,10 @@ func _on_button_blackboard_pressed():
 	dialog_blackboard.popup_centered()
 
 
-func _on_file_dialog_new_blackboard_file_selected(path: String):
+func _on_file_dialog_new_blackboard_file_selected(path:String):
 	var new_blackboard := Blackboard.new()
 	ResourceSaver.save(new_blackboard, path)
-
+		
 
 func _on_update_manager_update_available():
 	%LinkGithub.show()
@@ -258,7 +226,7 @@ func search_change_visbility(node: Node, query: String):
 
 		if not child is Button:
 			continue
-
+		
 		if query == "":
 			child.show()
 			continue
@@ -269,11 +237,11 @@ func search_change_visbility(node: Node, query: String):
 			child.hide()
 
 
-func _on_search_bar_text_changed(new_text: String):
+func _on_search_bar_text_changed(new_text:String):
 	search_change_visbility(toolbox, new_text)
 
 
-func _on_toggle_search_bar_toggled(button_pressed: bool):
+func _on_toggle_search_bar_toggled(button_pressed:bool):
 	%SearchBar.text = ""
 	%SearchBar.emit_signal("text_changed", "")
 	%SearchBar.visible = button_pressed
@@ -282,13 +250,13 @@ func _on_toggle_search_bar_toggled(button_pressed: bool):
 	%SearchBar.grab_focus()
 
 
-func _on_toggle_bt_toggled(button_pressed: bool):
+func _on_toggle_bt_toggled(button_pressed:bool):
 	toolbox_bt.visible = button_pressed
 
 
-func _on_toggle_fsm_toggled(button_pressed: bool):
+func _on_toggle_fsm_toggled(button_pressed:bool):
 	toolbox_fsm.visible = button_pressed
 
 
-func _on_toggle_shortcuts_toggled(button_pressed: bool):
+func _on_toggle_shortcuts_toggled(button_pressed:bool):
 	label_shortcuts.visible = button_pressed
