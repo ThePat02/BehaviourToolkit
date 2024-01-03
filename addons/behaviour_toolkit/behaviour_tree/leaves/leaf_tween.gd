@@ -131,7 +131,7 @@ func _init_tween(actor: Node, blackboard: Blackboard):
 			tween.tween_property(actor, tween_property, tween_value, duration)
 
 
-func _get_configuration_warnings():
+func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 
 	warnings.append_array(super._get_configuration_warnings())

@@ -40,7 +40,7 @@ func _get_machine() -> FiniteStateMachine:
 		return get_child(0)
 
 
-func _get_configuration_warnings():
+func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 	var children = get_children()
 

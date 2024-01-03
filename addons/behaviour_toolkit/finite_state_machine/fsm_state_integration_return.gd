@@ -7,7 +7,6 @@ class_name FSMStateIntegrationReturn extends FSMState
 ## [enum BTStatus.FAILURE] depending on the state's return_status property,
 ## which stops execution of FSM attached to [BTIntegratedFSM].
 
-
 enum BTStatus {
 	SUCCESS,
 	FAILURE,
@@ -31,7 +30,7 @@ func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
 	pass
 
 
-func _get_configuration_warnings():
+func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 
 	warnings.append_array(super._get_configuration_warnings())

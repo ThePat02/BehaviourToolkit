@@ -11,7 +11,6 @@ class_name FSMTransition extends BehaviourToolkit
 ## [code]use_event[/code] to true and set the event property to the name
 ## of the event you want to listen for.
 
-
 ## The state to transition to.
 @export var next_state: FSMState:
 	set(value):
@@ -44,7 +43,7 @@ func is_valid(_actor: Node, _blackboard: Blackboard) -> bool:
 func is_valid_event(current_event: String) -> bool:
 	if current_event == "":
 		return false
-	
+
 	return current_event == event
 
 
@@ -53,16 +52,16 @@ func get_next_state() -> FSMState:
 	return next_state
 
 
-func _get_configuration_warnings():
-	var warnings = []
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: Array = []
 
 	var parent: Node = get_parent()
 	if not parent is FSMState:
 		warnings.append("FSMTransition should be a child of FSMState.")
-	
+
 	if not next_state:
 		warnings.append("FSMTransition has no next state.")
-	
+
 	if use_event and event == "":
 		warnings.append("FSMTransition has no event set.")
 
