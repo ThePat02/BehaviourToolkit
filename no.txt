@@ -1,7 +1,0 @@
-git checkout submodule
-git rm -r .
-git checkout main -- addons/behaviour_toolkit
-mv addons/behaviour_toolkit/* .
-git rm -r addons/behaviour_toolkit
-git commit -m Updated Submodule from Main
-git push
