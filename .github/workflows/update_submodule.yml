@@ -10,11 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main branch
+      - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: main
 
-      - name: Copy folder to submodule branch
+      - name: Copy specific folder to submodule branch
         run: |
-         dir
+          git checkout submodule
+          git rm -r --cached .
+          git checkout main -- addons/behaviour_toolkit
+          mv addons/behaviour_toolkit* .
+          git add .
+          git commit -m "Update submodule with changes from main"
+          git push origin submodule
