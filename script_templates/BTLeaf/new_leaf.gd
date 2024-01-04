@@ -11,7 +11,7 @@ func tick(_delta: float, _actor: Node, _blackboard: Blackboard) -> BTStatus:
 
 # Add custom configuration warnings
 # Note: Can be deleted if you don't want to define your own warnings.
-func _get_configuration_warnings():
+func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 
 	warnings.append_array(super._get_configuration_warnings())

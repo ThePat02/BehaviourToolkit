@@ -10,7 +10,7 @@ class_name BTLeafIntegration extends BTLeaf
 		update_configuration_warnings()
 
 
-func _get_configuration_warnings():
+func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 
 	warnings.append_array(super._get_configuration_warnings())

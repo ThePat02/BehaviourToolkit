@@ -1,6 +1,7 @@
 @tool
 extends FSMTransition
 
+
 # Executed when the transition is taken.
 func _on_transition(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
 	pass
@@ -13,7 +14,7 @@ func is_valid(_actor: Node, _blackboard: Blackboard) -> bool:
 
 # Add custom configuration warnings
 # Note: Can be deleted if you don't want to define your own warnings.
-func _get_configuration_warnings():
+func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 
 	warnings.append_array(super._get_configuration_warnings())
