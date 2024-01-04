@@ -22,6 +22,7 @@ jobs:
         git config --local user.email "${{ secrets.OWNER_MAIL }}"
         git config --local user.name "${{ secrets.OWNER_USERNAME }}"
 
+        git fetch
         git checkout submodule
         git rm -r .
         git checkout main -- addons/behaviour_toolkit
