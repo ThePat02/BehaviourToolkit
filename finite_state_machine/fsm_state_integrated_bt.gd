@@ -53,14 +53,15 @@ func _get_behaviour_tree() -> BTRoot:
 
 	if get_child_count() == 0:
 		return null
-	
+
 	for child in get_children():
 		if child is BTRoot:
 			return child
 
 	return null
 
-func _get_configuration_warnings():
+
+func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 
 	warnings.append_array(super._get_configuration_warnings())
@@ -73,11 +74,13 @@ func _get_configuration_warnings():
 			has_root = true
 		elif not child is FSMTransition:
 			warnings.append("FSMStateIntegratedBT can only have BTRoot and FSMTransition children.")
-	
+
 	if not has_root:
 		warnings.append("FSMStateIntegratedBT must have a BTRoot child node.")
-	
+
 	if fire_event_on_status and event == "":
-		warnings.append("FSMStateIntegratedBT has fire_event_on_status enabled, but no event is set.")
+		warnings.append(
+			"FSMStateIntegratedBT has fire_event_on_status enabled, but no event is set."
+		)
 
 	return warnings

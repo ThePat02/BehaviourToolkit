@@ -15,7 +15,7 @@ func tick(_delta: float, _actor: Node, _blackboard: Blackboard) -> BTStatus:
 	return return_status
 
 
-func _get_configuration_warnings():
+func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 
 	warnings.append_array(super._get_configuration_warnings())

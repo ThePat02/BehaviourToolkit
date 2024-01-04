@@ -40,8 +40,8 @@ func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
 	pass
 
 
-func _get_configuration_warnings():
-	var warnings = []
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: Array = []
 
 	var parent: Node = get_parent()
 	if not parent is FiniteStateMachine:
