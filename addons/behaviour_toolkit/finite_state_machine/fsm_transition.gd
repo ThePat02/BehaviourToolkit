@@ -11,6 +11,7 @@ class_name FSMTransition extends BehaviourToolkit
 ## [code]use_event[/code] to true and set the event property to the name
 ## of the event you want to listen for.
 
+
 ## The state to transition to.
 @export var next_state: FSMState:
 	set(value):

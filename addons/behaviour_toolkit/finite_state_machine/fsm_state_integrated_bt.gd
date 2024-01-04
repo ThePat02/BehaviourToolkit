@@ -14,7 +14,9 @@ class_name FSMStateIntegratedBT extends FSMState
 ## Behaviour Tree. You can also use the [FSMEvent] leaf to trigger custom
 ## events inside the nested State Machine.
 
+
 @onready var behaviour_tree: BTRoot = _get_behaviour_tree()
+
 
 @export var fire_event_on_status: bool = false:
 	set(value):
