@@ -1,0 +1,31 @@
+# This workflow will update the submodule branch
+
+name: Update Submodule Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v2
+    
+    
+    - name: Update from Main
+      run: |
+        git config --local user.email "${{ secrets.OWNER_MAIL }}"
+        git config --local user.name "${{ secrets.OWNER_USERNAME }}"
+
+        git checkout submodule
+        git rm -r .
+        git checkout main -- addons/behaviour_toolkit
+        mv addons/behaviour_toolkit/* .
+        git rm -r addons/behaviour_toolkit
+        git commit -m Updated Submodule from Main
+        git push
