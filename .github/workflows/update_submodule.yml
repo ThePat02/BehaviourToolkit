@@ -1,0 +1,24 @@
+name: Update Submodule
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Copy specific folder to submodule branch
+        run: |
+          git checkout submodule
+          git rm -r --cached .
+          git checkout main -- addons/behaviour_toolkit
+          mv addons/behaviour_toolkit* .
+          git add .
+          git commit -m "Update submodule with changes from main"
+          git push origin submodule
