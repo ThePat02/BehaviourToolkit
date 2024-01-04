@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=39 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dws1e5qbg3y2h" path="res://addons/behaviour_toolkit/icons/BTLeaf.svg" id="5_3hqj7"]
 [ext_resource type="Texture2D" uid="uid://cjfh8x8tx20cq" path="res://addons/behaviour_toolkit/icons/FSMStateIntegrationReturn.svg" id="5_78p67"]
 [ext_resource type="Texture2D" uid="uid://gnyb25o014vd" path="res://addons/behaviour_toolkit/icons/FSMStateIntegration.svg" id="5_e6hj7"]
+[ext_resource type="Texture2D" uid="uid://cwmjaei5wjin2" path="res://addons/behaviour_toolkit/icons/Add.svg" id="5_lnklv"]
 [ext_resource type="Texture2D" uid="uid://bq7k30hpimryq" path="res://addons/behaviour_toolkit/icons/BTCompositeSequence.svg" id="5_turo1"]
 [ext_resource type="Texture2D" uid="uid://iduodgdwxa2w" path="res://addons/behaviour_toolkit/icons/BTLeafIntegration.svg" id="6_manrl"]
 [ext_resource type="Texture2D" uid="uid://dbvuyvumeayw7" path="res://addons/behaviour_toolkit/icons/BTCompositeSelector.svg" id="6_mdg6v"]
@@ -149,6 +150,14 @@ text = "[center][img]res://addons/behaviour_toolkit/icons/FiniteStateMachine.svg
 fit_content = true
 scroll_active = false
 
+[node name="ButtonAddFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine/Heading"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 28.0
+offset_bottom = 26.0
+icon = ExtResource("5_lnklv")
+flat = true
+
 [node name="ButtonState" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -185,10 +194,19 @@ layout_mode = 2
 [node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+size_flags_horizontal = 3
 bbcode_enabled = true
 text = "[center][img]res://addons/behaviour_toolkit/icons/BTRoot.svg[/img] Behaviour Tree[/center]"
 fit_content = true
 scroll_active = false
+
+[node name="ButtonAddBT" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Heading"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 12.0
+offset_bottom = 10.0
+icon = ExtResource("5_lnklv")
+flat = true
 
 [node name="ButtonLeaf" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
 unique_name_in_owner = true
@@ -338,6 +356,9 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Repeat"
 icon = ExtResource("10_nvbp1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+layout_mode = 2
 
 [node name="LinkGithub" type="LinkButton" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
