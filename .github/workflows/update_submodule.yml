@@ -16,17 +16,24 @@ jobs:
     - name: Checkout 
       uses: actions/checkout@v2
     
-    
-    - name: Update from Main
+    - name: Setup Git
       run: |
         git config --local user.email "${{ secrets.OWNER_MAIL }}"
         git config --local user.name "${{ secrets.OWNER_USERNAME }}"
-
         git fetch
+    
+    - name: Clean Submodule
+      run: |
         git checkout submodule
         git rm -r .
+
+    - name: Update from Main
+      run: |
         git checkout main -- addons/behaviour_toolkit
         mv addons/behaviour_toolkit/* .
         git rm -r addons/behaviour_toolkit
+
+    - name: Commit to Submodule
+      run: |
         git commit -m Updated Submodule from Main
         git push
