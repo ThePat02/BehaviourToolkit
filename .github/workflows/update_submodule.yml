@@ -18,8 +18,8 @@ jobs:
     
     - name: Setup Git
       run: |
-        git config --local user.email "${{ secrets.OWNER_MAIL }}"
-        git config --local user.name "${{ secrets.OWNER_USERNAME }}"
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
         git fetch
     
     - name: Clean Submodule
