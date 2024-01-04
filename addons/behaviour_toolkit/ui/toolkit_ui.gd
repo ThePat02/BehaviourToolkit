@@ -35,11 +35,13 @@ func _ready():
 	%SearchBar.hide()
 
 	# Connect buttons
+	%ButtonAddFSM.connect("pressed", _on_button_pressed.bind(FiniteStateMachine, "FiniteStateMachine"))
 	%ButtonState.connect("pressed", _on_button_pressed.bind(FSMState, "FSMState"))
 	%ButtonTransition.connect("pressed", _on_button_pressed.bind(FSMTransition, "FSMTransition"))
 	%ButtonStateIntegratedBT.connect("pressed", _on_button_pressed.bind(FSMStateIntegratedBT, "FSMStateIntegratedBT"))
 	%ButtonStateIntegrationReturn.connect("pressed", _on_button_pressed.bind(FSMStateIntegrationReturn, "FSMStateIntegrationReturn"))
 
+	%ButtonAddBT.connect("pressed", _on_button_pressed.bind(BTRoot, "BTRoot"))
 	%ButtonLeaf.connect("pressed", _on_button_pressed.bind(BTLeaf, "BTLeaf"))
 	%ButtonPrint.connect("pressed", _on_button_pressed.bind(LeafPrint, "LeafPrint"))
 	%ButtonWait.connect("pressed", _on_button_pressed.bind(LeafWait, "LeafWait"))
