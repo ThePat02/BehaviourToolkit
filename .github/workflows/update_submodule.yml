@@ -35,5 +35,6 @@ jobs:
 
     - name: Commit to Submodule
       run: |
+        git add -A
         git commit -am "Updated Submodule from Main"
         git push
