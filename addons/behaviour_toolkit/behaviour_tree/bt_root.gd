@@ -32,9 +32,7 @@ enum ProcessType {
 
 var active: bool = false
 var current_status: BTBehaviour.BTStatus
-
-
-@onready var entry_point = get_child(0)
+var entry_point: Node = null
 
 
 func _ready() -> void:
@@ -43,6 +41,8 @@ func _ready() -> void:
 		set_physics_process(false)
 		set_process(false)
 		return
+	
+	entry_point = get_child(0)
 	
 	if blackboard == null:
 		blackboard = _create_local_blackboard()
