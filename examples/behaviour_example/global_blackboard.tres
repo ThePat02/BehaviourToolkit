@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="Blackboard" load_steps=2 format=3 uid="uid://c60ird40hkxeb"]
-
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/blackboard.gd" id="1_5dskv"]
-
-[resource]
-script = ExtResource("1_5dskv")
-content = {}
