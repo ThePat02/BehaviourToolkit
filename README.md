@@ -9,10 +9,19 @@ This plugin provides a set of tools to create custom and complex behaviour in th
     - ![Integration Icon](addons/behaviour_toolkit/icons/BTCompositeIntegration.svg) Nest Behaviour Trees inside State Machines and vice versa!
 - ![BLACKBOARD ICON](addons/behaviour_toolkit/icons/Blackboard.svg) Blackboard Resource
 - Editor Interface with shortcuts
-- [Templates](docs/documentation.md#using-script-templates) for easy extension and integration.
+- [Templates](docs/documentation.md#using-script-templates) for easy extension and integration
 - Example Scene
 
 When a new version is available on GitHub, the plugin will display a notification in the Toolbox! 
+
+
+
+## Installation
+- Clone the `main` branch of this repository to your machine
+- Download the latest release from the [Godot Asset Lib](https://godotengine.org/asset-library/asset)
+- Add the `submodule` branch as [Git Submodule](https://git-scm.com/docs/git-submodule) to your own repo
+  - The `submodule` branch is **always** up to date with `main` and will allow you to consistently use the newest version by `pulling`
+  - If you are not confident in your CL skills, you can use a client like GitKraken to set this up
 
 
 
