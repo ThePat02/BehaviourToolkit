@@ -21,7 +21,6 @@ jobs:
           git rm -r --cached .
           git checkout main -- addons/behaviour_toolkit
           mv addons/behaviour_toolkit/* .
-          git checkout submodule
           git add .
           git commit -m "Update submodule with changes from main"
           git push
