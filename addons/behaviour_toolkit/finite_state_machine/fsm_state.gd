@@ -47,7 +47,7 @@ func _update_transitions() -> void:
 			transitions.append(transition)
 
 
-func _get_configuration_warnings():
+func _get_configuration_warnings() -> PackedStringArray:
 	var warnings = []
 
 	var parent: Node = get_parent()
