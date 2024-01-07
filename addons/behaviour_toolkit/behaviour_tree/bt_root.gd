@@ -127,6 +127,9 @@ func _setup_processing() -> void:
 
 
 func get_entry_point() -> BTBehaviour:
+	if not get_child_count():
+		return null
+	
 	var first_child := get_child(0)
 	if first_child is BTBehaviour:
 		return first_child
