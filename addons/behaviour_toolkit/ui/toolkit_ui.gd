@@ -38,6 +38,8 @@ func _ready():
 	%ButtonAddFSM.connect("pressed", _on_button_pressed.bind(FiniteStateMachine, "FiniteStateMachine"))
 	%ButtonState.connect("pressed", _on_button_pressed.bind(FSMState, "FSMState"))
 	%ButtonTransition.connect("pressed", _on_button_pressed.bind(FSMTransition, "FSMTransition"))
+	%ButtonSplitTransition.connect("pressed", _on_button_pressed.bind(FSMSplitTransition, "FSMSplitTransition"))
+	%ButtonAlwaysTransition.connect("pressed", _on_button_pressed.bind(FSMAlwaysTransition, "FSMAlwaysTransition"))
 	%ButtonStateIntegratedBT.connect("pressed", _on_button_pressed.bind(FSMStateIntegratedBT, "FSMStateIntegratedBT"))
 	%ButtonStateIntegrationReturn.connect("pressed", _on_button_pressed.bind(FSMStateIntegrationReturn, "FSMStateIntegrationReturn"))
 
