@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="1_ugani"]
 [ext_resource type="Script" path="res://examples/fsm_split_transition/fsm_state_print_counter.gd" id="2_dxxwi"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/states/fsm_state_print_on_enter.gd" id="2_s4dqp"]
+[ext_resource type="Script" path="res://examples/fsm_split_transition/fsm_state_print_on_enter.gd" id="2_s4dqp"]
 [ext_resource type="Script" path="res://examples/fsm_split_transition/fsm_transition_to_finish.gd" id="3_mm16c"]
 [ext_resource type="Script" path="res://examples/fsm_split_transition/fsm_transition_even_or_odd.gd" id="4_kimeb"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/transitions/fsm_always_transition.gd" id="4_pxtob"]

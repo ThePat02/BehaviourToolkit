@@ -1,6 +1,6 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/BTLeafPrint.svg")
-class_name FSMStatePrintOnEnter extends FSMState
+extends FSMState
 
 @export var custom_text: String
 
