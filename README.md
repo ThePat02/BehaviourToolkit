@@ -54,3 +54,7 @@ This is the first time I've ever made a bigger plugin for Godot, so I am happy f
 You can also [buy me a coffee](https://ko-fi.com/pat02) if you like the plugin and feel like supporting me :D
 
 Have fun creating awesome behaviours!
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ThePat02/BehaviourToolkit&type=Timeline)](https://star-history.com/#ThePat02/BehaviourToolkit&Timeline)
