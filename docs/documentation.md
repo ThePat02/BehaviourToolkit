@@ -29,9 +29,11 @@ The node icons where designed/choosen to give you a quick overview of their purp
       - [Signals](#signals)
     - [ FSMState](#-fsmstate)
       - [Methods](#methods-1)
+      - [Extras][#extras]
     - [ FSMTransition](#-fsmtransition)
       - [Properties](#properties-1)
       - [Methods](#methods-2)
+      - [Extras][#extras-1]
 - [Behaviour Tree](#behaviour-tree)
   - [Usage](#usage-1)
   - [Tree Nodes](#tree-nodes)
@@ -109,6 +111,12 @@ This is the base class for all states. On ready, all `FSMTransition` child nodes
 - void `_on_exit(actor: Node, blackboard: Blackboard)`
     - Called when the state is exited.
 
+#### Extras
+There are extra states that you can use out of the box:
+
+- ![PrintOnEnter Icon](../addons/behaviour_toolkit/icons/BTLeafPrint.svg) Print on Enter
+  - Prints a message to the console when entering this state. Very handy for debugging.
+
 
 ### ![FSM Transition Icon](../addons/behaviour_toolkit/icons/FSMTransition.svg) FSMTransition
 This is the base class for all transitions. To implement your logic you can override the `_on_transition` method when extending the node's script. To setup custom conditions you can override the `is_valid` method. If you want to use events to trigger the transition, set `use_event` to `true` and set the `event` property to the name of the event you want to listen for.
@@ -127,6 +135,16 @@ This is the base class for all transitions. To implement your logic you can over
     - Called when the transition is triggered.
 - bool `is_valid`
     - Should return `true` if the conditions for the transition are met.
+
+#### Extras
+There are a few extra transitions that you can use out of the box:
+
+- ![SplitTransition Icon](../addons/behaviour_toolkit/icons/FSMSplitTransition.svg) Split
+  - Always transition to one of two states, based on a coded boolean check.
+- ![AlwaysTransition Icon](../addons/behaviour_toolkit/icons/AlwaysTransition.svg) Always
+  - Always transition, useful for states that only act once.
+
+Script templates are also available to make it easier to extend the above classes.
 
 
 # Behaviour Tree

@@ -11,7 +11,6 @@ class_name FSMTransition extends BehaviourToolkit
 ## [code]use_event[/code] to true and set the event property to the name
 ## of the event you want to listen for.
 
-
 ## The state to transition to.
 @export var next_state: FSMState:
 	set(value):
@@ -19,13 +18,34 @@ class_name FSMTransition extends BehaviourToolkit
 		update_configuration_warnings()
 
 @export_category("Transition Logic")
+
+## Always transition, ignoring `is_valid()` or any events.
+@export var always_transition: bool = false:
+	set(value):
+		always_transition = value
+		notify_property_list_changed()
+		update_configuration_warnings()
+
+
+# Rather than using @export on these properties, we include them here so we can show them conditionally.
+func _get_property_list() -> Array[Dictionary]:
+	var property_list: Array[Dictionary] = []
+
+	if not always_transition:
+		property_list.append({"name": "use_event", "type": TYPE_BOOL})
+		property_list.append({"name": "event", "type": TYPE_STRING})
+
+	return property_list
+
+
 ## If true, the FSM will check for the event to trigger the transition.
-@export var use_event: bool = false:
+var use_event: bool = false:
 	set(value):
 		use_event = value
 		update_configuration_warnings()
+
 ## The event that triggers the transition.
-@export var event: String = "":
+var event: String = "":
 	set(value):
 		event = value
 		update_configuration_warnings()
@@ -38,6 +58,9 @@ func _on_transition(_delta: float, _actor: Node, _blackboard: Blackboard) -> voi
 
 ## Evaluates true, if the transition conditions are met.
 func is_valid(_actor: Node, _blackboard: Blackboard) -> bool:
+	if always_transition:
+		return true
+
 	return false
 
 
