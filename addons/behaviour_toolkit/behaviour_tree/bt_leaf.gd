@@ -23,7 +23,4 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if not parent is BTBehaviour and not parent is BTRoot:
 		warnings.append("BTLeaf node must be a child of BTBehaviour or BTRoot node.")
 
-	if children.size() > 0:
-		warnings.append("BTLeaf node must not have any children.")
-
 	return warnings

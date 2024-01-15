@@ -11,7 +11,12 @@ var rng = RandomNumberGenerator.new()
 var active_leave: BTBehaviour
 
 
-func _ready():
+# Connecting signal using @onready to omit the need to use super() call
+# in _ready() of extended nodes if they override _ready().
+@onready var __connect_hash_seed: int = ready.connect(_hash_seed)
+
+
+func _hash_seed():
 	if use_seed:
 		rng.seed = hash(seed)
 
