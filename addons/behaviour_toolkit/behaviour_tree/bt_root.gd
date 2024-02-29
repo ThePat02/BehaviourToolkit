@@ -29,6 +29,10 @@ enum ProcessType {
 @export var actor: Node
 @export var blackboard: Blackboard
 
+## If true, processing can be stopped by await inside the tree.
+## This MUST be set to true if using await, otherwise behavior will not be as expected.
+@export var allow_await: bool = false
+
 
 var active: bool = false
 var current_status: BTBehaviour.BTStatus
@@ -57,18 +61,33 @@ func _ready() -> void:
 
 
 func  _physics_process(delta: float) -> void:
-	_process_code(delta)
-
+	if allow_await:
+		set_physics_process(false)
+		await _process_code(delta)
+		set_physics_process(true)
+	else:
+		_process_code(delta)
 
 func _process(delta: float) -> void:
-	_process_code(delta)
+	if allow_await:
+		set_process(false)
+		await _process_code(delta)
+		set_process(true)
+	else:
+		_process_code(delta)
 
 
 func _process_code(delta: float) -> void:
 	if not active:
 		return
-	
-	current_status = entry_point.tick(delta, actor, blackboard)
+
+	# There's no real harm in using await if nothing under this uses await, but
+	# by declining to use await when [member allow_await] is false, this will
+	# throw a runtime error if await is used.	
+	if allow_await:
+		current_status = await entry_point.tick(delta, actor, blackboard)
+	else:
+		current_status = entry_point.tick(delta, actor, blackboard)
 
 
 func _create_local_blackboard() -> Blackboard:

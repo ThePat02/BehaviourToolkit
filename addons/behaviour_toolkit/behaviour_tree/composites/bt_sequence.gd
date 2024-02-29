@@ -12,7 +12,7 @@ func tick(delta: float, actor: Node, blackboard: Blackboard):
 		current_leaf = 0
 		return BTStatus.SUCCESS
 
-	var response = leaves[current_leaf].tick(delta, actor, blackboard)
+	var response = await leaves[current_leaf].tick(delta, actor, blackboard)
 
 	if response == BTStatus.RUNNING:
 		return response
