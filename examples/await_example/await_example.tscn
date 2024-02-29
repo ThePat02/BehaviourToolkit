@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceriehd6rqlxg"]
+
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="1_6whv7"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_sequence.gd" id="2_5i0sw"]
+[ext_resource type="Script" path="res://examples/await_example/contrived_await.gd" id="3_5wavt"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_print.gd" id="4_01exu"]
+
+[node name="AwaitScene" type="Node2D"]
+
+[node name="BTRoot" type="Node" parent="."]
+script = ExtResource("1_6whv7")
+autostart = true
+allow_await = true
+
+[node name="BTSequence" type="Node" parent="BTRoot"]
+script = ExtResource("2_5i0sw")
+
+[node name="ContrivedAwait" type="Node" parent="BTRoot/BTSequence"]
+script = ExtResource("3_5wavt")
+
+[node name="LeafPrint" type="Node" parent="BTRoot/BTSequence"]
+script = ExtResource("4_01exu")

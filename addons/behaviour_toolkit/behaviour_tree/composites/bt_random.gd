@@ -20,7 +20,7 @@ func tick(delta: float, actor: Node, blackboard: Blackboard):
 	if active_leave == null:
 		active_leave = leaves[rng.randi() % leaves.size()]
 	
-	var response = active_leave.tick(delta, actor, blackboard)
+	var response = await active_leave.tick(delta, actor, blackboard)
 	
 	if response == BTStatus.RUNNING:
 		return response
