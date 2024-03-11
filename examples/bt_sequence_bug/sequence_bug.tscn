@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://nvq2mysb86gu"]
+
+[ext_resource type="Script" path="res://examples/bt_sequence_bug/sequence_bug.gd" id="1_wd8lx"]
+[ext_resource type="Texture2D" uid="uid://bbilmsl1ghy3k" path="res://icon.svg" id="2_0o2vr"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="3_pxua6"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="3_yd4jl"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/blackboard.gd" id="4_1qkx5"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state_integrated_bt.gd" id="4_oxwiv"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_sequence.gd" id="5_jglft"]
+[ext_resource type="Script" path="res://examples/bt_sequence_bug/set_target.gd" id="6_oixaf"]
+[ext_resource type="Script" path="res://examples/bt_sequence_bug/move_to_target.gd" id="7_pdv4h"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="10_hkedn"]
+[ext_resource type="Script" path="res://examples/bt_sequence_bug/waiting.gd" id="11_n4q3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5ooa"]
+size = Vector2(116, 116)
+
+[sub_resource type="Resource" id="Resource_tj2c0"]
+script = ExtResource("4_1qkx5")
+content = {}
+
+[node name="SequenceBug" type="Node2D"]
+script = ExtResource("1_wd8lx")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_0o2vr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_x5ooa")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+script = ExtResource("3_pxua6")
+autostart = true
+initial_state = NodePath("Targeting")
+actor = NodePath("../CharacterBody2D")
+
+[node name="Targeting" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_oxwiv")
+fire_event_on_status = true
+event = "target_reached"
+
+[node name="BTRoot" type="Node" parent="FiniteStateMachine/Targeting" node_paths=PackedStringArray("actor")]
+script = ExtResource("3_yd4jl")
+actor = NodePath("../../../CharacterBody2D")
+blackboard = SubResource("Resource_tj2c0")
+
+[node name="BTSequence" type="Node" parent="FiniteStateMachine/Targeting/BTRoot"]
+script = ExtResource("5_jglft")
+
+[node name="SetTarget" type="Node" parent="FiniteStateMachine/Targeting/BTRoot/BTSequence"]
+script = ExtResource("6_oixaf")
+
+[node name="MoveToTarget" type="Node" parent="FiniteStateMachine/Targeting/BTRoot/BTSequence"]
+script = ExtResource("7_pdv4h")
+
+[node name="OnTargetReached" type="Node" parent="FiniteStateMachine/Targeting" node_paths=PackedStringArray("next_state")]
+script = ExtResource("10_hkedn")
+next_state = NodePath("../../Waiting")
+use_event = true
+event = "target_reached"
+
+[node name="Waiting" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("11_n4q3c")
+
+[node name="OnTimeout" type="Node" parent="FiniteStateMachine/Waiting" node_paths=PackedStringArray("next_state")]
+script = ExtResource("10_hkedn")
+next_state = NodePath("../../Targeting")
+use_event = true
+event = "timeout"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
