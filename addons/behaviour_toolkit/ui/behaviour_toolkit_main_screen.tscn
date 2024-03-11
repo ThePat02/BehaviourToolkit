@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw21k05dxwly7"]
+
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/behaviour_toolkit_main_screen.gd" id="1_w8qom"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/fsm_table_control.gd" id="2_scl5y"]
+
+[node name="BehaviourToolkitMainScreen" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_w8qom")
+
+[node name="FSMTableControl" type="GridContainer" parent="."]
+layout_mode = 2
+script = ExtResource("2_scl5y")
