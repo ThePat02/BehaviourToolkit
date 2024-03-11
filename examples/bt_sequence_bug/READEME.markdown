@@ -1,5 +1,16 @@
 This example is here to provide a 'minimal' example reproducing https://github.com/ThePat02/BehaviourToolkit/issues/81
 
+In this scene the Godot icon acquires the mouse position as a 'target' and moves to it. Once the target is reached, the
+timer is started, and he waits a few seconds. When the timer emits its `timeout` signal, the `timeout` event is fired
+into the top level state machine, triggering a change to the `Targeting` state.
+
+The state machine looks like this:
+
+|  State   | target_reached |  timeout  |
+|:--------:|:--------------:|:---------:|
+|Targeting |    Waiting     |           |
+| Waiting  |                | Targeting |
+
 When running the example without the fix:
 
 ```
