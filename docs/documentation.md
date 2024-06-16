@@ -104,7 +104,7 @@ This is the base class for all states. On ready, all `FSMTransition` child nodes
 #### Methods
 - void `_on_enter(actor: Node, blackboard: Blackboard)`
     - Called when the state is entered.
-- void `_on_update(actor: Node, blackboard: Blackboard)`
+- void `_on_update(_delta: float, actor: Node, blackboard: Blackboard)`
     - Called every frame while the state is active.
 - void `_on_exit(actor: Node, blackboard: Blackboard)`
     - Called when the state is exited.
