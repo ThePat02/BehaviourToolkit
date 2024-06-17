@@ -1,0 +1,1367 @@
+[gd_scene load_steps=5 format=3 uid="uid://df0t5f5tam4vw"]
+
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="1_s7eem"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state.gd" id="2_esnul"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="3_5ad8s"]
+[ext_resource type="Script" path="res://examples/giant_fsm/onScriptCondition.gd" id="4_bnlyj"]
+
+[node name="GiantFsm" type="Node2D"]
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_s7eem")
+initial_state = NodePath("A")
+
+[node name="A" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent1" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_1"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../D")
+use_event = true
+event = "event_2"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../X")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../C")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent6" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../F")
+use_event = true
+event = "event_6"
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_7"
+
+[node name="OnEvent8" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_8"
+
+[node name="OnEvent9" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../D")
+use_event = true
+event = "event_9"
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Z")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_11"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent13" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_13"
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../N")
+use_event = true
+event = "event_14"
+
+[node name="OnEvent15" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_15"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_16"
+
+[node name="OnEvent17" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Z")
+use_event = true
+event = "event_17"
+
+[node name="OnScriptCondition" type="Node" parent="FiniteStateMachine/A" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../AA")
+
+[node name="B" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent1" type="Node" parent="FiniteStateMachine/B" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../A")
+use_event = true
+event = "event_1"
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/B" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_7"
+
+[node name="@Node@45027" type="Node" parent="FiniteStateMachine/B" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../J")
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/B" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_2"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/B" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/B" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/B" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent15" type="Node" parent="FiniteStateMachine/B" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../R")
+use_event = true
+event = "event_15"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/B" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../R")
+use_event = true
+event = "event_16"
+
+[node name="C" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent1" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../A")
+use_event = true
+event = "event_1"
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_7"
+
+[node name="@Node@45028" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../J")
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_2"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent9" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_9"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_11"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../R")
+use_event = true
+event = "event_16"
+
+[node name="OnEvent15" type="Node" parent="FiniteStateMachine/C" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../R")
+use_event = true
+event = "event_15"
+
+[node name="D" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/D" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../C")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/D" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_7"
+
+[node name="@Node@45029" type="Node" parent="FiniteStateMachine/D" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../K")
+
+[node name="OnEvent9" type="Node" parent="FiniteStateMachine/D" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_9"
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/D" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/D" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_11"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/D" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent15" type="Node" parent="FiniteStateMachine/D" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../R")
+use_event = true
+event = "event_15"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/D" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../R")
+use_event = true
+event = "event_16"
+
+[node name="E" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/E" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_7"
+
+[node name="@Node@45030" type="Node" parent="FiniteStateMachine/E" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("..")
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/E" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_11"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/E" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_12"
+
+[node name="F" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent15" type="Node" parent="FiniteStateMachine/F" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../X")
+use_event = true
+event = "event_15"
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/F" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/F" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_4"
+
+[node name="@Node@45048" type="Node" parent="FiniteStateMachine/F" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../O")
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/F" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/F" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_11"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/F" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../R")
+use_event = true
+event = "event_16"
+
+[node name="G" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/G" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/G" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent17" type="Node" parent="FiniteStateMachine/G" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_17"
+
+[node name="@Node@45047" type="Node" parent="FiniteStateMachine/G" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../O")
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/G" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_14"
+
+[node name="OnEvent13" type="Node" parent="FiniteStateMachine/G" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_13"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/G" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../T")
+use_event = true
+event = "event_16"
+
+[node name="OnEvent15" type="Node" parent="FiniteStateMachine/G" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../T")
+use_event = true
+event = "event_15"
+
+[node name="H" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../D")
+use_event = true
+event = "event_11"
+
+[node name="OnEvent8" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_8"
+
+[node name="OnEvent9" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_9"
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../F")
+use_event = true
+event = "event_7"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_2"
+
+[node name="@Node@45036" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../U")
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_14"
+
+[node name="OnEvent13" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_13"
+
+[node name="OnEvent15" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../T")
+use_event = true
+event = "event_15"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/H" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../T")
+use_event = true
+event = "event_16"
+
+[node name="I" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/I" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_10"
+
+[node name="@Node@45035" type="Node" parent="FiniteStateMachine/I" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../U")
+
+[node name="OnEvent9" type="Node" parent="FiniteStateMachine/I" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_9"
+
+[node name="OnEvent8" type="Node" parent="FiniteStateMachine/I" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_8"
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/I" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_7"
+
+[node name="OnEvent6" type="Node" parent="FiniteStateMachine/I" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_6"
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/I" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/I" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent13" type="Node" parent="FiniteStateMachine/I" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_13"
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/I" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_14"
+
+[node name="J" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="@Node@45037" type="Node" parent="FiniteStateMachine/J" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../U")
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/J" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent9" type="Node" parent="FiniteStateMachine/J" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_9"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/J" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/J" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_2"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/J" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/J" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_11"
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/J" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_14"
+
+[node name="OnEvent13" type="Node" parent="FiniteStateMachine/J" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_13"
+
+[node name="K" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent6" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../W")
+use_event = true
+event = "event_6"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Q")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_3"
+
+[node name="@Node@45034" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../U")
+
+[node name="OnEvent9" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_9"
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent13" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_13"
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_14"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_16"
+
+[node name="OnEvent17" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_17"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_11"
+
+[node name="OnEvent8" type="Node" parent="FiniteStateMachine/K" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Z")
+use_event = true
+event = "event_8"
+
+[node name="L" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/L" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Q")
+use_event = true
+event = "event_7"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/L" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent15" type="Node" parent="FiniteStateMachine/L" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_15"
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/L" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent9" type="Node" parent="FiniteStateMachine/L" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_9"
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/L" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_5"
+
+[node name="@Node@45045" type="Node" parent="FiniteStateMachine/L" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../Y")
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/L" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_14"
+
+[node name="OnEvent13" type="Node" parent="FiniteStateMachine/L" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_13"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/L" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../H")
+use_event = true
+event = "event_11"
+
+[node name="M" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="@Node@45033" type="Node" parent="FiniteStateMachine/M" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../I")
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/M" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_2"
+
+[node name="N" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/N" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_14"
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/N" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_7"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/N" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_2"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/N" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_3"
+
+[node name="@Node@45044" type="Node" parent="FiniteStateMachine/N" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../Y")
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/N" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/N" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent6" type="Node" parent="FiniteStateMachine/N" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_6"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/N" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/N" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_11"
+
+[node name="O" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/O" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent1" type="Node" parent="FiniteStateMachine/O" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_1"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/O" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/O" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_2"
+
+[node name="@Node@45043" type="Node" parent="FiniteStateMachine/O" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../Y")
+
+[node name="OnEvent6" type="Node" parent="FiniteStateMachine/O" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_6"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/O" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/O" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_11"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/O" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_12"
+
+[node name="P" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent6" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_6"
+
+[node name="OnEvent9" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_9"
+
+[node name="OnEvent8" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_8"
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_7"
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_11"
+
+[node name="OnEvent13" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_13"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_2"
+
+[node name="@Node@45042" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../Y")
+
+[node name="OnEvent1" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_1"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/P" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_4"
+
+[node name="Q" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent13" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_13"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_16"
+
+[node name="OnEvent17" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_17"
+
+[node name="@Node@45032" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../I")
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_2"
+
+[node name="OnEvent1" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_1"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/Q" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_11"
+
+[node name="R" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/R" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_14"
+
+[node name="@Node@45038" type="Node" parent="FiniteStateMachine/R" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../U")
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/R" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/R" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/R" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_2"
+
+[node name="OnEvent1" type="Node" parent="FiniteStateMachine/R" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_1"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/R" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_11"
+
+[node name="S" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="@Node@45039" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../U")
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../U")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent8" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_8"
+
+[node name="OnEvent9" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_9"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent13" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_13"
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_14"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_2"
+
+[node name="OnEvent1" type="Node" parent="FiniteStateMachine/S" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_1"
+
+[node name="T" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/T" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/T" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_12"
+
+[node name="@Node@45040" type="Node" parent="FiniteStateMachine/T" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../U")
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/T" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/T" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/T" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/T" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_2"
+
+[node name="OnEvent11" type="Node" parent="FiniteStateMachine/T" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../P")
+use_event = true
+event = "event_11"
+
+[node name="U" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent8" type="Node" parent="FiniteStateMachine/U" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_8"
+
+[node name="@Node@45041" type="Node" parent="FiniteStateMachine/U" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../Y")
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/U" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/U" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/U" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent2" type="Node" parent="FiniteStateMachine/U" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../O")
+use_event = true
+event = "event_2"
+
+[node name="V" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/V" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent12" type="Node" parent="FiniteStateMachine/V" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_12"
+
+[node name="OnEvent6" type="Node" parent="FiniteStateMachine/V" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_6"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/V" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_3"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/V" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/V" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_5"
+
+[node name="W" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/W" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_14"
+
+[node name="OnEvent15" type="Node" parent="FiniteStateMachine/W" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_15"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/W" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_16"
+
+[node name="@Node@45046" type="Node" parent="FiniteStateMachine/W" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../Y")
+
+[node name="OnEvent5" type="Node" parent="FiniteStateMachine/W" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../J")
+use_event = true
+event = "event_5"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/W" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../J")
+use_event = true
+event = "event_4"
+
+[node name="OnEvent3" type="Node" parent="FiniteStateMachine/W" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../K")
+use_event = true
+event = "event_3"
+
+[node name="X" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="OnEvent17" type="Node" parent="FiniteStateMachine/X" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_17"
+
+[node name="OnEvent7" type="Node" parent="FiniteStateMachine/X" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../I")
+use_event = true
+event = "event_7"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/X" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../Y")
+use_event = true
+event = "event_16"
+
+[node name="OnEvent4" type="Node" parent="FiniteStateMachine/X" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../J")
+use_event = true
+event = "event_4"
+
+[node name="Y" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="@Node@45031" type="Node" parent="FiniteStateMachine/Y" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_bnlyj")
+next_state = NodePath("../../B")
+
+[node name="OnEvent10" type="Node" parent="FiniteStateMachine/Y" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_10"
+
+[node name="OnEvent8" type="Node" parent="FiniteStateMachine/Y" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("../../B")
+use_event = true
+event = "event_8"
+
+[node name="OnEvent14" type="Node" parent="FiniteStateMachine/Y" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_14"
+
+[node name="OnEvent16" type="Node" parent="FiniteStateMachine/Y" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_5ad8s")
+next_state = NodePath("..")
+use_event = true
+event = "event_16"
+
+[node name="Z" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
+
+[node name="AA" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_esnul")
