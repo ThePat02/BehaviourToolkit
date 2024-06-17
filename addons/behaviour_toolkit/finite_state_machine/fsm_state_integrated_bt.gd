@@ -36,6 +36,7 @@ func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 
 ## Executes every process call, if the state is active.
 func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
+	behaviour_tree._process_code(_delta)
 	if behaviour_tree.current_status == on_status:
 		if fire_event_on_status:
 			get_parent().fire_event(event)
@@ -44,6 +45,13 @@ func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
 ## Executes before the state is exited.
 func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
 	behaviour_tree.active = false
+
+
+func _ready():
+	super()
+
+	if behaviour_tree:
+		behaviour_tree.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _get_behaviour_tree() -> BTRoot:
