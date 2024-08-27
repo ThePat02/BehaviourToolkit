@@ -16,7 +16,7 @@ func tick(delta: float, actor: Node, blackboard: Blackboard):
 	if current_count == null:
 		current_count = 0
 	
-	if current_count <= repetition:
+	if current_count < repetition:
 		var response = leaf.tick(delta, actor, blackboard)
 
 		if response == BTStatus.RUNNING:
