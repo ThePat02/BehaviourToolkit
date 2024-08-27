@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export_category("Utility")
 @export var navigation_agent: NavigationAgent2D
 @export var animation_player: AnimationPlayer
+
 @export_category("BehaviourToolkit")
 @export var state_machine: FiniteStateMachine
 @export var behaviour_tree: BTRoot

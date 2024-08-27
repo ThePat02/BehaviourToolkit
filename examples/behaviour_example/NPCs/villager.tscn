@@ -154,7 +154,7 @@ navigation_agent = NodePath("NavigationAgent2D")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("AnimationStateMachine")
 behaviour_tree = NodePath("Behaviour")
-ghost_state_machine = NodePath("Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine")
+ghost_state_machine = NodePath("Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine")
 
 [node name="PlayerTick" type="Timer" parent="."]
 autostart = true
@@ -198,75 +198,75 @@ script = ExtResource("8_rjqba")
 [node name="BehaveLikeAGhost" type="Node" parent="Behaviour/Select/BeAGhost"]
 script = ExtResource("7_eoyf0")
 
-[node name="FiniteStateMachine" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost" node_paths=PackedStringArray("initial_state", "actor")]
+[node name="GhostStateMachine" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost" node_paths=PackedStringArray("initial_state", "actor")]
 script = ExtResource("8_5ft4q")
 initial_state = NodePath("TransformIntoGhost")
 actor = NodePath("../../../../..")
 blackboard = ExtResource("4_opmou")
 
-[node name="TransformIntoGhost" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
+[node name="TransformIntoGhost" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine"]
 script = ExtResource("13_har5q")
 
-[node name="onFinishedTransformation" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TransformIntoGhost" node_paths=PackedStringArray("next_state")]
+[node name="onFinishedTransformation" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TransformIntoGhost" node_paths=PackedStringArray("next_state")]
 script = ExtResource("17_nswga")
 next_state = NodePath("../../TryToRevive")
 use_event = true
 event = "fully_transformed"
 
-[node name="TryToRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
+[node name="TryToRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine"]
 script = ExtResource("13_rq5d2")
 fire_event_on_status = true
 event = "revive"
 
-[node name="RevivalBehaviour" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive"]
+[node name="RevivalBehaviour" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TryToRevive"]
 script = ExtResource("3_5mjdm")
 
-[node name="BTSelector" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour"]
+[node name="BTSelector" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TryToRevive/RevivalBehaviour"]
 script = ExtResource("5_1bdaa")
 
-[node name="ReviveIfPossible" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector"]
+[node name="ReviveIfPossible" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TryToRevive/RevivalBehaviour/BTSelector"]
 script = ExtResource("5_ndext")
 
-[node name="CanOnlyReviveOnce" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible"]
+[node name="CanOnlyReviveOnce" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible"]
 script = ExtResource("9_ac00x")
 
-[node name="CanRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible/CanOnlyReviveOnce"]
+[node name="CanRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible/CanOnlyReviveOnce"]
 script = ExtResource("16_igrlt")
 
-[node name="BTLeaf" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible/CanOnlyReviveOnce/CanRevive"]
+[node name="BTLeaf" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible/CanOnlyReviveOnce/CanRevive"]
 script = ExtResource("9_fbuja")
 
-[node name="Cooldown" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible"]
+[node name="Cooldown" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TryToRevive/RevivalBehaviour/BTSelector/ReviveIfPossible"]
 script = ExtResource("7_ff4kr")
 wait_for_ticks = 500
 
-[node name="FireEventFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector" node_paths=PackedStringArray("state_machine")]
+[node name="FireEventFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TryToRevive/RevivalBehaviour/BTSelector" node_paths=PackedStringArray("state_machine")]
 script = ExtResource("18_45wr7")
 event = &"failed_revive"
 state_machine = NodePath("../../../..")
 
-[node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]
+[node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]
 script = ExtResource("15_ahoqg")
 next_state = NodePath("../../Revive")
 use_event = true
 event = "revive"
 
-[node name="onFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]
+[node name="onFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]
 script = ExtResource("17_nswga")
 next_state = NodePath("../../DoGhostThings")
 use_event = true
 event = "failed_revive"
 
-[node name="DoGhostThings" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
+[node name="DoGhostThings" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine"]
 script = ExtResource("14_k3bdi")
 
-[node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/DoGhostThings" node_paths=PackedStringArray("next_state")]
+[node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine/DoGhostThings" node_paths=PackedStringArray("next_state")]
 script = ExtResource("15_ahoqg")
 next_state = NodePath("../../Revive")
 use_event = true
 event = "revive"
 
-[node name="Revive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
+[node name="Revive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine"]
 script = ExtResource("13_bsy2u")
 return_value = 1
 
@@ -375,3 +375,4 @@ event = "start_refreshing"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="PlayerTick" to="." method="_on_player_tick_timeout"]
+[connection signal="state_changed" from="Behaviour/Select/BeAGhost/BehaveLikeAGhost/GhostStateMachine" to="." method="_on_ghost_state_machine_state_changed"]
