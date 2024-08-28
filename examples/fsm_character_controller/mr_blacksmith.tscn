@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://cphaljkgsj3dl"]
+[gd_scene load_steps=19 format=3 uid="uid://cphaljkgsj3dl"]
 
 [ext_resource type="Script" path="res://examples/fsm_character_controller/MrBlacksmith.gd" id="1_o56o3"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_debug_label.gd" id="2_j8nmg"]
 [ext_resource type="Texture2D" uid="uid://cp4n4mks4l6t4" path="res://examples/assets/actors/tiny_blacksmith.png" id="2_qa7vs"]
 [ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="3_4ougi"]
 [ext_resource type="Script" path="res://examples/fsm_character_controller/states/IDLE.gd" id="4_xi524"]
@@ -11,9 +10,6 @@
 [ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStartSprinting.gd" id="8_diwgw"]
 [ext_resource type="Script" path="res://examples/fsm_character_controller/states/SPRINTING.gd" id="9_dcfr7"]
 [ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStopSprinting.gd" id="10_did35"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_72u6k"]
-font_size = 10
 
 [sub_resource type="Animation" id="Animation_c3jgb"]
 length = 0.001
@@ -93,16 +89,6 @@ height = 11.13
 
 [node name="MrBlacksmith" type="CharacterBody2D"]
 script = ExtResource("1_o56o3")
-
-[node name="FSMDebugLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
-offset_left = 5.0
-offset_top = -20.0
-offset_right = 45.0
-offset_bottom = 3.0
-text = "Test"
-label_settings = SubResource("LabelSettings_72u6k")
-script = ExtResource("2_j8nmg")
-state_machine = NodePath("../FSMController")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
