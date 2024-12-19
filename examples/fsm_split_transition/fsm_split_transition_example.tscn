@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd1t17mhnvpn4"]
+
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="1_ugani"]
+[ext_resource type="Script" path="res://examples/fsm_split_transition/fsm_state_print_counter.gd" id="2_dxxwi"]
+[ext_resource type="Script" path="res://examples/fsm_split_transition/fsm_state_print_on_enter.gd" id="2_s4dqp"]
+[ext_resource type="Script" path="res://examples/fsm_split_transition/fsm_transition_to_finish.gd" id="3_mm16c"]
+[ext_resource type="Script" path="res://examples/fsm_split_transition/fsm_transition_even_or_odd.gd" id="4_kimeb"]
+[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="6_am5vp"]
+
+[node name="SplitTransitionExample" type="Node2D"]
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_ugani")
+autostart = true
+initial_state = NodePath("PrintCounter")
+
+[node name="PrintCounter" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_dxxwi")
+
+[node name="TransitionToFinish" type="Node" parent="FiniteStateMachine/PrintCounter" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_mm16c")
+next_state = NodePath("../../PrintDone")
+use_event = false
+event = ""
+
+[node name="GoEvenOrOdd" type="Node" parent="FiniteStateMachine/PrintCounter" node_paths=PackedStringArray("next_state_true", "next_state_false")]
+script = ExtResource("4_kimeb")
+next_state_true = NodePath("../../PrintEven")
+next_state_false = NodePath("../../PrintOdd")
+use_event = false
+event = ""
+
+[node name="PrintEven" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_s4dqp")
+custom_text = "Even"
+
+[node name="ReturnToStart" type="Node" parent="FiniteStateMachine/PrintEven" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_am5vp")
+next_state = NodePath("../../PrintCounter")
+always_transition = true
+
+[node name="PrintOdd" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_s4dqp")
+custom_text = "Odd"
+
+[node name="ReturnToStart" type="Node" parent="FiniteStateMachine/PrintOdd" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_am5vp")
+next_state = NodePath("../../PrintCounter")
+always_transition = true
+
+[node name="PrintDone" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_s4dqp")
+custom_text = "Done"

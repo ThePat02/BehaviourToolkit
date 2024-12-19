@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="16"
+   viewBox="0 0 16 16"
+   width="16"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="FSMSplitTransition.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="36.283417"
+     inkscape:cx="8.0201928"
+     inkscape:cy="8.337142"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g2" />
+  <g
+     id="g2"
+     transform="matrix(0.76335551,0,0,0.76335551,1.8931559,1.7277065)">
+    <path
+       d="m 10.290808,9.010873 2.181415,-1.849567 1.202219,1.417921 3.272123,-2.7743504 0.261087,9.1526724 -8.9867467,-1.754407 3.2721207,-2.774348 z"
+       fill="#fc7f7f"
+       id="path2"
+       style="fill:#ea3b3b;fill-opacity:1;stroke-width:1.43002"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:transform-center-y="4.796431"
+       inkscape:transform-center-x="-3.5986711" />
+    <path
+       d="M 5.7091907,9.0108735 3.5277751,7.1613065 2.3255565,8.5792269 -0.94656663,5.8048767 -1.2076532,14.957549 7.7790934,13.203142 4.5069721,10.428794 Z"
+       fill="#fc7f7f"
+       id="path1"
+       style="fill:#15c354;fill-opacity:1;stroke-width:1.43002"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:transform-center-y="4.796431"
+       inkscape:transform-center-x="3.598671" />
+    <circle
+       cx="8"
+       cy="4.0978613"
+       r="5"
+       fill="none"
+       stroke-width="2"
+       stroke="#8da5f3"
+       id="circle1"
+       style="stroke:#ea9a3b;stroke-opacity:1" />
+    <circle
+       cx="8.0156221"
+       cy="4.0978613"
+       fill="none"
+       stroke-width="0.616323"
+       stroke="#8da5f3"
+       id="circle2"
+       style="fill:#ea9a3b;fill-opacity:1;stroke:#ea9a3b;stroke-opacity:1"
+       r="1.5408041" />
+  </g>
+</svg>
