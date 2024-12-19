@@ -1,15 +1,15 @@
 [gd_scene load_steps=19 format=3 uid="uid://cphaljkgsj3dl"]
 
-[ext_resource type="Script" path="res://examples/fsm_character_controller/MrBlacksmith.gd" id="1_o56o3"]
+[ext_resource type="Script" uid="uid://d4g4u8q8b7rsx" path="res://examples/fsm_character_controller/MrBlacksmith.gd" id="1_o56o3"]
 [ext_resource type="Texture2D" uid="uid://cp4n4mks4l6t4" path="res://examples/assets/actors/tiny_blacksmith.png" id="2_qa7vs"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="3_4ougi"]
-[ext_resource type="Script" path="res://examples/fsm_character_controller/states/IDLE.gd" id="4_xi524"]
-[ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStartMoving.gd" id="5_tacxr"]
-[ext_resource type="Script" path="res://examples/fsm_character_controller/states/MOVING.gd" id="6_xf37u"]
-[ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStopMoving.gd" id="7_tyq7y"]
-[ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStartSprinting.gd" id="8_diwgw"]
-[ext_resource type="Script" path="res://examples/fsm_character_controller/states/SPRINTING.gd" id="9_dcfr7"]
-[ext_resource type="Script" path="res://examples/fsm_character_controller/transitions/onStopSprinting.gd" id="10_did35"]
+[ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="3_4ougi"]
+[ext_resource type="Script" uid="uid://b8cyip4l40jgx" path="res://examples/fsm_character_controller/states/IDLE.gd" id="4_xi524"]
+[ext_resource type="Script" uid="uid://clqh1515due6x" path="res://examples/fsm_character_controller/transitions/onStartMoving.gd" id="5_tacxr"]
+[ext_resource type="Script" uid="uid://cvjqfgfhu2yue" path="res://examples/fsm_character_controller/states/MOVING.gd" id="6_xf37u"]
+[ext_resource type="Script" uid="uid://djobir3d8k83r" path="res://examples/fsm_character_controller/transitions/onStopMoving.gd" id="7_tyq7y"]
+[ext_resource type="Script" uid="uid://db4n8gh1ye50c" path="res://examples/fsm_character_controller/transitions/onStartSprinting.gd" id="8_diwgw"]
+[ext_resource type="Script" uid="uid://c2yda53e16fwn" path="res://examples/fsm_character_controller/states/SPRINTING.gd" id="9_dcfr7"]
+[ext_resource type="Script" uid="uid://beyib2ryg4dja" path="res://examples/fsm_character_controller/transitions/onStopSprinting.gd" id="10_did35"]
 
 [sub_resource type="Animation" id="Animation_c3jgb"]
 length = 0.001
@@ -61,9 +61,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t57sx"]
 _data = {
-"RESET": SubResource("Animation_c3jgb"),
-"idle": SubResource("Animation_n1c40"),
-"walking": SubResource("Animation_0xjqu")
+&"RESET": SubResource("Animation_c3jgb"),
+&"idle": SubResource("Animation_n1c40"),
+&"walking": SubResource("Animation_0xjqu")
 }
 
 [sub_resource type="Curve" id="Curve_fp4cc"]
@@ -92,14 +92,14 @@ script = ExtResource("1_o56o3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_t57sx")
+&"": SubResource("AnimationLibrary_t57sx")
 }
 
 [node name="ParticlesWalking" type="GPUParticles2D" parent="."]
 position = Vector2(0, 7.07)
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_yrg32")
 lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_yrg32")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_qa7vs")

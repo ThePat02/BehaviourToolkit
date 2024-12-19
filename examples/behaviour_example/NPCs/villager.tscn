@@ -1,36 +1,36 @@
 [gd_scene load_steps=38 format=3 uid="uid://ctbwpw7df4hay"]
 
-[ext_resource type="Script" path="res://examples/behaviour_example/actor/actor.gd" id="1_a3qvv"]
+[ext_resource type="Script" uid="uid://dkj3sb4f3yxpp" path="res://examples/behaviour_example/actor/actor.gd" id="1_a3qvv"]
 [ext_resource type="Texture2D" uid="uid://bsjt61unufjgi" path="res://examples/assets/actors/tiny_village.png" id="2_p6pfm"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="3_5mjdm"]
+[ext_resource type="Script" uid="uid://d11c6gwrjou0w" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="3_5mjdm"]
 [ext_resource type="Resource" uid="uid://c60ird40hkxeb" path="res://examples/behaviour_example/global_blackboard.tres" id="4_opmou"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_selector.gd" id="5_1bdaa"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_sequence.gd" id="5_ndext"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/RandomPOI.gd" id="6_4e5n0"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_random.gd" id="7_75fan"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_integrated_fsm.gd" id="7_eoyf0"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_wait.gd" id="7_ff4kr"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_inverter.gd" id="7_n0kki"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="8_5ft4q"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/IsHydrated.gd" id="8_bgd18"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/IsAlive.gd" id="8_rjqba"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_idle.gd" id="9_73yag"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_limiter.gd" id="9_ac00x"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_leaf.gd" id="9_fbuja"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/trans_on_start_walking.gd" id="10_amkvh"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/UseBottle.gd" id="10_k40jm"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_walking.gd" id="11_rb27u"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/leaves/WalkToWell.gd" id="12_2x00h"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/trans_on_stop_walking.gd" id="12_a13jv"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state_integration_return.gd" id="13_bsy2u"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_transformt.gd" id="13_har5q"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state_integrated_bt.gd" id="13_rq5d2"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_ghost.gd" id="14_k3bdi"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/trans_on_revive.gd" id="15_ahoqg"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_always_succeed.gd" id="16_igrlt"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="17_nswga"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_event.gd" id="18_45wr7"]
-[ext_resource type="Script" path="res://examples/behaviour_example/NPCs/states/state_refreshing.gd" id="20_bve44"]
+[ext_resource type="Script" uid="uid://8rcyavsdmew5" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_selector.gd" id="5_1bdaa"]
+[ext_resource type="Script" uid="uid://dpr2xa1e5hy8u" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_sequence.gd" id="5_ndext"]
+[ext_resource type="Script" uid="uid://bx7ve1crfn4qg" path="res://examples/behaviour_example/NPCs/leaves/RandomPOI.gd" id="6_4e5n0"]
+[ext_resource type="Script" uid="uid://c6si2venemcbd" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_random.gd" id="7_75fan"]
+[ext_resource type="Script" uid="uid://bpln78cwmomyr" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_integrated_fsm.gd" id="7_eoyf0"]
+[ext_resource type="Script" uid="uid://buvb8uppbyosm" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_wait.gd" id="7_ff4kr"]
+[ext_resource type="Script" uid="uid://qkhn2rt2l61f" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_inverter.gd" id="7_n0kki"]
+[ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="8_5ft4q"]
+[ext_resource type="Script" uid="uid://btsxuyrmc3p5w" path="res://examples/behaviour_example/NPCs/leaves/IsHydrated.gd" id="8_bgd18"]
+[ext_resource type="Script" uid="uid://dpe5ls8m10ful" path="res://examples/behaviour_example/NPCs/leaves/IsAlive.gd" id="8_rjqba"]
+[ext_resource type="Script" uid="uid://ctmw8rr41u1ux" path="res://examples/behaviour_example/NPCs/states/state_idle.gd" id="9_73yag"]
+[ext_resource type="Script" uid="uid://dynb52p6rwe5u" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_limiter.gd" id="9_ac00x"]
+[ext_resource type="Script" uid="uid://c584shlo6w6it" path="res://addons/behaviour_toolkit/behaviour_tree/bt_leaf.gd" id="9_fbuja"]
+[ext_resource type="Script" uid="uid://p5w6telrj0j7" path="res://examples/behaviour_example/NPCs/states/trans_on_start_walking.gd" id="10_amkvh"]
+[ext_resource type="Script" uid="uid://hanutoq0yi7y" path="res://examples/behaviour_example/NPCs/leaves/UseBottle.gd" id="10_k40jm"]
+[ext_resource type="Script" uid="uid://byn1oj8q82dky" path="res://examples/behaviour_example/NPCs/states/state_walking.gd" id="11_rb27u"]
+[ext_resource type="Script" uid="uid://buu101vspblw1" path="res://examples/behaviour_example/NPCs/leaves/WalkToWell.gd" id="12_2x00h"]
+[ext_resource type="Script" uid="uid://dqowalrfhfy6u" path="res://examples/behaviour_example/NPCs/states/trans_on_stop_walking.gd" id="12_a13jv"]
+[ext_resource type="Script" uid="uid://cwo7ey48dxu21" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state_integration_return.gd" id="13_bsy2u"]
+[ext_resource type="Script" uid="uid://blw6kn4vmnakh" path="res://examples/behaviour_example/NPCs/states/state_transformt.gd" id="13_har5q"]
+[ext_resource type="Script" uid="uid://bv80dvrqw5nqc" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state_integrated_bt.gd" id="13_rq5d2"]
+[ext_resource type="Script" uid="uid://bldpd2rt2gfc5" path="res://examples/behaviour_example/NPCs/states/state_ghost.gd" id="14_k3bdi"]
+[ext_resource type="Script" uid="uid://bjym64dlc4hhy" path="res://examples/behaviour_example/NPCs/states/trans_on_revive.gd" id="15_ahoqg"]
+[ext_resource type="Script" uid="uid://dxqf7gmkqfe2e" path="res://addons/behaviour_toolkit/behaviour_tree/decorators/decorator_always_succeed.gd" id="16_igrlt"]
+[ext_resource type="Script" uid="uid://1h0braq41vwb" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="17_nswga"]
+[ext_resource type="Script" uid="uid://dl4tsevokxbqg" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_event.gd" id="18_45wr7"]
+[ext_resource type="Script" uid="uid://dis45amsi0qtr" path="res://examples/behaviour_example/NPCs/states/state_refreshing.gd" id="20_bve44"]
 
 [sub_resource type="Animation" id="Animation_ndcbh"]
 length = 0.001
@@ -135,10 +135,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bvcex"]
 _data = {
-"RESET": SubResource("Animation_ndcbh"),
-"idle": SubResource("Animation_q2p0v"),
-"refreshing": SubResource("Animation_s3agd"),
-"walking": SubResource("Animation_bnukq")
+&"RESET": SubResource("Animation_ndcbh"),
+&"idle": SubResource("Animation_q2p0v"),
+&"refreshing": SubResource("Animation_s3agd"),
+&"walking": SubResource("Animation_bnukq")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3jlb"]
@@ -161,7 +161,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bvcex")
+&"": SubResource("AnimationLibrary_bvcex")
 }
 playback_default_blend_time = 0.15
 
