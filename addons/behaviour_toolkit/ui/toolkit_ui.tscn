@@ -1,9 +1,9 @@
 [gd_scene load_steps=39 format=3 uid="uid://o16emp4t4wb1"]
 
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
+[ext_resource type="Script" uid="uid://cj617ykhf0je8" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
 [ext_resource type="Texture2D" uid="uid://guy2wtwpcskx" path="res://addons/behaviour_toolkit/icons/FSMTransition.svg" id="2_24di4"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/ui/utils/update_manager.gd" id="2_ohrre"]
+[ext_resource type="Script" uid="uid://ur8ahev0butf" path="res://addons/behaviour_toolkit/ui/utils/update_manager.gd" id="2_ohrre"]
 [ext_resource type="Texture2D" uid="uid://5e6onda232gn" path="res://addons/behaviour_toolkit/icons/Blackboard.svg" id="2_u7fep"]
 [ext_resource type="Texture2D" uid="uid://csdaju3etjpw4" path="res://addons/behaviour_toolkit/icons/Search.svg" id="3_plkhg"]
 [ext_resource type="Texture2D" uid="uid://b3u8ojxnwvwap" path="res://addons/behaviour_toolkit/icons/BTComposite.svg" id="4_ruq84"]

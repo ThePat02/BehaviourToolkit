@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://ds1mew31yiyj"]
 
 [ext_resource type="Texture2D" uid="uid://cnjtcqmw1tee" path="res://examples/assets/actors/tiny_crab.png" id="1_5suvw"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="2_eevb3"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_random.gd" id="3_dv664"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_sequence.gd" id="4_iyxnv"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_tween.gd" id="5_i3fqj"]
-[ext_resource type="Script" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_wait.gd" id="6_q85ek"]
+[ext_resource type="Script" uid="uid://d11c6gwrjou0w" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="2_eevb3"]
+[ext_resource type="Script" uid="uid://c6si2venemcbd" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_random.gd" id="3_dv664"]
+[ext_resource type="Script" uid="uid://dpr2xa1e5hy8u" path="res://addons/behaviour_toolkit/behaviour_tree/composites/bt_sequence.gd" id="4_iyxnv"]
+[ext_resource type="Script" uid="uid://ba52jr7ryaq75" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_tween.gd" id="5_i3fqj"]
+[ext_resource type="Script" uid="uid://buvb8uppbyosm" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_wait.gd" id="6_q85ek"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26ahs"]
 radius = 8.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cf6a7bpqsqo3a"]
 
-[ext_resource type="Script" path="res://examples/behaviour_example/Camera.gd" id="1_ukdj2"]
-[ext_resource type="Script" path="res://examples/behaviour_example/behaviour_example.gd" id="1_xnxut"]
+[ext_resource type="Script" uid="uid://hr2laxeenvtx" path="res://examples/behaviour_example/Camera.gd" id="1_ukdj2"]
+[ext_resource type="Script" uid="uid://c51orvxej8uxv" path="res://examples/behaviour_example/behaviour_example.gd" id="1_xnxut"]
 [ext_resource type="Resource" uid="uid://c60ird40hkxeb" path="res://examples/behaviour_example/global_blackboard.tres" id="2_lmhgv"]
 [ext_resource type="TileSet" uid="uid://dtkgrk566xb21" path="res://examples/assets/tileset.tres" id="3_gy77p"]
 [ext_resource type="PackedScene" uid="uid://ctbwpw7df4hay" path="res://examples/behaviour_example/NPCs/villager.tscn" id="5_1u0ob"]
