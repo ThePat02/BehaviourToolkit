@@ -23,6 +23,7 @@ shape = SubResource("CircleShape2D_26ahs")
 script = ExtResource("2_eevb3")
 autostart = true
 actor = NodePath("..")
+verbose = true
 
 [node name="ChangeColor" type="Node" parent="BTRoot"]
 script = ExtResource("4_iyxnv")

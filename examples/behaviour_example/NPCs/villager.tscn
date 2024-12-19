@@ -182,6 +182,7 @@ script = ExtResource("3_5mjdm")
 autostart = true
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
+verbose = null
 
 [node name="Select" type="Node" parent="Behaviour"]
 script = ExtResource("5_1bdaa")
@@ -203,6 +204,7 @@ script = ExtResource("8_5ft4q")
 initial_state = NodePath("TransformIntoGhost")
 actor = NodePath("../../../../..")
 blackboard = ExtResource("4_opmou")
+verbose = null
 
 [node name="TransformIntoGhost" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
 script = ExtResource("13_har5q")
@@ -220,6 +222,7 @@ event = "revive"
 
 [node name="RevivalBehaviour" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive"]
 script = ExtResource("3_5mjdm")
+verbose = null
 
 [node name="BTSelector" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour"]
 script = ExtResource("5_1bdaa")
@@ -328,6 +331,7 @@ process_type = 0
 initial_state = NodePath("Idle")
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
+verbose = null
 
 [node name="Walking" type="Node" parent="AnimationStateMachine"]
 script = ExtResource("11_rb27u")
