@@ -182,6 +182,7 @@ script = ExtResource("3_5mjdm")
 autostart = true
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
+verbose = null
 
 [node name="Select" type="Node" parent="Behaviour"]
 script = ExtResource("5_1bdaa")
@@ -221,6 +222,7 @@ event = "revive"
 
 [node name="RevivalBehaviour" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive"]
 script = ExtResource("3_5mjdm")
+verbose = null
 
 [node name="BTSelector" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour"]
 script = ExtResource("5_1bdaa")
