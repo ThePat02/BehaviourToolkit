@@ -36,6 +36,8 @@ func _enter_tree():
 	_inspector_plugin = _inspector_plugin.new()
 	add_inspector_plugin(_inspector_plugin)
 
+	BehaviourToolkit.Logger.say("Plugin enabled.")
+
 
 
 func _exit_tree():
@@ -46,6 +48,8 @@ func _exit_tree():
 	_ui_spatial.queue_free()
 
 	remove_inspector_plugin(_inspector_plugin)
+
+	BehaviourToolkit.Logger.say("Plugin disabled.")
 
 
 func _on_selection_changed() -> void:
