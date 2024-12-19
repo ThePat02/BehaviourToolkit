@@ -113,6 +113,7 @@ shape = SubResource("CapsuleShape2D_gq6i5")
 script = ExtResource("3_4ougi")
 initial_state = NodePath("IDLE")
 actor = NodePath("..")
+verbose = true
 
 [node name="IDLE" type="Node" parent="FSMController"]
 script = ExtResource("4_xi524")

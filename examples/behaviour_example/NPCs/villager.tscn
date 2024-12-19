@@ -203,6 +203,7 @@ script = ExtResource("8_5ft4q")
 initial_state = NodePath("TransformIntoGhost")
 actor = NodePath("../../../../..")
 blackboard = ExtResource("4_opmou")
+verbose = null
 
 [node name="TransformIntoGhost" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
 script = ExtResource("13_har5q")
@@ -328,6 +329,7 @@ process_type = 0
 initial_state = NodePath("Idle")
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
+verbose = null
 
 [node name="Walking" type="Node" parent="AnimationStateMachine"]
 script = ExtResource("11_rb27u")

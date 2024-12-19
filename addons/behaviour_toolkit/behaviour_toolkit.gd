@@ -9,11 +9,26 @@ class Logger:
 
     ## Main color for logger messages.
     const COLOR_MAIN: String = "Orange"
+    ## Accent color for logger messages.
+    const COLOR_ACCENT: String = "Yellow"
 
     ## Log a message to the console with the Behaviour Toolkit prefix.
-    static func say(message: String) -> void:
+    static func say(message: String, caller: Node = null) -> void:
         var log_message: String
         log_message = colorize("[Behaviour Toolkit] ", COLOR_MAIN)
+
+        if caller != null:
+
+            log_message += colorize(caller.name + " ", COLOR_ACCENT)
+
+            var actor: Node = null
+            if "actor" in caller:
+                actor = caller.actor
+            
+            if actor:
+                log_message += colorize("@ " + actor.name + " ", COLOR_ACCENT)
+
+
         log_message += message
 
         print_rich(log_message)

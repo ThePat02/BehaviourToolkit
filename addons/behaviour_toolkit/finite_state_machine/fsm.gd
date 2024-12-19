@@ -46,6 +46,8 @@ signal state_changed(state: FSMState)
 @export var actor: Node
 ## The blackboard of the FSM.
 @export var blackboard: Blackboard
+## Whether the FSM should print debug messages.
+@export var verbose: bool = false
 
 
 ## The list of states in the FSM.
@@ -82,6 +84,8 @@ func _ready() -> void:
 
 
 func start() -> void:
+	if verbose: BehaviourToolkit.Logger.say("Starting FiniteStateMachine...", self)
+
 	current_bt_status = BTBehaviour.BTStatus.RUNNING
 	
 	# Check if the initial state is valid
@@ -91,6 +95,8 @@ func start() -> void:
 	for state in get_children():
 		if state is FSMState:
 			states.append(state)
+
+	if verbose: BehaviourToolkit.Logger.say("Setting up " + str(states.size()) + " states.", self)
 
 	active = true
 
@@ -154,6 +160,8 @@ func change_state(state: FSMState) -> void:
 	# Enter the new state
 	active_state._on_enter(actor, blackboard)
 
+	if verbose: BehaviourToolkit.Logger.say("Changed state to " + active_state.get_name(), self)
+
 	# Emit the state changed signal
 	emit_signal("state_changed", active_state)
 
@@ -161,6 +169,8 @@ func change_state(state: FSMState) -> void:
 ## Fires an event in the FSM.
 func fire_event(event: String) -> void:
 	current_events.append(event)
+
+	if verbose: BehaviourToolkit.Logger.say("Fired event: " + event, self)
 
 
 func _create_local_blackboard() -> Blackboard:
