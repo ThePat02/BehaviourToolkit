@@ -10,7 +10,7 @@ enum LogType {
 }
 
 
-class Logger:
+class BTLogger:
     extends BehaviourToolkit
     ## Logger class for Behaviour Toolkit plugin.
 

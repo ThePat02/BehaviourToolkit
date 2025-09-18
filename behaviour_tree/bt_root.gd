@@ -43,19 +43,19 @@ func _ready() -> void:
 		set_process(false)
 		return
 	
-	if verbose: BehaviourToolkit.Logger.say("Initializing Behavior Tree...", self)
+	if verbose: BehaviourToolkit.BTLogger.say("Initializing Behavior Tree...", self)
 	
 	entry_point = get_child(0)
 	if verbose and entry_point: 
-		BehaviourToolkit.Logger.say("Entry point set to: " + entry_point.name, self)
+		BehaviourToolkit.BTLogger.say("Entry point set to: " + entry_point.name, self)
 	
 	if blackboard == null:
 		blackboard = _create_local_blackboard()
-		if verbose: BehaviourToolkit.Logger.say("Created local blackboard", self)
+		if verbose: BehaviourToolkit.BTLogger.say("Created local blackboard", self)
 
 	if autostart:
 		active = true
-		if verbose: BehaviourToolkit.Logger.say("Autostart enabled", self)
+		if verbose: BehaviourToolkit.BTLogger.say("Autostart enabled", self)
 
 	if not process_type:
 		process_type = ProcessType.PHYSICS
@@ -79,11 +79,11 @@ func _process_code(delta: float) -> void:
 	current_status = entry_point.tick(delta, actor, blackboard)
 	
 	if verbose and previous_status != current_status:
-		BehaviourToolkit.Logger.say("Status changed: " + str(current_status), self)
+		BehaviourToolkit.BTLogger.say("Status changed: " + str(current_status), self)
 
 
 func _create_local_blackboard() -> Blackboard:
-	if verbose: BehaviourToolkit.Logger.say("Creating new blackboard", self)
+	if verbose: BehaviourToolkit.BTLogger.say("Creating new blackboard", self)
 	var blackboard: Blackboard = Blackboard.new()
 	return blackboard
 
@@ -91,7 +91,7 @@ func _create_local_blackboard() -> Blackboard:
 # Configures process type to use, if BTree is not active both are disabled.
 func _setup_processing() -> void:
 	if verbose:
-		BehaviourToolkit.Logger.say("Setting process type: " + str(ProcessType.keys()[process_type]), self)
+		BehaviourToolkit.BTLogger.say("Setting process type: " + str(ProcessType.keys()[process_type]), self)
 	set_physics_process(process_type == ProcessType.PHYSICS)
 	set_process(process_type == ProcessType.IDLE)
 

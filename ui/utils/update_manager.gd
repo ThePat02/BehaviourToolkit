@@ -71,7 +71,7 @@ func get_newest_version() -> void:
 func _on_http_request_request_completed(result:int, response_code:int, headers:PackedStringArray, body:PackedByteArray):
 	if result != OK:
 		if not had_error:
-			BehaviourToolkit.Logger.say(
+			BehaviourToolkit.BTLogger.say(
 				"Unable to fetch newest version from GitHub. Check your internet connection and reload the editor!",
 				null,
 				BehaviourToolkit.LogType.WARNING

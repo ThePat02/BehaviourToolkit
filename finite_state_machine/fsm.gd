@@ -84,7 +84,7 @@ func _ready() -> void:
 
 
 func start() -> void:
-	if verbose: BehaviourToolkit.Logger.say("Starting FiniteStateMachine...", self)
+	if verbose: BehaviourToolkit.BTLogger.say("Starting FiniteStateMachine...", self)
 
 	current_bt_status = BTBehaviour.BTStatus.RUNNING
 	
@@ -96,7 +96,7 @@ func start() -> void:
 		if state is FSMState:
 			states.append(state)
 
-	if verbose: BehaviourToolkit.Logger.say("Setting up " + str(states.size()) + " states.", self)
+	if verbose: BehaviourToolkit.BTLogger.say("Setting up " + str(states.size()) + " states.", self)
 
 	active = true
 
@@ -160,7 +160,7 @@ func change_state(state: FSMState) -> void:
 	# Enter the new state
 	active_state._on_enter(actor, blackboard)
 
-	if verbose: BehaviourToolkit.Logger.say("Changed state to " + active_state.get_name(), self)
+	if verbose: BehaviourToolkit.BTLogger.say("Changed state to " + active_state.get_name(), self)
 
 	# Emit the state changed signal
 	emit_signal("state_changed", active_state)
@@ -170,7 +170,7 @@ func change_state(state: FSMState) -> void:
 func fire_event(event: String) -> void:
 	current_events.append(event)
 
-	if verbose: BehaviourToolkit.Logger.say("Fired event: " + event, self)
+	if verbose: BehaviourToolkit.BTLogger.say("Fired event: " + event, self)
 
 
 func _create_local_blackboard() -> Blackboard:
