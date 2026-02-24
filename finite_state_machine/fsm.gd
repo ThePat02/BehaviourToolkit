@@ -49,13 +49,16 @@ signal state_changed(state: FSMState)
 ## Whether the FSM should print debug messages.
 @export var verbose: bool = false
 
-
 ## The list of states in the FSM.
 var states: Array[FSMState]
 ## The current active state.
 var active_state: FSMState
 ## The list of current events.
 var current_events: Array[String]
+## The list of nested FSMs in the FSM.
+var nested_state_machines: Array[FiniteStateMachine]
+## Nesting Depth (0 = not nested)
+var nest_level = 0 
 ## Current BT BTStatus
 var current_bt_status: BTBehaviour.BTStatus
 
@@ -202,5 +205,10 @@ func _get_configuration_warnings() -> PackedStringArray:
 	for child in children:
 		if not child is FSMState:
 			warnings.append("Node '" + child.get_name() + "' is not a FSMState.")
-
+	
+	if initial_state:
+		# check if initial_state is a descendant of this FSM
+		if not is_ancestor_of(initial_state):
+			warnings.append("Don't select initial state outside of this FSM")
+	
 	return warnings

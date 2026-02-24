@@ -37,6 +37,7 @@ func _ready():
 	# Connect buttons
 	%ButtonAddFSM.connect("pressed", _on_button_pressed.bind(FiniteStateMachine, "FiniteStateMachine"))
 	%ButtonState.connect("pressed", _on_button_pressed.bind(FSMState, "FSMState"))
+	%ButtonNestedFSM.connect("pressed", _on_button_pressed.bind(NestedFSM, "NestedFSM"))
 	%ButtonTransition.connect("pressed", _on_button_pressed.bind(FSMTransition, "FSMTransition"))
 	%ButtonStateIntegratedBT.connect("pressed", _on_button_pressed.bind(FSMStateIntegratedBT, "FSMStateIntegratedBT"))
 	%ButtonStateIntegrationReturn.connect("pressed", _on_button_pressed.bind(FSMStateIntegrationReturn, "FSMStateIntegrationReturn"))

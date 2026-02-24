@@ -54,16 +54,48 @@ func get_next_state() -> FSMState:
 
 
 func _get_configuration_warnings() -> PackedStringArray:
-	var warnings: Array = []
+	var warnings: PackedStringArray = []
 
 	var parent: Node = get_parent()
 	if not parent is FSMState:
 		warnings.append("FSMTransition should be a child of FSMState.")
-
+	
 	if not next_state:
 		warnings.append("FSMTransition has no next state.")
-
+		return warnings
+	
 	if use_event and event == "":
 		warnings.append("FSMTransition has no event set.")
+	
+	# HACK: Could benefit from caching fsm
+	var fsm := _find_fsm()
+	if fsm:
+		# Get paths directly
+		var our_path := fsm.get_path_to(get_parent())
+		var their_path := fsm.get_path_to(next_state)
+			
+		# Debug prints
+		# print(name, " Our Path: ", our_path.get_name_count())
+		# print(name, " Next Path: ", their_path.get_name_count())
+			
+		# Compare the number of node names in the node paths
+		var our_size := our_path.get_name_count()
+		var their_size := their_path.get_name_count()
+			
+		# Check if they have different nesting levels
+		if our_size != their_size:
+			warnings.append("FSMTransition should not transition outside of this NestedFSM.")
+		# Check if they're at the same level but in different branches (different immediate parents)
+		elif our_size >= 2 and their_size >= 2:
+			if our_path.get_name(our_size - 2) != their_path.get_name(their_size - 2):
+				warnings.append("FSMTransition should not transition outside of this NestedFSM.")
 
 	return warnings
+
+func _find_fsm() -> FiniteStateMachine:
+	var current: Node = get_parent()
+	while current:
+		if current is FiniteStateMachine:
+			return current as FiniteStateMachine
+		current = current.get_parent()
+	return null
