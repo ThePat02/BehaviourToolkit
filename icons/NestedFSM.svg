@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="10.9514"
+   viewBox="0 0 10.950678 10.9514"
+   width="10.950678"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="nestedFSM_icon.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="25.65625"
+     inkscape:cx="9.2570037"
+     inkscape:cy="9.5103532"
+     inkscape:window-width="1898"
+     inkscape:window-height="964"
+     inkscape:window-x="2243"
+     inkscape:window-y="10"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="10.950678"
+       height="10.9514"
+       id="page1"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="NestedFSM Icon"
+     style="display:inline"
+     transform="translate(-2.4276457,-2.4275298)">
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#ea9a3b;stroke-width:2.12369;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1"
+       height="8.8277102"
+       x="3.4894905"
+       y="3.4893746"
+       width="8.8269882"
+       inkscape:export-filename="nestedFSM_icon.svg"
+       inkscape:export-xdpi="140.26529"
+       inkscape:export-ydpi="140.26529" />
+    <circle
+       cx="8"
+       cy="8"
+       r="1.5408041"
+       fill="none"
+       stroke-width="0.616323"
+       stroke="#8da5f3"
+       id="circle2"
+       style="fill:#ea9a3b;fill-opacity:1;stroke:#ea9a3b;stroke-opacity:1" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     transform="translate(-2.4276457,-2.4275298)">
+    <circle
+       cx="8"
+       cy="8"
+       r="5"
+       fill="none"
+       stroke-width="2"
+       stroke="#8da5f3"
+       id="circle1"
+       style="display:none;stroke:#ea9a3b;stroke-opacity:1" />
+  </g>
+</svg>

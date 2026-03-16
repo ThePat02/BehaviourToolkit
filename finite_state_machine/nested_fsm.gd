@@ -1,6 +1,7 @@
 ## @experimental: As an experimental feature, this may still contain bugs. 
 ## Please be aware that its API and functionality are subject to change in future updates.
 @tool
+@icon("res://addons/behaviour_toolkit/icons/NestedFSM.svg")
 extends FSMState
 class_name NestedFSM
 
