@@ -69,6 +69,9 @@ func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 
 # Executes before the state is exited.
 func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
+	# Let the active inner state clean up. The check keeps it to one call per entry.
+	if fsm.active and fsm.active_state:
+		fsm.active_state._on_exit(fsm.actor, fsm.blackboard)
 	fsm.active = false
 
 # Add custom configuration warnings
